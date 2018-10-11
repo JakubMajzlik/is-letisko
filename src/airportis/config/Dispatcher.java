@@ -13,14 +13,13 @@ public class Dispatcher extends AbstractAnnotationConfigDispatcherServletInitial
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		System.out.println("WebConf");
-		return new Class<?>[] {WebConfig.class};
+		return new Class<?>[] {WebConfig.class, SecurityConfig.class};
 	}
 
 	@Override
 	protected String[] getServletMappings() {
 		// TODO Auto-generated method stub
-		return new String[] {"/"};
+		return new String[] { "/" };
 	}
 
 }

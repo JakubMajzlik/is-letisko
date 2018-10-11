@@ -14,6 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.web.FilterChainProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -32,22 +33,17 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	@Autowired 
 	private Environment enviroment;
-
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
-
 	
 	@Bean
 	public ViewResolver viewResolver() {
 		System.out.println("Creating viewResolver");
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setPrefix("WEB-INF/view/");
+		viewResolver.setPrefix("/WEB-INF/view/");
 		viewResolver.setSuffix(".jsp");
 		
 		return viewResolver;
 	}
-	
+
 	@Bean
 	public DataSource securityDataSource() {
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
@@ -95,5 +91,4 @@ public class WebConfig implements WebMvcConfigurer {
 		return props;				
 	}
 
-	
 }
