@@ -1,5 +1,5 @@
 package airportis.app.dao;
 
-public class FlightTicketDAO {
+public interface FlightTicketDAO {
 
 }

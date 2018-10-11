@@ -1,5 +1,7 @@
 package airportis.app.service;
 
-public class UserService {
+import org.springframework.security.core.userdetails.UserDetails;
+
+public interface UserService extends UserDetails {
 
 }

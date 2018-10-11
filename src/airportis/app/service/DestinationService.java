@@ -1,5 +1,5 @@
 package airportis.app.service;
 
-public class DestinationService {
+public interface DestinationService {
 
 }

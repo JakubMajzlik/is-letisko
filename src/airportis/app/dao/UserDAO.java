@@ -1,5 +1,5 @@
 package airportis.app.dao;
 
-public class UserDAO {
+public interface UserDAO {
 
 }
