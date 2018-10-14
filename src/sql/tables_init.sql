@@ -1,6 +1,14 @@
 create database if not exists `iis_project`;
 use `iis_project`;
 
+create table if not exists `users` (
+	`username` varchar(254) not null,
+	`password` varchar(80) not null,
+	`enabled` tinyint default 1, 
+    
+	primary key(`email`)
+);
+
 create table if not exists `passenger_details` (
 	`email` varchar(254) default null,
     `phone_number` varchar(20) default null,
@@ -13,29 +21,19 @@ create table if not exists `passenger_details` (
     `zip` varchar(5) not null,
     `country` varchar(45) not null,
     
-    primary key(`identification_number`)
+    primary key(`identification_number`),
+    key `fk_user_email`(`email`),
+    constraint `fk_user_email` foreign key(`email`) references `users`(`username`)
 );
 
-create table if not exists `users` (
-	`email` varchar(254) not null,
-	`password` varchar(80) not null,
-    `identification_number` varchar(10) not null,
-	`enabled` tinyint default 1, 
-	primary key(`email`),
-    
-	key `fk_id`(`identification_number`),
-    constraint `fk_id` foreign key(`identification_number`) references `passenger_details`(`identification_number`)
-  
-);
-
-create table if not exists `user_roles` (
+create table if not exists `users_roles` (
 	`role_id` int(11) auto_increment,
     `email` varchar(254) not null,
     `role` varchar(45) not null,
     
     primary key(`role_id`),
     key fk_user(`email`),
-    constraint fk_user foreign key(`email`) references `users`(`email`)
+    constraint fk_user foreign key(`email`) references `users`(`username`)
 );
 
 create table if not exists `destinations` (
