@@ -26,14 +26,23 @@ create table if not exists `passenger_details` (
     constraint `fk_user_email` foreign key(`email`) references `users`(`username`)
 );
 
+create table if not exists `role` (
+	`id` int(11) auto_increment,
+    `name` varchar(50) not null,
+    
+    primary key(`id`)
+);
+
 create table if not exists `users_roles` (
 	`role_id` int(11) auto_increment,
     `email` varchar(254) not null,
-    `role` varchar(45) not null,
     
     primary key(`role_id`),
-    key fk_user(`email`),
-    constraint fk_user foreign key(`email`) references `users`(`username`)
+    key `fk_user`(`email`),
+    constraint `fk_user` foreign key(`email`) references `users`(`username`),
+    
+    key `fk_role`(`role_id`),
+	constraint `fk_role` foreign key(`role_id`) references `role` (`id`) 
 );
 
 create table if not exists `destinations` (
