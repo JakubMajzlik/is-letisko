@@ -1,13 +1,6 @@
 create database if not exists `iis_project`;
 use `iis_project`;
 
-create table if not exists `users` (
-	`username` varchar(254) not null,
-	`password` varchar(80) not null,
-	`enabled` tinyint default 1, 
-    
-	primary key(`email`)
-);
 
 create table if not exists `passenger_details` (
 	`email` varchar(254) default null,
@@ -21,9 +14,21 @@ create table if not exists `passenger_details` (
     `zip` varchar(5) not null,
     `country` varchar(45) not null,
     
-    primary key(`identification_number`),
-    key `fk_user_email`(`email`),
-    constraint `fk_user_email` foreign key(`email`) references `users`(`username`)
+    primary key(`identification_number`)
+   
+    
+);
+
+create table if not exists `user` (
+	`id` int(11) auto_increment,
+	`username` varchar(254) not null,
+	`password` varchar(80) not null,
+	`enabled` tinyint default 1, 
+    `user_details_id` varchar(10) not null,
+    
+	primary key(`id`),
+    
+    constraint `fk_user_details` foreign key(`user_details_id`) references `passenger_details`(`identification_number`)
 );
 
 create table if not exists `role` (
@@ -34,15 +39,20 @@ create table if not exists `role` (
 );
 
 create table if not exists `users_roles` (
-	`role_id` int(11) auto_increment,
-    `email` varchar(254) not null,
+	`role_id` int(11)  not null,
+    `user_id` int(11) not null,
     
-    primary key(`role_id`),
-    key `fk_user`(`email`),
-    constraint `fk_user` foreign key(`email`) references `users`(`username`),
-    
-    key `fk_role`(`role_id`),
-	constraint `fk_role` foreign key(`role_id`) references `role` (`id`) 
+    PRIMARY KEY (`user_id`,`role_id`),
+  
+	KEY `fk_role` (`role_id`),
+  
+	CONSTRAINT `fk_user_id2` FOREIGN KEY (`user_id`) 
+	REFERENCES `user` (`id`) 
+	ON DELETE NO ACTION ON UPDATE NO ACTION,
+  
+	CONSTRAINT `fk_role` FOREIGN KEY (`role_id`) 
+	REFERENCES `role` (`id`) 
+	ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 create table if not exists `destinations` (
@@ -85,7 +95,7 @@ create table if not exists `seats` (
 
 create table if not exists `flights` (
 	`id` int(11) auto_increment,
-    `takeoff_date` datetime not null,
+    `takeoff_date` timestamp not null,
     `destination` int(11) not null,
     `gate` int(11) not null,
     `plane` varchar(16) not null,
@@ -102,7 +112,7 @@ create table if not exists `flights` (
 
 create table if not exists `flight_tickets` (
 	`id` int(11) auto_increment,
-    `boarding_time` datetime not null,
+    `boarding_time` timestamp not null,
     `flight` int(11) not null,
     `seat` varchar(4) not null,
     `plane` varchar(16) not null,

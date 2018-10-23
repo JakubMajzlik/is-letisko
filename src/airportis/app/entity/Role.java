@@ -8,15 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users_roles")
+@Table(name="role")
 public class Role {
 
 	@Id
-	@Column(name="role_id")
+	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int roleID;
 	
-	@Column(name="role")
+	@Column(name="name")
 	private String roleName;
 
 	public Role() {}

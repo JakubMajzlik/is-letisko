@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import airportis.app.entity.User;
 import airportis.app.service.UserService;
-import airportis.app.service.UserServiceImpl;
 
 @Component
 public class AuthenticationHandler implements AuthenticationSuccessHandler {

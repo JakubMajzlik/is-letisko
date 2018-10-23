@@ -2,7 +2,10 @@ package airportis.app.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,10 +22,10 @@ public class PassengerDetail {
 	@Column(name="phone_number")
 	private String phone_number;
 	
-	@Column(name="first_time")
+	@Column(name="first_name")
 	private String first_name;
 	
-	@Column(name="last_time")
+	@Column(name="last_name")
 	private String last_name;
 	
 	@Column(name="city")
@@ -44,7 +47,6 @@ public class PassengerDetail {
 	
 	public PassengerDetail(String identification_number, String email, String phone_number, String first_name,
 			String last_name, String city, String street, String house_number, String zip, String country) {
-		super();
 		this.identification_number = identification_number;
 		this.email = email;
 		this.phone_number = phone_number;

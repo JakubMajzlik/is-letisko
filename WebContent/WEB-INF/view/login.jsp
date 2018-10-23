@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,16 @@
 </head>
 <body>
 <h1>Login</h1>
-<form:form action="/user/login/process" method="POST" modelAttribute="userLoginModel">
-	Email: <form:input path="email"/> <br/>
-	Password: <form:password path="password"/> <br/>
-	<input type="submit" value="register"/>
-</form:form>
+<form action="${pageContext.request.contextPath}/user/login/process" method="POST">
+	Email: <input type="text" name="username" />
+	<c:if test="${param.error != null}">
+			Invalid Username or password 
+		</c:if><br/>
+	Password: <input type="password" name="password"/><form:errors path="password"/> <br/>
+	<button type="submit" >Login</button>
+	<input type="hidden"
+							   name="${_csrf.parameterName}"
+							   value="${_csrf.token}" />
+</form>
 </body>
 </html>

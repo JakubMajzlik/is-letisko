@@ -7,13 +7,13 @@ public class Dispatcher extends AbstractAnnotationConfigDispatcherServletInitial
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Class<?>[] {SecurityConfig.class};
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class<?>[] {WebConfig.class, SecurityConfig.class};
+		return new Class<?>[] {WebConfig.class};
 	}
 
 	@Override

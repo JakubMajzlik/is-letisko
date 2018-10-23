@@ -1,7 +1,5 @@
 package airportis.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,27 +10,29 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.FilterChainProxy;
 
-import airportis.app.service.UserServiceImpl;
+import airportis.app.service.UserService;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan("airportis.config")
+@ComponentScan("airportis")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-	@Autowired
-	private DataSource securityDataSource;
 	
 	@Autowired
-	private UserServiceImpl userService;
+	private UserService userService;
 	
 	@Autowired
 	private AuthenticationHandler authenticationHandler;
 	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+	}
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(securityDataSource);
+		System.out.println("Configuring configure");
+		auth.authenticationProvider(authenticationProvider());
 	}
 
 	@Override
@@ -41,17 +41,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/management").hasRole("MANAGER")
 			.and().formLogin()
 				.loginPage("/user/login")
+				.usernameParameter("username")
 				.loginProcessingUrl("/user/login/process")
 				.successHandler(authenticationHandler)
+				.successForwardUrl("/ideto")
 				.permitAll()
 			.and().logout().permitAll()
 			.and().exceptionHandling().accessDeniedPage("/lol");
+
 	}
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	/*@Bean
+	public static PasswordEncoder passwordEncoder() {
+	      return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+	}*/
 	
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {

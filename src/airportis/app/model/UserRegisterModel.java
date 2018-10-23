@@ -22,7 +22,7 @@ public class UserRegisterModel {
 	
 	private String country;
 	
-	private String identification_number;
+	private String identificationNumber;
 	
 	private String phoneNumber;
 
@@ -106,12 +106,12 @@ public class UserRegisterModel {
 		this.country = country;
 	}
 
-	public String getIdentification_number() {
-		return identification_number;
+	public String getIdentificationNumber() {
+		return identificationNumber;
 	}
 
-	public void setIdentification_number(String identification_number) {
-		this.identification_number = identification_number;
+	public void setIdentificationNumber(String identification_number) {
+		this.identificationNumber = identification_number;
 	}
 
 	public String getPhoneNumber() {
