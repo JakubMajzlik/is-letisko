@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.usernameParameter("username")
 				.loginProcessingUrl("/user/login/process")
 				.successHandler(authenticationHandler)
-				.successForwardUrl("/ideto")
+				.successForwardUrl("/")
 				.permitAll()
 			.and().logout().permitAll()
 			.and().exceptionHandling().accessDeniedPage("/lol");

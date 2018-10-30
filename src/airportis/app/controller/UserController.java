@@ -4,6 +4,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,14 +35,20 @@ public class UserController {
 
 	@GetMapping("/login")
 	public String showLoginForm() {
-		
-		return "login";
+		if(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) {
+			return "login";
+			
+		}
+		return "redirect:/";
 	}
 	
 	@GetMapping("/register")
 	public String showRegisterForm(Model model) {
-		model.addAttribute("userRegisterModel", new UserRegisterModel());
-		return "register";
+		if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+			model.addAttribute("userRegisterModel", new UserRegisterModel());
+			return "register";
+		}
+		return "redirect:/";
 	}
 	
 	@PostMapping("/register/process")
