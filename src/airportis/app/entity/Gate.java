@@ -11,7 +11,7 @@ public class Gate {
 	
 	@Id
 	@Column(name="gate_number")
-	private int gate_number;
+	private int gateNumber;
 	
 	@Column(name="terminal")
 	private char terminal;
@@ -20,16 +20,16 @@ public class Gate {
 	
 	public Gate(int gate_number, char terminal) {
 		super();
-		this.gate_number = gate_number;
+		this.gateNumber = gate_number;
 		this.terminal = terminal;
 	}
 
-	public int getGate_number() {
-		return gate_number;
+	public int getGateNumber() {
+		return gateNumber;
 	}
 
-	public void setGate_number(int gate_number) {
-		this.gate_number = gate_number;
+	public void setGateNumber(int gate_number) {
+		this.gateNumber = gate_number;
 	}
 
 	public char getTerminal() {
@@ -42,7 +42,7 @@ public class Gate {
 
 	@Override
 	public String toString() {
-		return "Gate [gate_number=" + gate_number + ", terminal=" + terminal + "]";
+		return "Gate [gate_number=" + gateNumber + ", terminal=" + terminal + "]";
 	}
 	
 	

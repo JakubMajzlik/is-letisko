@@ -19,7 +19,7 @@ public class FlightTicket {
 	private int id;
 	
 	@Column(name="boarding_time")
-	private Date boarding_time;
+	private Date boardingTime;
 	
 	@Column(name="flight")
 	private int flight;
@@ -31,17 +31,17 @@ public class FlightTicket {
 	private String plane;
 	
 	@Column(name="user_identification_number")
-	private String user_identification_number;
+	private String userIdentificationNumber;
 
 	public FlightTicket() {}
 
 	public FlightTicket(Date boarding_time, int flight, String seat, String plane, String user_identification_number) {
 		super();
-		this.boarding_time = boarding_time;
+		this.boardingTime = boarding_time;
 		this.flight = flight;
 		this.seat = seat;
 		this.plane = plane;
-		this.user_identification_number = user_identification_number;
+		this.userIdentificationNumber = user_identification_number;
 	}
 
 	public int getId() {
@@ -52,12 +52,12 @@ public class FlightTicket {
 		this.id = id;
 	}
 
-	public Date getBoarding_time() {
-		return boarding_time;
+	public Date getBoardingTime() {
+		return boardingTime;
 	}
 
-	public void setBoarding_time(Date boarding_time) {
-		this.boarding_time = boarding_time;
+	public void setBoardingTime(Date boarding_time) {
+		this.boardingTime = boarding_time;
 	}
 
 	public int getFlight() {
@@ -84,18 +84,18 @@ public class FlightTicket {
 		this.plane = plane;
 	}
 
-	public String getUser_identification_number() {
-		return user_identification_number;
+	public String getUserIdentificationNumber() {
+		return userIdentificationNumber;
 	}
 
-	public void setUser_identification_number(String user_identification_number) {
-		this.user_identification_number = user_identification_number;
+	public void setUserIdentificationNumber(String user_identification_number) {
+		this.userIdentificationNumber = user_identification_number;
 	}
 
 	@Override
 	public String toString() {
-		return "FlightTicket [id=" + id + ", boarding_time=" + boarding_time + ", flight=" + flight + ", seat=" + seat
-				+ ", plane=" + plane + ", user_identification_number=" + user_identification_number + "]";
+		return "FlightTicket [id=" + id + ", boarding_time=" + boardingTime + ", flight=" + flight + ", seat=" + seat
+				+ ", plane=" + plane + ", user_identification_number=" + userIdentificationNumber + "]";
 	}
 	
 	

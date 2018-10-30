@@ -14,19 +14,19 @@ public class PassengerDetail {
 	
 	@Id
 	@Column(name="identification_number")
-	private String identification_number;
+	private String identificationNumber;
 	
 	@Column(name="email")
 	private String email;
 	
 	@Column(name="phone_number")
-	private String phone_number;
+	private String phoneNumber;
 	
 	@Column(name="first_name")
-	private String first_name;
+	private String firstName;
 	
 	@Column(name="last_name")
-	private String last_name;
+	private String lastName;
 	
 	@Column(name="city")
 	private String city;
@@ -35,7 +35,7 @@ public class PassengerDetail {
 	private String street;
 	
 	@Column(name="house_number")
-	private String house_number;
+	private String houseNumber;
 	
 	@Column(name="zip")
 	private String zip;
@@ -47,24 +47,24 @@ public class PassengerDetail {
 	
 	public PassengerDetail(String identification_number, String email, String phone_number, String first_name,
 			String last_name, String city, String street, String house_number, String zip, String country) {
-		this.identification_number = identification_number;
+		this.identificationNumber = identification_number;
 		this.email = email;
-		this.phone_number = phone_number;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.phoneNumber = phone_number;
+		this.firstName = first_name;
+		this.lastName = last_name;
 		this.city = city;
 		this.street = street;
-		this.house_number = house_number;
+		this.houseNumber = house_number;
 		this.zip = zip;
 		this.country = country;
 	}
 
-	public String getIdentification_number() {
-		return identification_number;
+	public String getIdentificationNumber() {
+		return identificationNumber;
 	}
 
-	public void setIdentification_number(String identification_number) {
-		this.identification_number = identification_number;
+	public void setIdentificationNumber(String identificationNumber) {
+		this.identificationNumber = identificationNumber;
 	}
 
 	public String getEmail() {
@@ -75,28 +75,28 @@ public class PassengerDetail {
 		this.email = email;
 	}
 
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getCity() {
@@ -115,12 +115,12 @@ public class PassengerDetail {
 		this.street = street;
 	}
 
-	public String getHouse_number() {
-		return house_number;
+	public String getHouseNumber() {
+		return houseNumber;
 	}
 
-	public void setHouse_number(String house_number) {
-		this.house_number = house_number;
+	public void setHouseNumber(String houseNumber) {
+		this.houseNumber = houseNumber;
 	}
 
 	public String getZip() {
@@ -141,9 +141,9 @@ public class PassengerDetail {
 
 	@Override
 	public String toString() {
-		return "PassengerDetail [identification_number=" + identification_number + ", email=" + email
-				+ ", phone_number=" + phone_number + ", first_name=" + first_name + ", last_name=" + last_name
-				+ ", city=" + city + ", street=" + street + ", house_number=" + house_number + ", zip=" + zip
+		return "PassengerDetail [identification_number=" + identificationNumber + ", email=" + email
+				+ ", phone_number=" + phoneNumber + ", first_name=" + firstName + ", last_name=" + lastName
+				+ ", city=" + city + ", street=" + street + ", house_number=" + houseNumber + ", zip=" + zip
 				+ ", country=" + country + "]";
 	}
 	

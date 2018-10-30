@@ -17,7 +17,7 @@ public class Seat {
 	private String plane;
 	
 	@Column(name="class")
-	private String seat_class;
+	private String seatClass;
 
 	public Seat() {}
 	
@@ -25,7 +25,7 @@ public class Seat {
 		super();
 		this.number = number;
 		this.plane = plane;
-		this.seat_class = seat_class;
+		this.seatClass = seat_class;
 	}
 
 	public String getNumber() {
@@ -44,17 +44,17 @@ public class Seat {
 		this.plane = plane;
 	}
 
-	public String getSeat_class() {
-		return seat_class;
+	public String getSeatClass() {
+		return seatClass;
 	}
 
-	public void setSeat_class(String seat_class) {
-		this.seat_class = seat_class;
+	public void setSeatClass(String seat_class) {
+		this.seatClass = seat_class;
 	}
 
 	@Override
 	public String toString() {
-		return "Seat [number=" + number + ", plane=" + plane + ", seat_class=" + seat_class + "]";
+		return "Seat [number=" + number + ", plane=" + plane + ", seat_class=" + seatClass + "]";
 	}
 	
 }

@@ -21,7 +21,7 @@ public class Flight {
 	private int id;
 	
 	@Column(name="takeoff_date")
-	private Date takeoff_date;
+	private Date takeoffDate;
 	
 	@Column(name="destination")
 	private int destination;
@@ -36,7 +36,7 @@ public class Flight {
 
 	public Flight(Date takeoff_date, int destination, int gate, String plane) {
 		super();
-		this.takeoff_date = takeoff_date;
+		this.takeoffDate = takeoff_date;
 		this.destination = destination;
 		this.gate = gate;
 		this.plane = plane;
@@ -50,12 +50,12 @@ public class Flight {
 		this.id = id;
 	}
 
-	public Date getTakeoff_date() {
-		return takeoff_date;
+	public Date getTakeoffDate() {
+		return takeoffDate;
 	}
 
-	public void setTakeoff_date(Date takeoff_date) {
-		this.takeoff_date = takeoff_date;
+	public void setTakeoffDate(Date takeoff_date) {
+		this.takeoffDate = takeoff_date;
 	}
 
 	public int getDestination() {
@@ -84,7 +84,7 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return "Flight [id=" + id + ", takeoff_date=" + takeoff_date + ", destination=" + destination + ", gate=" + gate
+		return "Flight [id=" + id + ", takeoff_date=" + takeoffDate + ", destination=" + destination + ", gate=" + gate
 				+ ", plane=" + plane + "]";
 	}
 	
