@@ -1,5 +1,5 @@
 package airportis.app.service;
 
-public interface FlightTicket {
+public interface AirportService {
 
 }
