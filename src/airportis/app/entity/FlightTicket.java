@@ -24,8 +24,8 @@ public class FlightTicket {
 	@Column(name="flight")
 	private int flight;
 	
-	@Column(name="seat")
-	private String seat;
+	@Column(name="class")
+	private String seatClass;
 	
 	@Column(name="plane")
 	private String plane;
@@ -35,11 +35,11 @@ public class FlightTicket {
 
 	public FlightTicket() {}
 
-	public FlightTicket(Date boarding_time, int flight, String seat, String plane, String user_identification_number) {
+	public FlightTicket(Date boarding_time, int flight, String seatClass, String plane, String user_identification_number) {
 		super();
 		this.boardingTime = boarding_time;
 		this.flight = flight;
-		this.seat = seat;
+		this.seatClass = seatClass;
 		this.plane = plane;
 		this.userIdentificationNumber = user_identification_number;
 	}
@@ -68,12 +68,12 @@ public class FlightTicket {
 		this.flight = flight;
 	}
 
-	public String getSeat() {
-		return seat;
+	public String getSeatClass() {
+		return seatClass;
 	}
 
-	public void setSeat(String seat) {
-		this.seat = seat;
+	public void setSeatClass(String seatClass) {
+		this.seatClass = seatClass;
 	}
 
 	public String getPlane() {

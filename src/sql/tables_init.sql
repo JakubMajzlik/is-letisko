@@ -76,21 +76,12 @@ create table if not exists `planes` (
     `manufacturer` varchar(32) not null,
     `date_of_made` varchar(20) not null,
     `last_revision_date` varchar(20) default null,
-    `number_of_seats` int(4) default 0,
+    `number_of_seats_economic` int(4) default 0,
+    `number_of_seats_business` int(4) default 0,
+    `number_of_seats_first` int(4) default 0,
     `max_payload_in_tons` int(4) default 0,
     
     primary key(`serial_number`)
-);
-
-create table if not exists `seats` (
-	`number` varchar(4) not null,
-    `plane` varchar(16) not null,
-    `class` varchar(16) not null,
-    
-    primary key(`number`, `plane`),
-    
-    key `fk_plane_seat`(`plane`), 
-    constraint `fk_plane_seat` foreign key(`plane`) references `planes`(`serial_number`)
 );
 
 create table if not exists `flights` (
@@ -114,7 +105,7 @@ create table if not exists `flight_tickets` (
 	`id` int(11) auto_increment,
     `boarding_time` timestamp not null,
     `flight` int(11) not null,
-    `seat` varchar(4) not null,
+    `class` varchar(16) not null,
     `plane` varchar(16) not null,
     `user_identification_number` varchar(10) not null,
     
@@ -124,8 +115,6 @@ create table if not exists `flight_tickets` (
     constraint `fk_flight` foreign key(`flight`) references `flights`(`id`),
     key `fk_plane_tickets`(`plane`), 
     constraint `fk_plane_tickets` foreign key(`plane`) references `planes`(`serial_number`),
-    key `fk_seat`(`seat`, `plane`),
-    constraint `fk_seat` foreign key(`seat`, `plane`) references `seats`(`number`, `plane`),
     key `fk_id_ticket`(`user_identification_number`), 
     constraint `fk_id_ticket` foreign key(`user_identification_number`) references `passenger_details`(`identification_number`)
 );
