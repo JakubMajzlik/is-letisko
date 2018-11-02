@@ -25,6 +25,9 @@ import airportis.app.model.UserRegisterModel;
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
+	DestinationService destinationService;
+	
+	@Autowired
 	UserDAO userDAO;
 	
 	@Autowired
@@ -36,6 +39,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		if(destinationService== null) System.out.println("destSer je NULA");
 		User user = userDAO.findUserByEmail(username);
 		System.out.println(user);
 		if(user == null) {

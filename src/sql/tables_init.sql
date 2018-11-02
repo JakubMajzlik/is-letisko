@@ -74,8 +74,8 @@ create table if not exists `planes` (
 	`serial_number` varchar(16) not null,
     `type` varchar(16) not null,
     `manufacturer` varchar(32) not null,
-    `date_of_made` date not null,
-    `last_revision_date` date default null,
+    `date_of_made` varchar(20) not null,
+    `last_revision_date` varchar(20) default null,
     `number_of_seats` int(4) default 0,
     `max_payload_in_tons` int(4) default 0,
     
@@ -95,7 +95,7 @@ create table if not exists `seats` (
 
 create table if not exists `flights` (
 	`id` int(11) auto_increment,
-    `takeoff_date` timestamp not null,
+    `takeoff_date` varchar(20) not null,
     `destination` int(11) not null,
     `gate` int(11) not null,
     `plane` varchar(16) not null,

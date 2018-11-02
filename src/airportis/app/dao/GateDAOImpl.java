@@ -5,32 +5,30 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import airportis.app.entity.Plane;
+import airportis.app.entity.Gate;
 
 @Repository
-public class PlaneDAOImpl implements PlaneDAO{
+public class GateDAOImpl implements GateDAO{
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	@Override
-	public void save(Plane plane) {
+	public Gate getGate(int gate) {
 		Session session= sessionFactory.getCurrentSession();
-		session.saveOrUpdate(plane);
-		
+		return session.get(Gate.class, gate);
 	}
 
 	@Override
-	public void remove(Plane plane) {
+	public void save(Gate gate) {
 		Session session= sessionFactory.getCurrentSession();
-		session.remove(plane);
-		
+		session.saveOrUpdate(gate);	
 	}
 
 	@Override
-	public Plane getPlane(String serialNumber) {
+	public void remove(Gate gate) {
 		Session session= sessionFactory.getCurrentSession();
-		return session.get(Plane.class, serialNumber);
+		session.remove(gate);
 	}
 
 }

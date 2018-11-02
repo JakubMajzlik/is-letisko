@@ -21,7 +21,7 @@ public class Flight {
 	private int id;
 	
 	@Column(name="takeoff_date")
-	private Date takeoffDate;
+	private String takeoffDate;
 	
 	@Column(name="destination")
 	private int destination;
@@ -34,7 +34,7 @@ public class Flight {
 	
 	public Flight() {}
 
-	public Flight(Date takeoff_date, int destination, int gate, String plane) {
+	public Flight(String takeoff_date, int destination, int gate, String plane) {
 		super();
 		this.takeoffDate = takeoff_date;
 		this.destination = destination;
@@ -50,11 +50,11 @@ public class Flight {
 		this.id = id;
 	}
 
-	public Date getTakeoffDate() {
+	public String getTakeoffDate() {
 		return takeoffDate;
 	}
 
-	public void setTakeoffDate(Date takeoff_date) {
+	public void setTakeoffDate(String takeoff_date) {
 		this.takeoffDate = takeoff_date;
 	}
 

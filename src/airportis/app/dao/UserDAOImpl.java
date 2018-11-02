@@ -35,4 +35,10 @@ public class UserDAOImpl implements UserDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(user);
 	}
+
+	@Override
+	public void remove(User user) {
+		// TODO Auto-generated method stub
+		
+	}
 }
