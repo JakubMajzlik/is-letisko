@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import airportis.app.dao.PlaneService;
 import airportis.app.model.FlightModel;
 import airportis.app.service.DestinationService;
 import airportis.app.service.FlightService;
+import airportis.app.service.GateService;
 
 @Controller
 @RequestMapping("/admin")
@@ -26,10 +28,18 @@ public class AdminController {
 	@Autowired
 	DestinationService destinationService;
 	
+	@Autowired 
+	PlaneService planseService;
+	
+	@Autowired 
+	GateService gateService;
+	
 	@GetMapping("/addflight")
 	public String showFlightForm(Model model) {
 		model.addAttribute("flightModel", new FlightModel());
 		model.addAttribute("destinationService", destinationService);
+		model.addAttribute("planeService", planseService);
+		model.addAttribute("gateService", gateService);
 		return "addflight-formular";
 	}
 
@@ -40,11 +50,9 @@ public class AdminController {
 			System.out.println(result.getAllErrors());
 			return "addflightaaaaaa-formular";
 		}else {
-			System.out.println("LET " + flightModel.getTakeoffDate());
-			FlightModel checkExistance= flightService.getFlight(flightModel.getId());
 			flightService.save(flightModel);
 			model.addAttribute("addSuccess", true);
-			return "addflight-formular";
+			return "redirect:/admin/addflight";
 		}
 	}
 	

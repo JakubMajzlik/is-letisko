@@ -27,26 +27,34 @@
 			
 		<form:hidden path="id"/>
 		
-		Date:<div id="datetimepicker" class="input-append date">
-      <form:input path="takeoffDate" id="date"/>
-      
-      <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-      </span>
-    </div>
+		Date:
+		<div id="datetimepicker" class="input-append date">
+	      <form:input path="takeoffDate" id="date"/>
+	      <span class="add-on">
+	        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+	      </span>
+	    </div>
 	
     <script type="text/javascript">
       $('#datetimepicker').datetimepicker({
-        format: 'dd/MM/yyyy hh:mm:ss',
+        format: 'dd/MM/yyyy hh:mm',
         language: 'sk',
         startDate: new Date()
       });
     </script>
-    	Gate: <form:input path="gate"/><br/>
-		Destination: <form:select path="destination" >
-		<form:options items="${destinationService.getAllDestinations()}"/>
+    	Gate:
+    	<form:select path="gate">
+    		<form:options items="${gateService.getAllGates()}"/>
+    	</form:select><br/>
+		Destination: 
+		<form:select path="destination" >
+			<form:options items="${destinationService.getAllDestinations()}"/>
 		</form:select>
-		Plane <form:input path="plane"/>
+		Plane:
+		<form:select path="plane">
+			<form:options items="${planeService.getAllPlanes()}"/>
+		</form:select> <br/>
+
 		<button type="submit"> Save </button>
 	</form:form>
 	
