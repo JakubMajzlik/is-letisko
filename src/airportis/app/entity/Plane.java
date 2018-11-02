@@ -22,29 +22,41 @@ public class Plane {
 	private String manufacturer;
 	
 	@Column(name="date_of_made")
-	private Date dateOfMade;
+	private String dateOfMade;
 	
 	@Column(name="last_revision_date")
-	private Date lastRevisionDate;
+	private String lastRevisionDate;
 	
-	@Column(name="number_of_seats")
-	private int numberOfSeats;
+	@Column(name="number_of_seats_economic")
+	private int numberOfSeatsEconomic;
+	
+	@Column(name="number_of_seats_business")
+	private int numberOfSeatsBusiness;
+	
+	@Column(name="number_of_seats_first")
+	private int numberOfSeatsFirst;
 	
 	@Column(name="max_payload_in_tons")
 	private int maxPayloadInTons;
 
 	public Plane() {}
 	
-	public Plane(String serial_number, String type, String manufacturer, Date date_of_made, Date last_revision_date,
-			int number_of_seats, int max_payload_in_tons) {
-		this.serialNumber = serial_number;
+	
+
+	public Plane(String serialNumber, String type, String manufacturer, String dateOfMade, String lastRevisionDate,
+			int numberOfSeatsEconomic, int numberOfSeatsBusiness, int numberOfSeatsFirst, int maxPayloadInTons) {
+		this.serialNumber = serialNumber;
 		this.type = type;
 		this.manufacturer = manufacturer;
-		this.dateOfMade = date_of_made;
-		this.lastRevisionDate = last_revision_date;
-		this.numberOfSeats = number_of_seats;
-		this.maxPayloadInTons = max_payload_in_tons;
+		this.dateOfMade = dateOfMade;
+		this.lastRevisionDate = lastRevisionDate;
+		this.numberOfSeatsEconomic = numberOfSeatsEconomic;
+		this.numberOfSeatsBusiness = numberOfSeatsBusiness;
+		this.numberOfSeatsFirst = numberOfSeatsFirst;
+		this.maxPayloadInTons = maxPayloadInTons;
 	}
+
+
 
 	public String getSerialNumber() {
 		return serialNumber;
@@ -70,29 +82,58 @@ public class Plane {
 		this.manufacturer = manufacturer;
 	}
 
-	public Date getDateOfMade() {
+	public String getDateOfMade() {
 		return dateOfMade;
 	}
 
-	public void setDateOfMade(Date dateOfMade) {
+	public void setDateOfMade(String dateOfMade) {
 		this.dateOfMade = dateOfMade;
 	}
 
-	public Date getLastRevisionDate() {
+	public String getLastRevisionDate() {
 		return lastRevisionDate;
 	}
 
-	public void setLastRevisionDate(Date lastRevisionDate) {
+	public void setLastRevisionDate(String lastRevisionDate) {
 		this.lastRevisionDate = lastRevisionDate;
 	}
 
-	public int getNumberOfSeats() {
-		return numberOfSeats;
+	
+	public int getNumberOfSeatsEconomic() {
+		return numberOfSeatsEconomic;
 	}
 
-	public void setNumberOfSeats(int numberOfSeats) {
-		this.numberOfSeats = numberOfSeats;
+
+
+	public void setNumberOfSeatsEconomic(int numberOfSeatsEconomic) {
+		this.numberOfSeatsEconomic = numberOfSeatsEconomic;
 	}
+
+
+
+	public int getNumberOfSeatsBusiness() {
+		return numberOfSeatsBusiness;
+	}
+
+
+
+	public void setNumberOfSeatsBusiness(int numberOfSeatsBusiness) {
+		this.numberOfSeatsBusiness = numberOfSeatsBusiness;
+	}
+
+
+
+	public int getNumberOfSeatsFirst() {
+		return numberOfSeatsFirst;
+	}
+
+
+
+	public void setNumberOfSeatsFirst(int numberOfSeatsFirst) {
+		this.numberOfSeatsFirst = numberOfSeatsFirst;
+	}
+
+
 
 	public int getMaxPayloadInTons() {
 		return maxPayloadInTons;
@@ -102,11 +143,16 @@ public class Plane {
 		this.maxPayloadInTons = maxPayloadInTons;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Plane [serial_number=" + serialNumber + ", type=" + type + ", manufacturer=" + manufacturer
-				+ ", date_of_made=" + dateOfMade + ", last_revision_date=" + lastRevisionDate + ", number_of_seats="
-				+ numberOfSeats + ", max_payload_in_tons=" + maxPayloadInTons + "]";
+		return "Plane [serialNumber=" + serialNumber + ", type=" + type + ", manufacturer=" + manufacturer
+				+ ", dateOfMade=" + dateOfMade + ", lastRevisionDate=" + lastRevisionDate + ", numberOfSeatsEconomic="
+				+ numberOfSeatsEconomic + ", numberOfSeatsBusiness=" + numberOfSeatsBusiness + ", numberOfSeatsFirst="
+				+ numberOfSeatsFirst + ", maxPayloadInTons=" + maxPayloadInTons + "]";
 	}
+
+
 	
 }
