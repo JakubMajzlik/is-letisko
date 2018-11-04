@@ -35,8 +35,16 @@ public class Flight {
 	public Flight() {}
 
 	public Flight(String takeoff_date, int destination, int gate, String plane) {
-		super();
 		this.takeoffDate = takeoff_date;
+		this.destination = destination;
+		this.gate = gate;
+		this.plane = plane;
+	}
+	
+
+	public Flight(int id, String takeoffDate, int destination, int gate, String plane) {
+		this.id = id;
+		this.takeoffDate = takeoffDate;
 		this.destination = destination;
 		this.gate = gate;
 		this.plane = plane;

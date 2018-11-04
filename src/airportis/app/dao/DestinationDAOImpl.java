@@ -58,7 +58,7 @@ public class DestinationDAOImpl implements DestinationDAO{
 		System.out.println("zacinam ist ako pila");
 		for (Destination d : destination.getResultList()) {
 			System.out.println("idem ako pila");
-			map.put(d.getId(), d.getCountry()+", "+ d.getCity());
+			map.put(d.getId(), d.getCity()+", "+ d.getCountry());
 		}
 		return map;
 	}

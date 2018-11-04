@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import airportis.app.dao.DestinationDAO;
 import airportis.app.dao.FlightDAO;
 import airportis.app.dao.GateDAO;
 import airportis.app.dao.PlaneDAO;
@@ -20,9 +19,6 @@ public class FlightServiceImpl implements FlightService {
 	private FlightDAO flightDAO;
 	
 	@Autowired
-	private DestinationDAO destinationDAO;
-	
-	@Autowired
 	private PlaneDAO planeDAO;
 	
 	@Autowired
@@ -32,7 +28,23 @@ public class FlightServiceImpl implements FlightService {
 	@Transactional
 	public void save(FlightModel flightModel) {
 		if(gateDAO.getGate(flightModel.getGate())==null) System.out.println("GATE NULA");
-		Flight flight= new Flight(flightModel.getTakeoffDate(), 
+		Flight flight= new Flight(
+				flightModel.getTakeoffDate(), 
+				flightModel.getDestination(),
+				gateDAO.getGate(flightModel.getGate()).getGateNumber(),
+				flightModel.getPlane());
+		
+		flightDAO.save(flight);
+		
+	}
+	
+	@Override
+	@Transactional
+	public void update(FlightModel flightModel) {
+		if(gateDAO.getGate(flightModel.getGate())==null) System.out.println("GATE NULA");
+		Flight flight= new Flight(
+				flightModel.getId(),
+				flightModel.getTakeoffDate(), 
 				flightModel.getDestination(),
 				gateDAO.getGate(flightModel.getGate()).getGateNumber(),
 				flightModel.getPlane());
@@ -65,7 +77,7 @@ public class FlightServiceImpl implements FlightService {
 		flightModel.setGate(gateDAO.getGate(flight.getGate()).getGateNumber());
 		flightModel.setId(flight.getId());
 		flightModel.setPlane(planeDAO.getPlane(flight.getPlane()).getSerialNumber());
-		//flightModel.setTakeoffDate(flight.getTakeoffDate());
+		flightModel.setTakeoffDate(flight.getTakeoffDate());
 		
 		return flightModel;
 	}

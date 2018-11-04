@@ -51,5 +51,12 @@ public class FlightModel {
 	public void setPlane(String plane) {
 		this.plane = plane;
 	}
+
+	@Override
+	public String toString() {
+		return "FlightModel [takeoffDate=" + takeoffDate + ", destination=" + destination + ", gate=" + gate
+				+ ", plane=" + plane + ", id=" + id + "]";
+	}
+	
 	
 }

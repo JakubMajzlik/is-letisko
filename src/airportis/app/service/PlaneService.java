@@ -1,4 +1,4 @@
-package airportis.app.dao;
+package airportis.app.service;
 
 import java.util.Map;
 

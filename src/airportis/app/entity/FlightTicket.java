@@ -36,7 +36,6 @@ public class FlightTicket {
 	public FlightTicket() {}
 
 	public FlightTicket(Date boarding_time, int flight, String seatClass, String plane, String user_identification_number) {
-		super();
 		this.boardingTime = boarding_time;
 		this.flight = flight;
 		this.seatClass = seatClass;
@@ -94,7 +93,7 @@ public class FlightTicket {
 
 	@Override
 	public String toString() {
-		return "FlightTicket [id=" + id + ", boarding_time=" + boardingTime + ", flight=" + flight + ", seat=" + seat
+		return "FlightTicket [id=" + id + ", boarding_time=" + boardingTime + ", flight=" + flight + ", seatClass=" + seatClass
 				+ ", plane=" + plane + ", user_identification_number=" + userIdentificationNumber + "]";
 	}
 	

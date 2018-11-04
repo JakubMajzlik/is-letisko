@@ -21,4 +21,13 @@ public class DestinationServiceImpl implements DestinationService{
 		return destinationDAO.getAllDestinations();
 	}
 
+	@Override
+	@Transactional
+	public String getDestinationName(int id) {
+		String name = destinationDAO.getDestination(id).getCity() 
+				+ ", "
+				+ destinationDAO.getDestination(id).getCountry();
+		return name;
+	}
+
 }

@@ -22,7 +22,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form action="${pageContext.request.contextPath}/admin/addflight/process"
+	<form:form action="${pageContext.request.contextPath}/admin/updateflight/process"
 			method="POST" modelAttribute="flightModel">
 			
 		<form:hidden path="id"/>
@@ -44,17 +44,14 @@
     </script>
     	Gate:
     	<form:select path="gate">
-    		<form:option label="--Select Gate--" value="0"/>
     		<form:options items="${gateService.getAllGates()}"/>
     	</form:select><br/>
 		Destination: 
-		<form:select path="destination" >
-			<form:option label="--Select Destination--" value="0"/>
+		<form:select path="destination">
 			<form:options items="${destinationService.getAllDestinations()}"/>
 		</form:select>
 		Plane:
 		<form:select path="plane">
-			<form:option label="--Select Plane--" value="0"/>
 			<form:options items="${planeService.getAllPlanes()}"/>
 		</form:select> <br/>
 

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import airportis.app.dao.PlaneService;
 import airportis.app.model.FlightModel;
 import airportis.app.service.DestinationService;
 import airportis.app.service.FlightService;
 import airportis.app.service.GateService;
+import airportis.app.service.PlaneService;
 
 @Controller
 @RequestMapping("/admin")
@@ -59,13 +59,21 @@ public class AdminController {
 	//TODO
 	
 	@GetMapping("/updateflight")
-	public String showUpdateFlightForm(@RequestParam("id") int id, Model model) {
-		FlightModel flightModel= flightService.getFlight(id);
+	public String showUpdateFlightForm(
+			@RequestParam(value="id", required=false) Integer id,
+			Model model) {
+		if(id == null) {
+			return "redirect:/";
+		}
+		FlightModel flightModel= flightService.getFlight(id.intValue());
 		model.addAttribute("destinationService", destinationService);
+		model.addAttribute("planeService", planseService);
+		model.addAttribute("gateService", gateService);
 		if(flightModel== null) {
 			model.addAttribute("flightModel", new FlightModel());
 			model.addAttribute("errorFlightNotFound", true);
 		}else {
+			System.out.println(flightModel);
 			model.addAttribute("flightModel", flightModel);
 		}
 		return "updateflight-formular";
@@ -77,9 +85,10 @@ public class AdminController {
 		if(result.hasErrors()) {
 			return "updateflight-formular";
 		}else {
-			flightService.save(flightModel);
+			System.out.println(flightModel.getId());
+			flightService.update(flightModel);
 			model.addAttribute("addSuccess", true);
-			return "updateflight-formular";		
+			return "redirect:/admin/updateflight";		
 		}
 	}
 	
