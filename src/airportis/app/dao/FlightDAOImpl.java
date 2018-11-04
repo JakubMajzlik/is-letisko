@@ -1,7 +1,11 @@
 package airportis.app.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +34,17 @@ public class FlightDAOImpl implements FlightDAO {
 		Session session= sessionFactory.getCurrentSession();
 		Flight flight= session.get(Flight.class, id);
 		return flight;
+	}
+
+	@Override
+	public List<Flight> getAllFlights() {
+		Session session= sessionFactory.getCurrentSession();
+		List<Flight> list= new ArrayList<>();
+		Query<Flight> flight= session.createQuery("from Flight", Flight.class);
+		for (Flight f : flight.getResultList()) {
+			list.add(f);
+		}
+		return list;
 	}
 
 }
