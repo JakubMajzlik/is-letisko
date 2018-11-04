@@ -60,11 +60,12 @@ public class EmployeeController {
 	public String showUpdateFlightForm(
 			@RequestParam(value="id", required=false) Integer id,
 			Model model) {
+		model.addAttribute("destinationService", destinationService);
 		if(id == null) {
-			return "redirect:/";
+			model.addAttribute("flights", flightService.getAllFlights());
+			return "updateflight";
 		}
 		FlightModel flightModel= flightService.getFlight(id.intValue());
-		model.addAttribute("destinationService", destinationService);
 		model.addAttribute("planeService", planseService);
 		model.addAttribute("gateService", gateService);
 		if(flightModel== null) {

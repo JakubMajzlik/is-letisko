@@ -22,7 +22,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form action="${pageContext.request.contextPath}/admin/updateflight/process"
+	<form:form action="${pageContext.request.contextPath}/employee/updateflight/process"
 			method="POST" modelAttribute="flightModel">
 			
 		<form:hidden path="id"/>
