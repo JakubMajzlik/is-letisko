@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import airportis.app.entity.Gate;
-import airportis.app.entity.Plane;
 
 @Repository
 public class GateDAOImpl implements GateDAO{

@@ -1,13 +1,5 @@
 package airportis.app.model;
 
-import java.util.Date;
-import java.util.Map;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import airportis.app.service.DestinationService;
-
-
 //TODO VALIDACIE
 public class FlightModel {
 	private String takeoffDate;

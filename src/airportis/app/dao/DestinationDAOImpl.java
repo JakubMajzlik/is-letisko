@@ -49,15 +49,10 @@ public class DestinationDAOImpl implements DestinationDAO{
 
 	@Override
 	public Map<Integer, String> getAllDestinations() {
-		System.out.println("SPUSTAM GET ALL");
 		Session session= sessionFactory.getCurrentSession();
-		System.out.println("MAM SESSION");
 		Map<Integer, String> map= new HashMap<>();
-		System.out.println("VYTVORILA SA MAPA");
 		Query<Destination> destination= session.createQuery("from Destination", Destination.class);
-		System.out.println("zacinam ist ako pila");
 		for (Destination d : destination.getResultList()) {
-			System.out.println("idem ako pila");
 			map.put(d.getId(), d.getCity()+", "+ d.getCountry());
 		}
 		return map;

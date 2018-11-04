@@ -17,7 +17,6 @@ public class DestinationServiceImpl implements DestinationService{
 	@Override
 	@Transactional
 	public Map<Integer, String> getAllDestinations() {
-		if(destinationDAO==null) System.out.println("DestinationDAO je NULL");
 		return destinationDAO.getAllDestinations();
 	}
 
