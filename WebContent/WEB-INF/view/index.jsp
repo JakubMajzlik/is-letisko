@@ -12,12 +12,18 @@
 	<security:authorize access="!isAuthenticated()">
 		<a href="${pageContext.request.contextPath }/user/login" >Login</a> <br/>
 		<a href="${pageContext.request.contextPath }/user/register" >Register</a> <br/>
-		<br/><br/>
-		<a href="${pageContext.request.contextPath }/employee/addflight" >Add Flight</a> <br/>
-		<a href="${pageContext.request.contextPath }/employee/updateflight?id=1" >Update Flight</a> <br/>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('EMPLOYEE')">
+		<a href="${pageContext.request.contextPath }/employee">Employee panel</a><br/>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<a href="${pageContext.request.contextPath }/admin">Admin panel</a><br/>
 	</security:authorize>
 	
 	<security:authorize access="isAuthenticated()">
+		<br/>
 		<form:form method="POST" action="logout">
 			<input type="submit" value="Logout"/>
 		</form:form>

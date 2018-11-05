@@ -3,6 +3,7 @@ package airportis.app.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,11 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import airportis.app.entity.User;
 import airportis.app.model.FlightModel;
 import airportis.app.service.DestinationService;
 import airportis.app.service.FlightService;
 import airportis.app.service.GateService;
 import airportis.app.service.PlaneService;
+import airportis.app.service.UserService;
 
 @Controller
 @RequestMapping("/employee")
@@ -33,6 +36,16 @@ public class EmployeeController {
 	
 	@Autowired 
 	GateService gateService;
+	
+	@Autowired
+	UserService userService;
+	
+	@GetMapping
+	public String showPanel(Model model) {
+		User user = userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		model.addAttribute("user", user);
+		return "employee-panel";
+	}
 	
 	@GetMapping("/addflight")
 	public String showFlightForm(Model model) {
