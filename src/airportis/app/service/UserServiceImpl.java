@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService{
 				userRegisterModel.getStreet(),
 				userRegisterModel.getHouseNumber(),
 				userRegisterModel.getZip(),
-				userRegisterModel.getCity());
+				userRegisterModel.getCountry());
 		
 		User user = new User(userRegisterModel.getEmail(),
 							passwordEncoder.encode(userRegisterModel.getPassword1()));

@@ -8,6 +8,12 @@
 </head>
 <body>
 <h1>Login</h1>
+<c:if test="${param.successfullyRegistred == true }">
+	<h3>Registration was successfull, now you can login</h3>
+</c:if>
+<c:if test="${param.logout != null }" >
+	<h3>You have been logged out </h3>
+</c:if>
 <form action="${pageContext.request.contextPath}/user/login/process" method="POST">
 	Email: <input type="text" name="username" />
 	<c:if test="${param.error != null}">

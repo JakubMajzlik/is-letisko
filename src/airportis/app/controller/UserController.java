@@ -66,7 +66,7 @@ public class UserController {
 		}
 		
 		userService.save(userModel);
-		
-		return "register-confirmation";
+		model.addAttribute("successfullyRegistred", true);
+		return "redirect:/user/login";
 	}
 }
