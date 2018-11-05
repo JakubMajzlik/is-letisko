@@ -24,7 +24,7 @@
 	
 	<security:authorize access="isAuthenticated()">
 		<br/>
-		<form:form method="POST" action="logout">
+		<form:form method="POST" action="${pageContext.request.contextPath }/logout">
 			<input type="submit" value="Logout"/>
 		</form:form>
 	</security:authorize>
