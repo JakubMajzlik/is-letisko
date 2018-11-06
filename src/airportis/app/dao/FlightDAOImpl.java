@@ -46,5 +46,27 @@ public class FlightDAOImpl implements FlightDAO {
 		}
 		return list;
 	}
+	
+	@Override
+	public List<Flight> getAllFlights(String date, int destination) {
+		Session session= sessionFactory.getCurrentSession();
+		List<Flight> list= new ArrayList<>();
+		if(destination==0) {
+			Query<Flight> flight= session.createQuery("from Flight where takeoffDate > :date", Flight.class);
+			flight.setParameter("date",date);
+			for (Flight f : flight.getResultList()) {
+				list.add(f);
+			}
+		}else {
+			Query<Flight> flight= session.createQuery("from Flight where takeoffDate > :date and destination= :destination", Flight.class);
+			flight.setParameter("date",date);
+			flight.setParameter("destination",destination);
+			for (Flight f : flight.getResultList()) {
+				list.add(f);
+			}
+		}
+		
+		return list;
+	}
 
 }

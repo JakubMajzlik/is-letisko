@@ -12,4 +12,5 @@ public interface FlightService {
 	void remove(int id);
 	FlightModel getFlight(int id);
 	List<Flight> getAllFlights();
+	List<Flight> getAllFlights(String date, int destination);
 }

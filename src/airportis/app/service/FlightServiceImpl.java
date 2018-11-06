@@ -89,5 +89,11 @@ public class FlightServiceImpl implements FlightService {
 	public List<Flight> getAllFlights() {
 		return flightDAO.getAllFlights();
 	}
+	
+	@Override
+	@Transactional
+	public List<Flight> getAllFlights(String date, int destination) {
+		return flightDAO.getAllFlights(date, destination);
+	}
 
 }

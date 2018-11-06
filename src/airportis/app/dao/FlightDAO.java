@@ -10,5 +10,6 @@ public interface FlightDAO {
 	void remove(Flight flight);
 	Flight getFlight(int id);
 	List<Flight> getAllFlights();
+	List<Flight> getAllFlights(String date, int destination);
 	
 }
