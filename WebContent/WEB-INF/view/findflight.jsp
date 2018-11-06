@@ -23,7 +23,7 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<form:form action="${pageContext.request.contextPath}/user/orderflight"
+	<form:form action="${pageContext.request.contextPath}/flight/findflight"
 			method="POST" modelAttribute="filterModel">
 			
 			Date:

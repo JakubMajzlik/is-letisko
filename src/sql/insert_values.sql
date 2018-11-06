@@ -49,3 +49,10 @@ insert into users_roles(role_id, user_id) values (3,1);
 insert into users_roles(role_id, user_id) values (1,3);
 insert into users_roles(role_id, user_id) values (2,3);
 insert into users_roles(role_id, user_id) values (1,2);
+
+-- FLIGHTS
+insert into flights(takeoff_date, destination, gate, plane) values('5/11/2018 16:00', 1, 3, 'A38020170813');
+insert into flights(takeoff_date, destination, gate, plane) values('12/11/2018 16:00', 1, 3, 'A38020170813');
+insert into flights(takeoff_date, destination, gate, plane) values('19/11/2018 16:00', 1, 3, 'A38020170813');
+insert into flights(takeoff_date, destination, gate, plane) values('7/11/2018 7:25', 3, 2, 'CONC19981130');
+insert into flights(takeoff_date, destination, gate, plane) values('14/11/2018 7:25', 3, 2, 'CONC19981130');
