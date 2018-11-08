@@ -29,23 +29,7 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	@Transactional
 	public void save(FlightModel flightModel) {
-		if(gateDAO.getGate(flightModel.getGate())==null) System.out.println("GATE NULA");
 		Flight flight= new Flight(
-				flightModel.getTakeoffDate(), 
-				flightModel.getDestination(),
-				gateDAO.getGate(flightModel.getGate()).getGateNumber(),
-				flightModel.getPlane());
-		
-		flightDAO.save(flight);
-		
-	}
-	
-	@Override
-	@Transactional
-	public void update(FlightModel flightModel) {
-		if(gateDAO.getGate(flightModel.getGate())==null) System.out.println("GATE NULA");
-		Flight flight= new Flight(
-				flightModel.getId(),
 				flightModel.getTakeoffDate(), 
 				flightModel.getDestination(),
 				gateDAO.getGate(flightModel.getGate()).getGateNumber(),

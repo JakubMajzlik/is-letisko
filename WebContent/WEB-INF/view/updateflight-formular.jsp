@@ -1,10 +1,10 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" />
 <link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
 <script type="text/javascript"
@@ -19,7 +19,7 @@
 <script type="text/javascript"
      src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
 </script>
-<title>Insert title here</title>
+<title>Update flight</title>
 </head>
 <body>
 	<form:form action="${pageContext.request.contextPath}/employee/updateflight/process"

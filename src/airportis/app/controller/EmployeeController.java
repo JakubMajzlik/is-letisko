@@ -61,11 +61,11 @@ public class EmployeeController {
 			BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			System.out.println(result.getAllErrors());
-			return "addflightaaaaaa-formular";
+			return "addflight-formular";
 		}else {
 			flightService.save(flightModel);
 			model.addAttribute("addSuccess", true);
-			return "redirect:/admin/addflight";
+			return "redirect:/employee/addflight";
 		}
 	}
 	
@@ -98,9 +98,9 @@ public class EmployeeController {
 			return "updateflight-formular";
 		}else {
 			System.out.println(flightModel.getId());
-			flightService.update(flightModel);
+			flightService.save(flightModel);
 			model.addAttribute("addSuccess", true);
-			return "redirect:/admin/updateflight";		
+			return "redirect:/employee/updateflight";		
 		}
 	}
 }

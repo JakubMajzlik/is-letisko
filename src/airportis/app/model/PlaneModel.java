@@ -1,56 +1,25 @@
-package airportis.app.entity;
+package airportis.app.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.Valid;
 
-@Entity
-@Table(name="planes")
-public class Plane {
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-	@Id
-	@Column(name="serial_number")
+public class PlaneModel {
 	private String serialNumber;
-	
-	@Column(name="type")
 	private String type;
-	
-	@Column(name="manufacturer")
 	private String manufacturer;
-	
-	@Column(name="date_of_made")
 	private String dateOfMade;
-	
-	@Column(name="last_revision_date")
 	private String lastRevisionDate;
-	
-	@Column(name="number_of_seats_economic")
 	private int numberOfSeatsEconomic;
-	
-	@Column(name="number_of_seats_business")
 	private int numberOfSeatsBusiness;
-	
-	@Column(name="number_of_seats_first")
 	private int numberOfSeatsFirst;
 	
-	public Plane() {}
-	
-	
-
-	public Plane(String serialNumber, String type, String manufacturer, String dateOfMade, String lastRevisionDate,
-			int numberOfSeatsEconomic, int numberOfSeatsBusiness, int numberOfSeatsFirst) {
-		this.serialNumber = serialNumber;
-		this.type = type;
-		this.manufacturer = manufacturer;
-		this.dateOfMade = dateOfMade;
-		this.lastRevisionDate = lastRevisionDate;
-		this.numberOfSeatsEconomic = numberOfSeatsEconomic;
-		this.numberOfSeatsBusiness = numberOfSeatsBusiness;
-		this.numberOfSeatsFirst = numberOfSeatsFirst;
-	}
-
-
+	public PlaneModel() {}
 
 	public String getSerialNumber() {
 		return serialNumber;
@@ -92,50 +61,38 @@ public class Plane {
 		this.lastRevisionDate = lastRevisionDate;
 	}
 
-	
 	public int getNumberOfSeatsEconomic() {
 		return numberOfSeatsEconomic;
 	}
-
-
 
 	public void setNumberOfSeatsEconomic(int numberOfSeatsEconomic) {
 		this.numberOfSeatsEconomic = numberOfSeatsEconomic;
 	}
 
-
-
 	public int getNumberOfSeatsBusiness() {
 		return numberOfSeatsBusiness;
 	}
-
-
 
 	public void setNumberOfSeatsBusiness(int numberOfSeatsBusiness) {
 		this.numberOfSeatsBusiness = numberOfSeatsBusiness;
 	}
 
-
-
 	public int getNumberOfSeatsFirst() {
 		return numberOfSeatsFirst;
 	}
-
-
 
 	public void setNumberOfSeatsFirst(int numberOfSeatsFirst) {
 		this.numberOfSeatsFirst = numberOfSeatsFirst;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Plane [serialNumber=" + serialNumber + ", type=" + type + ", manufacturer=" + manufacturer
+		return "PlaneModel [serialNumber=" + serialNumber + ", type=" + type + ", manufacturer=" + manufacturer
 				+ ", dateOfMade=" + dateOfMade + ", lastRevisionDate=" + lastRevisionDate + ", numberOfSeatsEconomic="
 				+ numberOfSeatsEconomic + ", numberOfSeatsBusiness=" + numberOfSeatsBusiness + ", numberOfSeatsFirst="
 				+ numberOfSeatsFirst + "]";
 	}
-
-
+	////////////////////////////////////////////////////////////////////////////////
+	
 	
 }

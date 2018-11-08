@@ -18,45 +18,44 @@
 	<script type="text/javascript"
 	     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
 	</script>
-	<title>Find flights</title>
+	<title>Update plane</title>
 </head>
 <body>
-	<form:form action="${pageContext.request.contextPath}/flight/findflight"
-			method="POST" modelAttribute="filterModel">
-			
-			Date:
+	<form:form action="${pageContext.request.contextPath}/admin/updateplane/process"
+			method="POST" modelAttribute="planeModel">
+		Serial number: <br><form:input path="serialNumber"/><br>
+		Type: <br><form:input path="type"/><br>
+		Manufacturer: <br><form:input path="manufacturer"/><br>
+		Date of made:
 		<div id="datetimepicker" class="input-append date">
-	      <form:input path="takeoffDate" id="date"/>
+	      <form:input path="dateOfMade"/>
 	      <span class="add-on">
 	        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 	      </span>
 	    </div>
-			
-		<script type="text/javascript">
+	    Last revision date:
+		<div id="datetimepicker2" class="input-append date">
+	      <form:input path="lastRevisionDate"/>
+	      <span class="add-on">
+	        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+	      </span>
+	    </div>
+		Number of seats in economic class: <br><form:input path="numberOfSeatsEconomic"/><br>
+		Number of seats in business class: <br><form:input path="numberOfSeatsBusiness"/><br>
+		Number of seats in first class: <br><form:input path="numberOfSeatsFirst"/><br>
+	    <script type="text/javascript">
 	      $('#datetimepicker').datetimepicker({
 	        format: 'dd/MM/yyyy',
 	        language: 'sk',
-	        startDate: new Date()
 	      });
 	    </script>
-	    
-	    Destination: <br> 
-		<form:select path="destination" >
-			<form:option label="--Select Destination--" value="0"/>
-			<form:options items="${destinationService.getAllDestinations()}"/>
-		</form:select>
-	    <br>
-		<button type="submit"> Find flights </button>
+	    <script type="text/javascript">
+	      $('#datetimepicker2').datetimepicker({
+	        format: 'dd/MM/yyyy',
+	        language: 'sk',
+	      });
+	    </script>
+		<button type="submit"> Save </button>
 	</form:form>
-
-	<table>
-	<c:forEach items="${flights}" var="item">
-			<tr>
-				<td> <b>${item.getTakeoffDate()}</b></td>
-				<td>&nbsp;&nbsp;&nbsp;to&nbsp; </td>
-				<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
-			</tr>  	
-	</c:forEach>
-	</table>
 </body>
 </html>
