@@ -1,9 +1,10 @@
 package airportis.app.model;
 
-public class UserRegisterModel {
-
-	private String firstName;
+public class UserEditModel {
+private String firstName;
 	
+	private int id;
+
 	private String lastName;
 	
 	private String email;
@@ -28,11 +29,12 @@ public class UserRegisterModel {
 	
 	
 
-	public UserRegisterModel() {}
+	public UserEditModel() {}
 
-	public UserRegisterModel(String firstName, String lastName, String email, String password1, String password2,
+	public UserEditModel(int id,String firstName, String lastName, String email, String password1, String password2,
 			String city, String street, String houseNumber, String zip, String country, String identificationNumber,
 			String phoneNumber) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -45,6 +47,14 @@ public class UserRegisterModel {
 		this.country = country;
 		this.identificationNumber = identificationNumber;
 		this.phoneNumber = phoneNumber;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -142,5 +152,4 @@ public class UserRegisterModel {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
 }

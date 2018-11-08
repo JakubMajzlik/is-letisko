@@ -2,6 +2,7 @@ package airportis.app.service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import airportis.app.dao.UserDAO;
 import airportis.app.entity.PassengerDetail;
 import airportis.app.entity.Role;
 import airportis.app.entity.User;
+import airportis.app.model.UserEditModel;
 import airportis.app.model.UserRegisterModel;
 
 @Service
@@ -64,7 +66,7 @@ public class UserServiceImpl implements UserService{
 		PassengerDetail details = new PassengerDetail(
 				userRegisterModel.getIdentificationNumber(),
 				userRegisterModel.getEmail(),
-				userRegisterModel.getCity(),
+				userRegisterModel.getPhoneNumber(),
 				userRegisterModel.getFirstName(),
 				userRegisterModel.getLastName(),
 				userRegisterModel.getCity(),
@@ -80,6 +82,73 @@ public class UserServiceImpl implements UserService{
 		user.setRoles(Arrays.asList(roleDAO.getRoleByName("ROLE_USER")));
 		
 		userDAO.save(user);
+	}
+
+	@Override
+	@Transactional
+	public List<User> getAllUsers() {
+		return userDAO.getAllUsers();
+	}
+
+	@Override
+	@Transactional
+	public User findUserById(int id) {
+		return userDAO.findUserById(id);
+	}
+
+	@Override
+	@Transactional
+	public UserEditModel getUserModel(int id) {
+		User user = userDAO.findUserById(id);
+		if(user == null) {
+			return null;
+		}
+		PassengerDetail details = user.getDetails();
+		System.out.println(details);
+		UserEditModel userModel = new UserEditModel(
+				user.getId(),
+				details.getFirstName(),
+				details.getLastName(),
+				details.getEmail(),
+				user.getPassword(),
+				user.getPassword(),
+				details.getCity(),
+				details.getStreet(),
+				details.getHouseNumber(),
+				details.getZip(),
+				details.getCountry(),
+				details.getIdentificationNumber(),
+				details.getPhoneNumber());			
+		
+		return userModel;
+	}
+
+	@Override
+	@Transactional
+	public void update(UserEditModel userEditModel) {
+		User user = userDAO.findUserByEmail(userEditModel.getEmail());
+		PassengerDetail details = user.getDetails();
+				
+		details.setIdentificationNumber(userEditModel.getIdentificationNumber());
+		details.setEmail(userEditModel.getEmail());
+		details.setPhoneNumber(userEditModel.getPhoneNumber());
+		details.setFirstName(userEditModel.getFirstName());
+		details.setLastName(userEditModel.getLastName());
+		details.setCity(userEditModel.getCity());
+		details.setStreet(userEditModel.getStreet());
+		details.setHouseNumber(userEditModel.getHouseNumber());
+		details.setZip(userEditModel.getZip());
+		details.setCountry(userEditModel.getCountry());
+		
+		user.setDetails(details);		
+		userDAO.save(user);
+		
+	}
+
+	@Override
+	@Transactional
+	public void remove(User user) {
+		userDAO.remove(user);	
 	}
 
 }

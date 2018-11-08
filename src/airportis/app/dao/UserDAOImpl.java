@@ -1,5 +1,7 @@
 package airportis.app.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -37,7 +39,19 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void remove(User user) {
-		// TODO Auto-generated method stub
-		
+		Session session = sessionFactory.getCurrentSession();
+		session.remove(user);
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		Session session = sessionFactory.getCurrentSession();
+		return session.createQuery("from User", User.class).list();
+	}
+
+	@Override
+	public User findUserById(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		return session.get(User.class, id);
 	}
 }

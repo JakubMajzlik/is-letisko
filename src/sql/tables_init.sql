@@ -47,12 +47,12 @@ create table if not exists `users_roles` (
 	KEY `fk_role` (`role_id`),
   
 	CONSTRAINT `fk_user_id2` FOREIGN KEY (`user_id`) 
-	REFERENCES `user` (`id`) 
-	ON DELETE NO ACTION ON UPDATE NO ACTION,
+	REFERENCES `user` (`id`)
+    ON DELETE CASCADE,
   
 	CONSTRAINT `fk_role` FOREIGN KEY (`role_id`) 
 	REFERENCES `role` (`id`) 
-	ON DELETE NO ACTION ON UPDATE NO ACTION
+	ON DELETE CASCADE
 );
 
 create table if not exists `destinations` (
@@ -118,3 +118,5 @@ create table if not exists `flight_tickets` (
     key `fk_id_ticket`(`user_identification_number`), 
     constraint `fk_id_ticket` foreign key(`user_identification_number`) references `passenger_details`(`identification_number`)
 );
+
+SET FOREIGN_KEY_CHECKS = 1;
