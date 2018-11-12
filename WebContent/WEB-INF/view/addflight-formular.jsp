@@ -1,31 +1,38 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" />
-<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
-<script type="text/javascript"
-     src='<c:url value="/resources/js/jquery.js"/>'>
-</script> 
-<script type="text/javascript"
-     src='<c:url value="/resources/js/bootstrap2.js"/>'>
-</script>
-<script type="text/javascript"
-     src='<c:url value="/resources/js/bootstrap-datetimepicker.js"/>'>
-</script>
-<script type="text/javascript"
-     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
-</script>
-<title>Add flight</title>
+	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+<%-- 	<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" /> --%>
+	<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
+	<script type="text/javascript"
+	     src='<c:url value="/resources/js/jquery.js"/>'>
+	</script> 
+	<script type="text/javascript"
+	     src='<c:url value="/resources/js/bootstrap2.js"/>'>
+	</script>
+	<script type="text/javascript"
+	     src='<c:url value="/resources/js/bootstrap-datetimepicker.js"/>'>
+	</script>
+	<script type="text/javascript"
+	     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
+	</script>
+<title>Jamnik Airport - Add flight</title>
 </head>
-<body>
-	<form:form action="${pageContext.request.contextPath}/employee/addflight/process"
+<body class="fill">
+
+<t:twocol>
+	<jsp:body>
+		<h1>Add flight</h1>
+		<br/>
+		<form:form action="${pageContext.request.contextPath}/employee/addflight/process"
 			method="POST" modelAttribute="flightModel">
 			
 		<form:hidden path="id"/>
-		
+		<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" />
 		Date:
 		<div id="datetimepicker" class="input-append date">
 	      <form:input path="takeoffDate" id="date"/>
@@ -59,6 +66,7 @@
 
 		<button type="submit"> Save </button>
 	</form:form>
-	
+	</jsp:body>
+</t:twocol>
 </body>
 </html>

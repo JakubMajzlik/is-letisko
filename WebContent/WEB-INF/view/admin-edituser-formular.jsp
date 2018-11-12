@@ -1,11 +1,16 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Edit user</title>
+<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+<title>Jamnik Airport - Edit user</title>
 </head>
-<body>
+<body class="fill">
+<t:twocol>
+	<jsp:body>
 <form:form action="${pageContext.request.contextPath}/admin/manageusers/edit/save"
 			method="POST" modelAttribute="userModel">
 			
@@ -26,6 +31,7 @@
 	
 	<button type="submit">Save</button>
 </form:form>
-
+</jsp:body>
+</t:twocol>
 </body>
 </html>

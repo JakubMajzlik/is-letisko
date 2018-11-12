@@ -1,10 +1,11 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
+<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" /> 
 <link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" />
 <link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
 <script type="text/javascript"
@@ -19,9 +20,11 @@
 <script type="text/javascript"
      src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
 </script>
-<title>Update flight</title>
+<title>Jamnik Airport - Update flight</title>
 </head>
-<body>
+<body class="fill">
+<t:twocol>
+	<jsp:body>
 	<form:form action="${pageContext.request.contextPath}/employee/updateflight/process"
 			method="POST" modelAttribute="flightModel">
 			
@@ -52,11 +55,12 @@
 		</form:select>
 		Plane:
 		<form:select path="plane">
-			<form:options items="${planeService.getAllPlanes()}"/>
+			<form:options items="${planeService.getPlanesMap()}"/>
 		</form:select> <br/>
 
 		<button type="submit"> Save </button>
 	</form:form>
-	
+</jsp:body>	
+</t:twocol>
 </body>
 </html>

@@ -2,9 +2,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
+<head>
+
+</head>
   <body>
     <div class="container fill">
+    	<div class="row bg-light mb-5 ">
+			<div class="col">
+				<t:nav/>
+			</div>
+    	</div>
 		<div class="row">
 			<div id="body" class="col-9">
 			
@@ -14,11 +23,13 @@
 			<div class="col">
 				<security:authorize access="!isAuthenticated()">
 					<form action="${pageContext.request.contextPath}/user/login/process" method="POST">
-						Email: <input type="text" name="username" />
+						Email:<br/>
+						 <input type="text" name="username" />
 						<c:if test="${param.error != null}">
 								Invalid Username or password 
 							</c:if><br/>
-						Password: <input type="password" name="password"/><form:errors path="password"/> <br/>
+						Password:<br/>
+						 <input type="password" name="password"/><form:errors path="password"/> <br/>
 						<button type="submit" >Login</button>
 						<input type="hidden"
 												   name="${_csrf.parameterName}"

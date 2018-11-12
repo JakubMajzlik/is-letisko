@@ -1,27 +1,41 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>All flights</title>
+<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+	<title>Jamnik Airport - All flights</title>
 </head>
-<body>
-	<table>
-	<c:forEach items="${flights}" var="item">
-			<tr>
-				<td>Id </td>
-				<td><b>${item.getId()}</b></td>
-				<td> on</td>
-				<td> <b>${item.getTakeoffDate()}</b></td>
-				<td>to </td>
-				<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
-				<td> by</td><td>
-				<b>${item.getPlane()}</b></td>
-				<td><a href="${pageContext.request.contextPath}/employee/updateflight?id=${item.getId()}">Update</a></td>
-				<td><a href="${pageContext.request.contextPath}/employee/removeflight?id=${item.getId()}">Remove</a></td>
-			</tr>  	
-	</c:forEach>
-	</table>
-</body>
+<body class="fill">
+	
+<t:twocol>
+	<jsp:body>
+		<h1> All flights</h1>
+		<br/>
+		<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+				<thead class="thead-inverse|thead-default">
+						<tr>
+							<th>Flight ID</th>
+							<th>Takeoff date</th>
+							<th>Destination</th>
+							<th>Plane</th>
+						</tr>
+				</thead>
+				<tbody>
+		<c:forEach items="${flights}" var="item">
+				<tr>
+					<td><b>${item.getId()}</b></td>
+					<td> <b>${item.getTakeoffDate()}</b></td>
+					<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
+					<td><b>${item.getPlane()}</b></td>
+					<td><a href="${pageContext.request.contextPath}/employee/updateflight?id=${item.getId()}">Update</a></td>
+					<td><a href="${pageContext.request.contextPath}/employee/removeflight?id=${item.getId()}">Remove</a></td>
+				</tr>  	
+		</c:forEach>
+		</tbody>
+		</table>
+	</jsp:body>
+</t:twocol>
 </html>

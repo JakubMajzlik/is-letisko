@@ -1,39 +1,56 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>All planes</title>
+	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+	<title>Jamnik Airport - All planes</title>
 </head>
-<body>
-	<table>
+<body class="fill">
+	
+<t:twocol>
+	<jsp:body>
+	<h1>All planes</h1>
+	<br/>
+	<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+				<thead class="thead-inverse|thead-default">
+						<tr>
+							<th>Serial number</th>
+							<th>Type</th>
+							<th>Manufacturer</th>
+							<th>Date of made</th>
+							<th>Last revision</th>
+						</tr>
+				</thead>
+				<tbody>
 	<c:forEach items="${planes}" var="item">
 			<tr>
-				<td> Serial Number:
-				<b>${item.getSerialNumber()}</b>
-				, Type:
-				<b>${item.getType()}</b>
-				, Manufacturer:
-				<b>${item.getManufacturer()}</b>
-				, Date of made:
-				<b>${item.getDateOfMade()}</b>
-				, Last revision date:
-				<b>${item.getLastRevisionDate()}</b></td>
+				<td>${item.getSerialNumber()}</td>
+				<td>${item.getType()} </td>
+				<td>${item.getManufacturer()}</td>
+				<td>${item.getDateOfMade()}</td>
+				<td>${item.getLastRevisionDate()}</td>
 				<td><a href="${pageContext.request.contextPath}/admin/updateplane?serialNumber=${item.getSerialNumber()}">Update</a></td>
 				<td><a href="${pageContext.request.contextPath}/admin/removeplane?serialNumber=${item.getSerialNumber()}">Remove</a></td>
 			</tr>
 			<tr>
-				<td> Number of seats in economic class:
-				<b>${item.getNumberOfSeatsEconomic()}</b>
-				, Number of seats in business class:
-				<b>${item.getNumberOfSeatsBusiness()}</b>
-				, Number of seats in first class:
-				<b>${item.getNumberOfSeatsFirst()}</b></td>
+				<td colspan="1"> Economic class:
+				<i>${item.getNumberOfSeatsEconomic()}</i></td>
+				<td></td>
+				<td colspan="1"> Business class:
+				<i>${item.getNumberOfSeatsBusiness()}</i></td>
+				<td></td>
+				<td colspan="1"> First class:
+				<i>${item.getNumberOfSeatsFirst()}</i></td>
+				<td></td>
 				
 			</tr>	
 			<tr><td>&nbsp;</td></tr>
 	</c:forEach>
 	</table>
+</jsp:body>
+</t:twocol>
 </body>
 </html>

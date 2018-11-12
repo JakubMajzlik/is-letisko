@@ -1,10 +1,12 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" />
+	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+<%-- 	<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" /> --%>
 	<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
 	<script type="text/javascript"
 	     src='<c:url value="/resources/js/jquery.js"/>'>
@@ -18,9 +20,13 @@
 	<script type="text/javascript"
 	     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
 	</script>
-	<title>Find flights</title>
+	<title>Jamnik Airport - Find flights</title>
 </head>
-<body>
+<body class="fill">
+<t:twocol>
+	<jsp:body>
+	<h1>Find flights</h1>
+	<br/>
 	<form:form action="${pageContext.request.contextPath}/flight/findflight"
 			method="POST" modelAttribute="filterModel">
 			
@@ -49,14 +55,23 @@
 		<button type="submit"> Find flights </button>
 	</form:form>
 
-	<table>
+	<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+				<thead class="thead-inverse|thead-default">
+						<tr>
+							<th>Takeoff date</th>
+							<th>Destination</th>
+						</tr>
+				</thead>
+				<tbody>
 	<c:forEach items="${flights}" var="item">
 			<tr>
 				<td> <b>${item.getTakeoffDate()}</b></td>
-				<td>&nbsp;&nbsp;&nbsp;to&nbsp; </td>
 				<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
 			</tr>  	
 	</c:forEach>
+	</tbody>
 	</table>
+</jsp:body>
+</t:twocol>
 </body>
 </html>

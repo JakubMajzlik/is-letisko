@@ -1,11 +1,12 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" />
+	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+<%-- 	<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" /> --%>
 	<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
 	<script type="text/javascript"
 	     src='<c:url value="/resources/js/jquery.js"/>'>
@@ -19,9 +20,14 @@
 	<script type="text/javascript"
 	     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
 	</script>
-	<title>Add plane</title>
+	<title>Jamnik Airport - Add plane</title>
 </head>
-<body>
+<body class="fill">
+	
+<t:twocol>
+	<jsp:body>
+	<h1>Add plane</h1>
+	<br/>
 	<form:form action="${pageContext.request.contextPath}/admin/addplane/process"
 			method="POST" modelAttribute="planeModel">
 		Serial number: <br><form:input path="serialNumber"/><br>
@@ -58,6 +64,7 @@
 	    </script>
 		<button type="submit"> Save </button>
 	</form:form>
-	
+</jsp:body>
+</t:twocol>	
 </body>
 </html>
