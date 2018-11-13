@@ -103,18 +103,15 @@ create table if not exists `flights` (
 
 create table if not exists `flight_tickets` (
 	`id` int(11) auto_increment,
-    `boarding_time` timestamp not null,
+    `boarding_time` varchar(5) not null,
     `flight` int(11) not null,
     `class` varchar(16) not null,
-    `plane` varchar(16) not null,
     `user_identification_number` varchar(10) not null,
     
     primary key(`id`),
     
     key `fk_flight`(`flight`), 
     constraint `fk_flight` foreign key(`flight`) references `flights`(`id`),
-    key `fk_plane_tickets`(`plane`), 
-    constraint `fk_plane_tickets` foreign key(`plane`) references `planes`(`serial_number`),
     key `fk_id_ticket`(`user_identification_number`), 
     constraint `fk_id_ticket` foreign key(`user_identification_number`) references `passenger_details`(`identification_number`)
 );

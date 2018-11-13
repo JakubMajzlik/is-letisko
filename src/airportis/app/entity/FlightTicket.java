@@ -19,27 +19,24 @@ public class FlightTicket {
 	private int id;
 	
 	@Column(name="boarding_time")
-	private Date boardingTime;
+	private String boardingTime;
 	
 	@Column(name="flight")
 	private int flight;
 	
 	@Column(name="class")
 	private String seatClass;
-	
-	@Column(name="plane")
-	private String plane;
+
 	
 	@Column(name="user_identification_number")
 	private String userIdentificationNumber;
 
 	public FlightTicket() {}
 
-	public FlightTicket(Date boarding_time, int flight, String seatClass, String plane, String user_identification_number) {
+	public FlightTicket(String boarding_time, int flight, String seatClass, String user_identification_number) {
 		this.boardingTime = boarding_time;
 		this.flight = flight;
 		this.seatClass = seatClass;
-		this.plane = plane;
 		this.userIdentificationNumber = user_identification_number;
 	}
 
@@ -51,11 +48,11 @@ public class FlightTicket {
 		this.id = id;
 	}
 
-	public Date getBoardingTime() {
+	public String getBoardingTime() {
 		return boardingTime;
 	}
 
-	public void setBoardingTime(Date boarding_time) {
+	public void setBoardingTime(String boarding_time) {
 		this.boardingTime = boarding_time;
 	}
 
@@ -75,14 +72,6 @@ public class FlightTicket {
 		this.seatClass = seatClass;
 	}
 
-	public String getPlane() {
-		return plane;
-	}
-
-	public void setPlane(String plane) {
-		this.plane = plane;
-	}
-
 	public String getUserIdentificationNumber() {
 		return userIdentificationNumber;
 	}
@@ -94,7 +83,7 @@ public class FlightTicket {
 	@Override
 	public String toString() {
 		return "FlightTicket [id=" + id + ", boarding_time=" + boardingTime + ", flight=" + flight + ", seatClass=" + seatClass
-				+ ", plane=" + plane + ", user_identification_number=" + userIdentificationNumber + "]";
+				+ ", user_identification_number=" + userIdentificationNumber + "]";
 	}
 	
 	

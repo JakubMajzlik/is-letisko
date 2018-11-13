@@ -23,15 +23,15 @@ insert into role(name) values ('ROLE_ADMIN');
 -- USERS DETAILS
 insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
 			city, street, house_number, zip, country)
-values ('jozef.mrkva@gmail.com', 'Liptovska Kokava', 'Jozef', 'Mrkva', '9412241234', 'Liptovska Kokava',
+values ('jozef.mrkva@gmail.com', '0922333444', 'Jozef', 'Mrkva', '9412241234', 'Liptovska Kokava',
 		'Kostolna', '666', '03244', 'Slovenska republika');
 insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
 	city, street, house_number, zip, country)
-values ('k.troska@googlemail.com', 'Bratislava', 'Katarina', 'Troskova', '8754265432', 'Bratislava', 
+values ('k.troska@googlemail.com', '0944555333', 'Katarina', 'Troskova', '8754265432', 'Bratislava', 
 		'Radvanska', '1', '81101', 'Slovenska republika');
 insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
 			city, street, house_number, zip, country)
-values ('tomas@jedno.org', 'Filakovo', 'Tomas', 'Jedno', '8912121229', 'Filakovo', 'Ongroundbengerova',
+values ('tomas@jedno.org', '0977888999', 'Tomas', 'Jedno', '8912121229', 'Filakovo', 'Ongroundbengerova',
 		'53', '98601', 'Slovenska republika');
 
 -- USERS
@@ -56,3 +56,6 @@ insert into flights(takeoff_date, destination, gate, plane) values('12/11/2018 1
 insert into flights(takeoff_date, destination, gate, plane) values('19/11/2018 16:00', 1, 3, 'A38020170813');
 insert into flights(takeoff_date, destination, gate, plane) values('7/11/2018 7:25', 3, 2, 'CONC19981130');
 insert into flights(takeoff_date, destination, gate, plane) values('14/11/2018 7:25', 3, 2, 'CONC19981130');
+
+-- FLIGHT TICKETS
+insert into flight_tickets(boarding_time, flight, class, user_identification_number) values('15:00', 3, 'Economic', '8912121229');

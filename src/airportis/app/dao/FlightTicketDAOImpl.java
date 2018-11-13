@@ -38,19 +38,25 @@ import airportis.app.entity.FlightTicket;
 	@Override
 	public int getEconomicTickets(int id) {
 		Session session= sessionFactory.getCurrentSession();
-		return session.createQuery("from FlightTicket where seatClass = 'Economic' and flight= :id", FlightTicket.class).setParameter("id", id).getResultList().size();
+		Query<FlightTicket> flightTicket= session.createQuery("from FlightTicket where seatClass = 'Economic' and flight= :id", FlightTicket.class);
+		flightTicket.setParameter("id", id);
+		return flightTicket.getResultList().size();
 	}
 
 	@Override
 	public int getBusinessTickets(int id) {
 		Session session= sessionFactory.getCurrentSession();
-		return session.createQuery("from FlightTicket where seatClass = 'Business' and flight= :id", FlightTicket.class).setParameter("id", id).getResultList().size();
+		Query<FlightTicket> flightTicket= session.createQuery("from FlightTicket where seatClass = 'Business' and flight= :id", FlightTicket.class);
+		flightTicket.setParameter("id", id);
+		return flightTicket.getResultList().size();
 	}
 
 	@Override
 	public int getFirstTickets(int id) {
 		Session session= sessionFactory.getCurrentSession();
-		return session.createQuery("from FlightTicket where seatClass = 'First' and flight= :id", FlightTicket.class).setParameter("id", id).getResultList().size();
+		Query<FlightTicket> flightTicket= session.createQuery("from FlightTicket where seatClass = 'First' and flight= :id", FlightTicket.class);
+		flightTicket.setParameter("id", id);
+		return flightTicket.getResultList().size();
 	}
 
 }
