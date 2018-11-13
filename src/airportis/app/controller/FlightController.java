@@ -9,10 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import airportis.app.model.FilterModel;
+import airportis.app.model.FlightModel;
 import airportis.app.service.DestinationService;
 import airportis.app.service.FlightService;
+import airportis.app.service.FlightTicketService;
+import airportis.app.service.PlaneService;
 
 @Controller
 @RequestMapping("/flight")
@@ -24,18 +28,39 @@ public class FlightController {
 	@Autowired
 	DestinationService destinationService;
 	
+	@Autowired
+	PlaneService planeService;
+	
+	@Autowired
+	FlightTicketService flightTicketService;
+	
 	@RequestMapping("/findflight")
-	public String showOrderFlightForm(@ModelAttribute("filterModel")FilterModel filterModel, Model model) {
-		if(filterModel.getTakeoffDate()==null || filterModel.getDestination()==0) {
-			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			Date date = new Date();
-			model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),0));
-		}else {
-			model.addAttribute("flights", flightService.getAllFlights(filterModel.getTakeoffDate(),filterModel.getDestination()));
+	public String showFindFlightForm(@RequestParam(value="id", required=false)Integer id, @ModelAttribute("filterModel")FilterModel filterModel, Model model) {
+		if(id == null) {
+			if(filterModel.getTakeoffDate()==null || filterModel.getDestination()==0) {
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				Date date = new Date();
+				model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),0));
+			}else {
+				model.addAttribute("flights", flightService.getAllFlights(filterModel.getTakeoffDate(),filterModel.getDestination()));
+			}
+			model.addAttribute("destinationService", destinationService);
+			model.addAttribute("flightTicketService", flightTicketService);
+			
+			return "findflight";
 		}
-		model.addAttribute("destinationService", destinationService);
+		FlightModel flightModel= flightService.getFlight(id);
+		model.addAttribute("flightModel", flightModel);
+		model.addAttribute("economic", planeService.getPlane(flightModel.getPlane()).getNumberOfSeatsEconomic() - flightTicketService.getEconomicTickets(id));
+		model.addAttribute("business", planeService.getPlane(flightModel.getPlane()).getNumberOfSeatsBusiness() - flightTicketService.getBusinessTickets(id));
+		model.addAttribute("first", planeService.getPlane(flightModel.getPlane()).getNumberOfSeatsFirst() - flightTicketService.getFirstTickets(id));
+		return "orderflight";
 		
-		return "findflight";
+	}
+	
+	@RequestMapping("/orderflight")
+	public String showOrderFlightForm(@ModelAttribute("flightModel")FlightModel flightModel, Model model) {
+		return "orderflight";
 	}
 	
 }

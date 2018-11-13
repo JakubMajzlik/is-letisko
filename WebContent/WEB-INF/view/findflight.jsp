@@ -67,6 +67,7 @@
 			<tr>
 				<td> <b>${item.getTakeoffDate()}</b></td>
 				<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
+				<td><a href="${pageContext.request.contextPath}/flight/findflight?id=${item.getId()}">Order flight ticket</a></td>
 			</tr>  	
 	</c:forEach>
 	</tbody>
