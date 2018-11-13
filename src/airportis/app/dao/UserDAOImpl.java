@@ -33,6 +33,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void save(User user) {
+		System.out.println(user);
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(user);
 	}
@@ -40,6 +41,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void remove(User user) {
 		Session session = sessionFactory.getCurrentSession();
+		session.remove(user.getDetails());
 		session.remove(user);
 	}
 

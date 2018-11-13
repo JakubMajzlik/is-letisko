@@ -39,7 +39,7 @@ public class User {
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_details_id")
 	private PassengerDetail details;
 	
@@ -101,7 +101,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-				+ ", roles=" + roles + "]";
-
+				+ ", roles=" + roles + ", details=" + details + "]";
 	}
+
 }

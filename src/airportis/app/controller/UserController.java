@@ -52,7 +52,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/register/process")
-	public String processRegistration(@Valid @ModelAttribute("userRegistrationModel") UserRegisterModel userModel,
+	public String processRegistration(@Valid @ModelAttribute("userRegisterModel") UserRegisterModel userModel,
 										BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			return "register";
