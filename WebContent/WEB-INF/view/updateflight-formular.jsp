@@ -57,7 +57,9 @@
 		<form:select path="plane">
 			<form:options items="${planeService.getPlanesMap()}"/>
 		</form:select> <br/>
-
+		Price:
+		<form:input path="price"/>
+		€<br>
 		<button type="submit"> Save </button>
 	</form:form>
 </jsp:body>	

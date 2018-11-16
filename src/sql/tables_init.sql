@@ -90,6 +90,7 @@ create table if not exists `flights` (
     `destination` int(11) not null,
     `gate` int(11) not null,
     `plane` varchar(16) not null,
+    `price` double(6,2) not null,
     
     primary key(`id`),
     

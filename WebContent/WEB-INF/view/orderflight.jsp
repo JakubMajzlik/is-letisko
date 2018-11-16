@@ -10,10 +10,17 @@
 <body class="fill">
 <t:twocol>
 	<jsp:body>
-	Plane: ${flightModel.plane} <br>
-	Economic: ${economic} <br>
-	Business: ${business} <br>
-	First: ${first} <br>
+	<table border=1>
+	<tr><td>Economic: &nbsp;&nbsp;&nbsp;</td>
+	<td>Business: &nbsp;&nbsp;&nbsp;</td>
+	<td>First: &nbsp;&nbsp;&nbsp;</td></tr>
+	<tr><td>${economic} </td>
+	<td>${business} </td>
+	<td> ${first}</td></tr>
+	<tr><td>${flightModel.price}</td>
+	<td>${flightModel.price*2}</td>
+	<td>${flightModel.price*3}</td></tr>
+	</table>
 </jsp:body>
 </t:twocol>
 </body>

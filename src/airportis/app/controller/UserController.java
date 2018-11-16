@@ -1,5 +1,10 @@
 package airportis.app.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +50,15 @@ public class UserController {
 	@GetMapping("/register")
 	public String showRegisterForm(Model model) {
 		if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+			List<String> countryList = new ArrayList<String>();
+			String[] locales = Locale.getISOCountries();
+			for (String countryCode : locales) {
+				Locale obj = new Locale("", countryCode);
+				countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+			}
+			Collections.sort(countryList);
 			model.addAttribute("userRegisterModel", new UserRegisterModel());
+			model.addAttribute("countryList", countryList);
 			return "register";
 		}
 		return "redirect:/";

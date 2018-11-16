@@ -7,6 +7,7 @@ public class FlightModel {
 	private int gate;
 	private String plane;
 	private int id;
+	private double price;
 	
 	public FlightModel() {}
 
@@ -44,11 +45,18 @@ public class FlightModel {
 		this.plane = plane;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
 		return "FlightModel [takeoffDate=" + takeoffDate + ", destination=" + destination + ", gate=" + gate
-				+ ", plane=" + plane + ", id=" + id + "]";
+				+ ", plane=" + plane + ", id=" + id + ", price=" + price + "]";
 	}
-	
 	
 }

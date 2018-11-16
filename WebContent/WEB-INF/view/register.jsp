@@ -24,7 +24,9 @@
 	House number:<form:input path="houseNumber"/><br/>
 	ZIP:<form:input path="zip"/><br/>
 	City:<form:input path="city"/><br/>
-	Country:<form:input path="country"/><br/>
+	Country:<form:select path="country">
+			<form:options items="${countryList}"/>
+			</form:select><br/>
 	Identification number:<form:input path="identificationNumber"/><br/>
 	Phone number:<form:input path="phoneNumber"/><br/>
 	
