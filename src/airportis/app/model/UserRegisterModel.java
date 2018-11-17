@@ -1,29 +1,50 @@
 package airportis.app.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import airportis.app.validator.FieldMatch;
+
+@FieldMatch.List({@FieldMatch(first="password1", second="password2", message="The password fields must match")})
 public class UserRegisterModel {
 
+	@NotNull(message="This field is required")
 	private String firstName;
 	
+	@NotNull(message="This field is required")
 	private String lastName;
 	
+	@NotNull(message="This field is required")
+	@Email(message="Invalid email format")
 	private String email;
 	
+	@NotNull(message="This field is required")
+	@Size(min=8, message="Password have to be at least 8 characters long")
 	private String password1;
 	
+	@NotNull(message="This field is required")
 	private String password2;
 	
+	@NotNull(message="This field is required")
 	private String city;
 	
+	@NotNull(message="This field is required")
 	private String street;
 	
+	@NotNull(message="This field is required")
 	private String houseNumber;
 	
+	@NotNull(message="This field is required")
 	private String zip;
 	
+	@NotNull(message="This field is required")
 	private String country;
 	
+	@NotNull(message="This field is required")
 	private String identificationNumber;
 	
+	@NotNull(message="This field is required")
 	private String phoneNumber;
 	
 	
