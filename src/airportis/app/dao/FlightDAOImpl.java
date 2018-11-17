@@ -58,11 +58,10 @@ public class FlightDAOImpl implements FlightDAO {
 		System.out.println("DATE: "+stringDate);
 		if(destination==0) {
 			Query<Flight> flight= session.createQuery("from Flight", Flight.class);
-			DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-			DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
 			for (Flight f : flight.getResultList()) {
-				LocalDate date= LocalDate.parse(stringDate, formatter1);
-				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter2);
+				LocalDate date= LocalDate.parse(stringDate, formatter);
+				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
 				if(takeoffDate.isAfter(date)) {
 					list.add(f);
 				}

@@ -6,67 +6,47 @@
 <html>
 <head>
 	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
-<%-- 	<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" /> --%>
-	<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
 	<script type="text/javascript"
 	     src='<c:url value="/resources/js/jquery.js"/>'>
 	</script> 
-	<script type="text/javascript"
-	     src='<c:url value="/resources/js/bootstrap2.js"/>'>
-	</script>
-	<script type="text/javascript"
-	     src='<c:url value="/resources/js/bootstrap-datetimepicker.js"/>'>
-	</script>
-	<script type="text/javascript"
-	     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
-	</script>
-<title>Jamnik Airport - Add flight</title>
+	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	<title>Jamnik Airport - Add flight</title>
 </head>
 <body class="fill">
 
 <t:twocol>
 	<jsp:body>
-		<h1>Add flight</h1>
-		<br/>
-		<form:form action="${pageContext.request.contextPath}/employee/addflight/process"
-			method="POST" modelAttribute="flightModel">
-			
-		<form:hidden path="id"/>
-		<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" />
-		Date:
-		<div id="datetimepicker" class="input-append date">
-	      <form:input path="takeoffDate" id="date"/>
-	      <span class="add-on">
-	        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-	      </span>
-	    </div>
-	
-    <script type="text/javascript">
-      $('#datetimepicker').datetimepicker({
-        format: 'dd/MM/yyyy hh:mm',
-        language: 'sk',
-        startDate: new Date()
-      });
-    </script>
-    	Gate:
-    	<form:select path="gate">
-    		<form:option label="--Select Gate--" value="0"/>
-    		<form:options items="${gateService.getAllGates()}"/>
-    	</form:select><br/>
-		Destination: 
-		<form:select path="destination" >
-			<form:option label="--Select Destination--" value="0"/>
-			<form:options items="${destinationService.getAllDestinations()}"/>
-		</form:select>
-		Plane:
-		<form:select path="plane">
-			<form:option label="--Select Plane--" value="0"/>
-			<form:options items="${planeService.getPlanesMap()}"/>
-		</form:select> <br/>
+	<h1>Add flight</h1>
+	<br/>
+	<form:form action="${pageContext.request.contextPath}/employee/addflight/process"
+		method="POST" modelAttribute="flightModel">
+		
+	<form:hidden path="id"/>
+	Date:
+	<form:input path="takeoffDate" id="input" width="312" />
+   	<script>
+       	$('#input').datetimepicker({ footer: true, modal: true, format: 'dd/mm/yyyy HH:MM'});
+   	</script>
+   	Gate:
+   	<form:select path="gate">
+   		<form:option label="--Select Gate--" value="0"/>
+   		<form:options items="${gateService.getAllGates()}"/>
+   	</form:select><br/>
+	Destination: 
+	<form:select path="destination" >
+		<form:option label="--Select Destination--" value="0"/>
+		<form:options items="${destinationService.getAllDestinations()}"/>
+	</form:select>
+	Plane:
+	<form:select path="plane">
+		<form:option label="--Select Plane--" value="0"/>
+		<form:options items="${planeService.getPlanesMap()}"/>
+	</form:select> <br/>
 
-		<button type="submit"> Save </button>
+	<button type="submit"> Save </button>
 	</form:form>
-	</jsp:body>
+</jsp:body>
 </t:twocol>
 </body>
 </html>

@@ -9,7 +9,7 @@
 </head>
   <body>
     <div class="container fill">
-    	<div class="row bg-light mb-5 ">
+    	<div class="row bg-info mb-5">
 			<div class="col">
 				<t:nav/>
 			</div>
