@@ -15,6 +15,7 @@
 <br/>
 <form:form action="${pageContext.request.contextPath}/user/register/process"
 			method="POST" modelAttribute="userRegisterModel">
+
 	First name:<form:input path="firstName"/>
 	<form:errors path="firstName"/><br/>
 	Last name:<form:input path="lastName"/>
@@ -33,7 +34,9 @@
 	<form:errors path="zip"/><br/>
 	City:<form:input path="city"/>
 	<form:errors path="city"/><br/>
-	Country:<form:input path="country"/>
+	Country:<form:select path="country">
+			<form:options items="${countryList}"/>
+			</form:select>
 	<form:errors path="country"/><br/>
 	Identification number:<form:input path="identificationNumber"/>
 	<form:errors path="identificationNumber"/><br/>

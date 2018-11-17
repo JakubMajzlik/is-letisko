@@ -6,20 +6,11 @@
 <html>
 <head>
 	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
-<%-- 	<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" /> --%>
-	<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
 	<script type="text/javascript"
 	     src='<c:url value="/resources/js/jquery.js"/>'>
 	</script> 
-	<script type="text/javascript"
-	     src='<c:url value="/resources/js/bootstrap2.js"/>'>
-	</script>
-	<script type="text/javascript"
-	     src='<c:url value="/resources/js/bootstrap-datetimepicker.js"/>'>
-	</script>
-	<script type="text/javascript"
-	     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
-	</script>
+	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<title>Jamnik Airport - Add plane</title>
 </head>
 <body class="fill">
@@ -34,34 +25,18 @@
 		Type: <br><form:input path="type"/><br>
 		Manufacturer: <br><form:input path="manufacturer"/><br>
 		Date of made:
-		<div id="datetimepicker" class="input-append date">
-	      <form:input path="dateOfMade"/>
-	      <span class="add-on">
-	        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-	      </span>
-	    </div>
+		<form:input path="dateOfMade" id="datepicker1" width="276" />
+    	<script>
+        	$('#datepicker1').datepicker({format:'dd/mm/yyyy'});
+    	</script>
 	    Last revision date:
-		<div id="datetimepicker2" class="input-append date">
-	      <form:input path="lastRevisionDate"/>
-	      <span class="add-on">
-	        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-	      </span>
-	    </div>
+		<form:input path="lastRevisionDate" id="datepicker2" width="276" />
+    	<script>
+        	$('#datepicker2').datepicker({format:'dd/mm/yyyy'});
+    	</script>
 		Number of seats in economic class: <br><form:input path="numberOfSeatsEconomic"/><br>
 		Number of seats in business class: <br><form:input path="numberOfSeatsBusiness"/><br>
 		Number of seats in first class: <br><form:input path="numberOfSeatsFirst"/><br>
-	    <script type="text/javascript">
-	      $('#datetimepicker').datetimepicker({
-	        format: 'dd/MM/yyyy',
-	        language: 'sk',
-	      });
-	    </script>
-	    <script type="text/javascript">
-	      $('#datetimepicker2').datetimepicker({
-	        format: 'dd/MM/yyyy',
-	        language: 'sk',
-	      });
-	    </script>
 		<button type="submit"> Save </button>
 	</form:form>
 </jsp:body>

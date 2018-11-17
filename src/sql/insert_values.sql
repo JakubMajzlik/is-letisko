@@ -11,8 +11,8 @@ insert into gates(gate_number, terminal) values(2, 'A');
 insert into gates(gate_number, terminal) values(3, 'B');
 
 -- DESTINATIONS
-insert into destinations(country, city) values('Slovenska republika', 'Bratislava');
-insert into destinations(country, city) values('Ceska republika', 'Brno');
+insert into destinations(country, city) values('Slovakia', 'Bratislava');
+insert into destinations(country, city) values('Czech Republic', 'Brno');
 insert into destinations(country, city) values('Mali', 'Bamako');
 
 -- ROLES
@@ -24,15 +24,15 @@ insert into role(name) values ('ROLE_ADMIN');
 insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
 			city, street, house_number, zip, country)
 values ('jozef.mrkva@gmail.com', '0922333444', 'Jozef', 'Mrkva', '9412241234', 'Liptovska Kokava',
-		'Kostolna', '666', '03244', 'Slovenska republika');
+		'Kostolna', '666', '03244', 'Slovakia');
 insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
 	city, street, house_number, zip, country)
 values ('k.troska@googlemail.com', '0944555333', 'Katarina', 'Troskova', '8754265432', 'Bratislava', 
-		'Radvanska', '1', '81101', 'Slovenska republika');
+		'Radvanska', '1', '81101', 'Slovakia');
 insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
 			city, street, house_number, zip, country)
 values ('tomas@jedno.org', '0977888999', 'Tomas', 'Jedno', '8912121229', 'Filakovo', 'Ongroundbengerova',
-		'53', '98601', 'Slovenska republika');
+		'53', '98601', 'Slovakia');
 
 -- USERS
 insert into user(username, password, user_details_id)
@@ -51,11 +51,11 @@ insert into users_roles(role_id, user_id) values (2,3);
 insert into users_roles(role_id, user_id) values (1,2);
 
 -- FLIGHTS
-insert into flights(takeoff_date, destination, gate, plane) values('5/11/2018 16:00', 1, 3, 'A38020170813');
-insert into flights(takeoff_date, destination, gate, plane) values('12/11/2018 16:00', 1, 3, 'A38020170813');
-insert into flights(takeoff_date, destination, gate, plane) values('19/11/2018 16:00', 1, 3, 'A38020170813');
-insert into flights(takeoff_date, destination, gate, plane) values('7/11/2018 7:25', 3, 2, 'CONC19981130');
-insert into flights(takeoff_date, destination, gate, plane) values('14/11/2018 7:25', 3, 2, 'CONC19981130');
+insert into flights(takeoff_date, destination, gate, plane, price) values('05/11/2018 16:00', 1, 3, 'A38020170813', 65.00);
+insert into flights(takeoff_date, destination, gate, plane, price) values('12/11/2018 16:00', 1, 3, 'A38020170813', 70.50);
+insert into flights(takeoff_date, destination, gate, plane, price) values('19/11/2018 16:00', 1, 3, 'A38020170813', 68.70);
+insert into flights(takeoff_date, destination, gate, plane, price) values('07/11/2018 07:25', 3, 2, 'CONC19981130', 395.30);
+insert into flights(takeoff_date, destination, gate, plane, price) values('14/11/2018 07:25', 3, 2, 'CONC19981130', 425.00);
 
 -- FLIGHT TICKETS
 insert into flight_tickets(boarding_time, flight, class, user_identification_number) values('15:00', 3, 'Economic', '8912121229');

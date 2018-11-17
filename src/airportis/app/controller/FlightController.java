@@ -37,12 +37,18 @@ public class FlightController {
 	@RequestMapping("/findflight")
 	public String showFindFlightForm(@RequestParam(value="id", required=false)Integer id, @ModelAttribute("filterModel")FilterModel filterModel, Model model) {
 		if(id == null) {
-			if(filterModel.getTakeoffDate()==null || filterModel.getDestination()==0) {
-				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-				Date date = new Date();
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+			Date date = new Date();
+			System.out.println("MODEL DATE: "+filterModel.getTakeoffDate());
+			if(filterModel.getTakeoffDate()==null && filterModel.getDestination()==0) {	
 				model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),0));
 			}else {
-				model.addAttribute("flights", flightService.getAllFlights(filterModel.getTakeoffDate(),filterModel.getDestination()));
+				if(filterModel.getTakeoffDate()==null || filterModel.getTakeoffDate()=="") {
+					model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),filterModel.getDestination()));
+				}else {
+					model.addAttribute("flights", flightService.getAllFlights(filterModel.getTakeoffDate(),filterModel.getDestination()));
+				}
+				
 			}
 			model.addAttribute("destinationService", destinationService);
 			model.addAttribute("flightTicketService", flightTicketService);

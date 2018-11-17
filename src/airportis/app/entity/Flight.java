@@ -30,22 +30,27 @@ public class Flight {
 	@Column(name="plane")
 	private String plane;
 	
+	@Column(name="price")
+	private double price;
+	
 	public Flight() {}
 
-	public Flight(String takeoff_date, int destination, int gate, String plane) {
+	public Flight(String takeoff_date, int destination, int gate, String plane, double price) {
 		this.takeoffDate = takeoff_date;
 		this.destination = destination;
 		this.gate = gate;
 		this.plane = plane;
+		this.price = price;
 	}
 	
 
-	public Flight(int id, String takeoffDate, int destination, int gate, String plane) {
+	public Flight(int id, String takeoffDate, int destination, int gate, String plane, double price) {
 		this.id = id;
 		this.takeoffDate = takeoffDate;
 		this.destination = destination;
 		this.gate = gate;
 		this.plane = plane;
+		this.price = price;
 	}
 
 	public int getId() {
@@ -88,12 +93,18 @@ public class Flight {
 		this.plane = plane;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
-		return "Flight [id=" + id + ", takeoff_date=" + takeoffDate + ", destination=" + destination + ", gate=" + gate
-				+ ", plane=" + plane + "]";
-	}
-	
-	
+		return "Flight [id=" + id + ", takeoffDate=" + takeoffDate + ", destination=" + destination + ", gate=" + gate
+				+ ", plane=" + plane + ", price=" + price + "]";
+	}		
 	
 }

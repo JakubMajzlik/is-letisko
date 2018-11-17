@@ -6,7 +6,6 @@
 <html>
 <head>
 	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
-<%-- 	<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" /> --%>
 	<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
 	<script type="text/javascript"
 	     src='<c:url value="/resources/js/jquery.js"/>'>
@@ -20,6 +19,8 @@
 	<script type="text/javascript"
 	     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<title>Jamnik Airport - Find flights</title>
 </head>
 <body class="fill">
@@ -31,20 +32,10 @@
 			method="POST" modelAttribute="filterModel">
 			
 			Date:
-		<div id="datetimepicker" class="input-append date">
-	      <form:input path="takeoffDate" id="date"/>
-	      <span class="add-on">
-	        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-	      </span>
-	    </div>
-			
-		<script type="text/javascript">
-	      $('#datetimepicker').datetimepicker({
-	        format: 'dd/MM/yyyy',
-	        language: 'sk',
-	        startDate: new Date()
-	      });
-	    </script>
+		<form:input path="takeoffDate" id="input" width="312" />
+    	<script>
+        	$('#input').datetimepicker({ footer: true, modal: true, format: 'dd/mm/yyyy HH:MM'});
+    	</script>
 	    
 	    Destination: <br> 
 		<form:select path="destination" >

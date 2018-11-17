@@ -33,7 +33,8 @@ public class FlightServiceImpl implements FlightService {
 				flightModel.getTakeoffDate(), 
 				flightModel.getDestination(),
 				gateDAO.getGate(flightModel.getGate()).getGateNumber(),
-				flightModel.getPlane());
+				flightModel.getPlane(),
+				flightModel.getPrice());
 		
 		flightDAO.save(flight);
 		
@@ -64,6 +65,7 @@ public class FlightServiceImpl implements FlightService {
 		flightModel.setId(flight.getId());
 		flightModel.setPlane(planeDAO.getPlane(flight.getPlane()).getSerialNumber());
 		flightModel.setTakeoffDate(flight.getTakeoffDate());
+		flightModel.setPrice(flight.getPrice());
 		
 		return flightModel;
 	}
