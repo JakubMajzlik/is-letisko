@@ -21,12 +21,16 @@ public class Destination {
 	
 	@Column(name="city")
 	private String city;
-
+	
+	@Column(name="distance")
+	private int distance;
+	
 	public Destination() {}
 	
-	public Destination(String country, String city) {
+	public Destination(String country, String city, int distance) {
 		this.country = country;
 		this.city = city;
+		this.distance= distance;
 	}
 
 	public int getId() {
@@ -53,9 +57,17 @@ public class Destination {
 		this.city = city;
 	}
 
+	public int getDistance() {
+		return distance;
+	}
+
+	public void setDistance(int distance) {
+		this.distance = distance;
+	}
+
 	@Override
 	public String toString() {
-		return "Destination [id=" + id + ", country=" + country + ", city=" + city + "]";
+		return "Destination [id=" + id + ", country=" + country + ", city=" + city + ", distance=" + distance + "]";
 	}
 
 }

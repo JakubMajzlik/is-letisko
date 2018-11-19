@@ -29,4 +29,10 @@ public class DestinationServiceImpl implements DestinationService{
 		return name;
 	}
 
+	@Override
+	@Transactional
+	public int getDestinationDistance(int id) {
+		return destinationDAO.getDestination(id).getDistance();
+	}
+
 }

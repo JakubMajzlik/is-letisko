@@ -37,7 +37,7 @@ public class FlightController {
 	@RequestMapping("/findflight")
 	public String showFindFlightForm(@RequestParam(value="id", required=false)Integer id, @ModelAttribute("filterModel")FilterModel filterModel, Model model) {
 		if(id == null) {
-			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date date = new Date();
 			System.out.println("MODEL DATE: "+filterModel.getTakeoffDate());
 			if(filterModel.getTakeoffDate()==null && filterModel.getDestination()==0) {	

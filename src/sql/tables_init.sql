@@ -59,6 +59,7 @@ create table if not exists `destinations` (
 	`id` int(11) auto_increment,
     `country` varchar(64) not null,
     `city` varchar(64) not null,
+    `distance` int(5) not null,
     
     primary key(`id`)
 );

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -59,10 +58,11 @@ public class FlightDAOImpl implements FlightDAO {
 		if(destination==0) {
 			Query<Flight> flight= session.createQuery("from Flight", Flight.class);
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
+			DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			for (Flight f : flight.getResultList()) {
-				LocalDate date= LocalDate.parse(stringDate, formatter);
+				LocalDate date= LocalDate.parse(stringDate, formatter1);
 				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
-				if(takeoffDate.isAfter(date)) {
+				if(takeoffDate.compareTo(date)>=0) {
 					list.add(f);
 				}
 			}
@@ -75,12 +75,12 @@ public class FlightDAOImpl implements FlightDAO {
 		}else {
 			Query<Flight> flight= session.createQuery("from Flight where destination= :destination", Flight.class);
 			flight.setParameter("destination",destination);
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
 			DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-			DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
 			for (Flight f : flight.getResultList()) {
 				LocalDate date= LocalDate.parse(stringDate, formatter1);
-				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter2);
-				if(takeoffDate.isAfter(date)) {
+				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
+				if(takeoffDate.compareTo(date)>=0) {
 					list.add(f);
 				}
 			}

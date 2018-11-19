@@ -1,6 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
@@ -32,9 +33,9 @@
 			method="POST" modelAttribute="filterModel">
 			
 			Date:
-		<form:input path="takeoffDate" id="input" width="312" />
+		<form:input path="takeoffDate" id="datepicker" width="312" />
     	<script>
-        	$('#input').datetimepicker({ footer: true, modal: true, format: 'dd/mm/yyyy HH:MM'});
+        	$('#datepicker').datepicker({format:'dd/mm/yyyy'});
     	</script>
 	    
 	    Destination: <br> 
@@ -51,6 +52,8 @@
 						<tr>
 							<th>Takeoff date</th>
 							<th>Destination</th>
+							<th>Distance</th>
+							<th>Flight length</th>
 						</tr>
 				</thead>
 				<tbody>
@@ -58,6 +61,13 @@
 			<tr>
 				<td> <b>${item.getTakeoffDate()}</b></td>
 				<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
+				<td><b>${destinationService.getDestinationDistance(item.getDestination())}km</b></td>
+				<td><b><fmt:formatNumber
+		  			value="${destinationService.getDestinationDistance(item.getDestination())/650}"
+		  			maxFractionDigits="0"/>hod
+		  			<fmt:formatNumber
+		  			value="${destinationService.getDestinationDistance(item.getDestination())%650/650*60}"
+		  			maxFractionDigits="0"/>min</b></td>
 				<td><a href="${pageContext.request.contextPath}/flight/findflight?id=${item.getId()}">Order flight ticket</a></td>
 			</tr>  	
 	</c:forEach>

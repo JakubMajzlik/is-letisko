@@ -11,9 +11,9 @@ insert into gates(gate_number, terminal) values(2, 'A');
 insert into gates(gate_number, terminal) values(3, 'B');
 
 -- DESTINATIONS
-insert into destinations(country, city) values('Slovakia', 'Bratislava');
-insert into destinations(country, city) values('Czech Republic', 'Brno');
-insert into destinations(country, city) values('Mali', 'Bamako');
+insert into destinations(country, city, distance) values('Slovakia', 'Bratislava', 218);
+insert into destinations(country, city, distance) values('Czech Republic', 'Brno', 226);
+insert into destinations(country, city, distance) values('Mali', 'Bamako', 4785);
 
 -- ROLES
 insert into role(name) values ('ROLE_USER');

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import airportis.app.dao.DestinationDAO;
 import airportis.app.dao.FlightDAO;
 import airportis.app.dao.GateDAO;
 import airportis.app.dao.PlaneDAO;
