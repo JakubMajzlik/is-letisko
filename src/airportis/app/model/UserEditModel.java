@@ -1,11 +1,17 @@
 package airportis.app.model;
 
+import javax.validation.constraints.NotNull;
+
 public class UserEditModel {
-private String firstName;
+	
+	@NotNull(message="This field is required")
+	private String firstName;
 	
 	private int id;
 
+	@NotNull(message="This field is required")
 	private String lastName;
+	
 	
 	private String email;
 	
@@ -13,18 +19,25 @@ private String firstName;
 	
 	private String password2;
 	
+	@NotNull(message="This field is required")
 	private String city;
 	
+	@NotNull(message="This field is required")
 	private String street;
 	
+	@NotNull(message="This field is required")
 	private String houseNumber;
 	
+	@NotNull(message="This field is required")
 	private String zip;
 	
+	@NotNull(message="This field is required")
 	private String country;
 	
+	@NotNull(message="This field is required")
 	private String identificationNumber;
 	
+	@NotNull(message="This field is required")
 	private String phoneNumber;
 	
 	

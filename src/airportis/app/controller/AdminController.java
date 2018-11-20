@@ -1,19 +1,26 @@
 package airportis.app.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import airportis.app.entity.User;
-import airportis.app.model.FlightModel;
 import airportis.app.model.PlaneModel;
 import airportis.app.model.UserEditModel;
 import airportis.app.service.PlaneService;
@@ -28,6 +35,12 @@ public class AdminController {
 	
 	@Autowired
 	PlaneService planeService;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+	StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+	dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
 	
 	@GetMapping
 	public String showAdminPanel() {	
@@ -52,6 +65,15 @@ public class AdminController {
 			return "redirect:/admin/manageusers";
 		}
 		
+		List<String> countryList = new ArrayList<String>();
+		String[] locales = Locale.getISOCountries();
+		for (String countryCode : locales) {
+			Locale obj = new Locale("", countryCode);
+			countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+		}
+		Collections.sort(countryList);
+		
+		model.addAttribute("countryList", countryList);
 		model.addAttribute("userModel", userModel);
 		
 		return "admin-edituser-formular";
@@ -63,7 +85,17 @@ public class AdminController {
 			BindingResult result,
 			Model model) {
 		if(result.hasErrors()) {
-			return "redirect:/admin/manageusers/edituser?id="+userModel.getId();
+			List<String> countryList = new ArrayList<String>();
+			String[] locales = Locale.getISOCountries();
+			for (String countryCode : locales) {
+				Locale obj = new Locale("", countryCode);
+				countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+			}
+			Collections.sort(countryList);
+			
+			model.addAttribute("countryList", countryList);
+			//return "redirect:/admin/manageusers/edituser?id="+userModel.getId();
+			return "admin-edituser-formular"; 
 		}
 		
 		userService.update(userModel);
