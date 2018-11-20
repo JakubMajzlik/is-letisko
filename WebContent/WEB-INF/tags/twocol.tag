@@ -46,6 +46,7 @@
 					<a href="${pageContext.request.contextPath}/admin/manageusers">Manage users</a> <br/>
 					<a href="${pageContext.request.contextPath}/admin/addplane">Add plane</a> <br/>
 					<a href="${pageContext.request.contextPath}/admin/updateplane">Show planes</a> <br/>
+					<a href="${pageContext.request.contextPath}/admin/adddestination">Add destination</a><br/>
 					<br/>
 				</security:authorize>
 				

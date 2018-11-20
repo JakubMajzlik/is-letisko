@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import airportis.app.dao.DestinationDAO;
+import airportis.app.entity.Destination;
+import airportis.app.model.DestinationModel;
 
 @Service
 public class DestinationServiceImpl implements DestinationService{
@@ -34,5 +36,16 @@ public class DestinationServiceImpl implements DestinationService{
 	public int getDestinationDistance(int id) {
 		return destinationDAO.getDestination(id).getDistance();
 	}
+
+	@Override
+	@Transactional
+	public void save(DestinationModel destinationModel) {
+			Destination destination= new Destination(
+					destinationModel.getCountry(),
+					destinationModel.getCity(),
+					Integer.parseInt(destinationModel.getDistance()));
+			destinationDAO.save(destination);
+	}
+
 
 }

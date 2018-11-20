@@ -1,21 +1,30 @@
 package airportis.app.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import airportis.app.entity.User;
-import airportis.app.model.FlightModel;
+import airportis.app.model.DestinationModel;
 import airportis.app.model.PlaneModel;
 import airportis.app.model.UserEditModel;
+import airportis.app.service.DestinationService;
 import airportis.app.service.PlaneService;
 import airportis.app.service.UserService;
 
@@ -28,6 +37,15 @@ public class AdminController {
 	
 	@Autowired
 	PlaneService planeService;
+	
+	@Autowired 
+	DestinationService destinationService;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+	StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+	dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
 	
 	@GetMapping
 	public String showAdminPanel() {	
@@ -136,6 +154,43 @@ public class AdminController {
 			model.addAttribute("addSuccess", true);
 			return "redirect:/admin/updateplane";		
 		}
+	}
+	
+	@GetMapping("/adddestination")
+	public String showAddDestination(Model model) {
+		List<String> countryList = new ArrayList<String>();
+		String[] locales = Locale.getISOCountries();
+		for (String countryCode : locales) {
+			Locale obj = new Locale("", countryCode);
+			countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+		}
+		Collections.sort(countryList);
+		DestinationModel destinationModel= new DestinationModel();
+		model.addAttribute("destinationModel", destinationModel);
+		model.addAttribute("destinationService", destinationService);
+		model.addAttribute("countryList", countryList);
+		return "adddestination-formular";
+	}
+	
+	@PostMapping("/adddestination/process")
+	public String processAddDestination(@Valid @ModelAttribute("destinationModel") DestinationModel destinationModel, 
+			BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			List<String> countryList = new ArrayList<String>();
+			String[] locales = Locale.getISOCountries();
+			for (String countryCode : locales) {
+				Locale obj = new Locale("", countryCode);
+				countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+			}
+			Collections.sort(countryList);
+			model.addAttribute("countryList", countryList);
+			return "adddestination-formular";
+		}else {
+			destinationService.save(destinationModel);
+			model.addAttribute("addSuccess", true);
+			return "redirect:/";
+		}
+		
 	}
 	
 }
