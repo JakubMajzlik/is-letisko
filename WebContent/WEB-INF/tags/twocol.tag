@@ -35,6 +35,7 @@
 												   name="${_csrf.parameterName}"
 												   value="${_csrf.token}" />
 					</form>
+					<a href="${pageContext.request.contextPath}/user/register">Don't have an account? Register for free</a>
 				</security:authorize>
 				<security:authorize access="hasRole('EMPLOYEE')">
 					<a href="${pageContext.request.contextPath }/employee/addflight" >Add Flight</a> <br/>

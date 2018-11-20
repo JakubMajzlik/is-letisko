@@ -11,6 +11,6 @@
 		<a class="nav-link text-white" href="${pageContext.request.contextPath}/flight/findflight">Flights</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link text-white" href="#">Disabled link</a>
+		<a class="nav-link text-white" href="${pageContext.request.contextPath}/contact">Contact</a>
 	</li>
 </ul>

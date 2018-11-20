@@ -68,6 +68,14 @@ public class UserController {
 	public String processRegistration(@Valid @ModelAttribute("userRegisterModel") UserRegisterModel userModel,
 										BindingResult result, Model model) {
 		if(result.hasErrors()) {
+			List<String> countryList = new ArrayList<String>();
+			String[] locales = Locale.getISOCountries();
+			for (String countryCode : locales) {
+				Locale obj = new Locale("", countryCode);
+				countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+			}
+			Collections.sort(countryList);
+			model.addAttribute("countryList", countryList);
 			return "register";
 		}
 		
