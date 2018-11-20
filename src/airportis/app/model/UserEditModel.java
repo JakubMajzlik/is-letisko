@@ -1,5 +1,6 @@
 package airportis.app.model;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 public class UserEditModel {
@@ -26,9 +27,13 @@ public class UserEditModel {
 	private String street;
 	
 	@NotNull(message="This field is required")
+	@Digits(fraction=0, integer = 5,
+		message="This field must contains only digits")
 	private String houseNumber;
 	
 	@NotNull(message="This field is required")
+	@Digits(fraction=0, integer = 5,
+		message="This field must contains only digits")
 	private String zip;
 	
 	@NotNull(message="This field is required")
@@ -38,6 +43,8 @@ public class UserEditModel {
 	private String identificationNumber;
 	
 	@NotNull(message="This field is required")
+	@Digits(fraction=0, integer = 20,
+		message="This field must contains only digits")
 	private String phoneNumber;
 	
 	
