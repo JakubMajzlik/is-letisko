@@ -38,9 +38,10 @@ public class AdminController {
 	@Autowired
 	PlaneService planeService;
 	
+
 	@Autowired 
 	DestinationService destinationService;
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
 	StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
@@ -70,6 +71,15 @@ public class AdminController {
 			return "redirect:/admin/manageusers";
 		}
 		
+		List<String> countryList = new ArrayList<String>();
+		String[] locales = Locale.getISOCountries();
+		for (String countryCode : locales) {
+			Locale obj = new Locale("", countryCode);
+			countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+		}
+		Collections.sort(countryList);
+		
+		model.addAttribute("countryList", countryList);
 		model.addAttribute("userModel", userModel);
 		
 		return "admin-edituser-formular";
@@ -81,7 +91,17 @@ public class AdminController {
 			BindingResult result,
 			Model model) {
 		if(result.hasErrors()) {
-			return "redirect:/admin/manageusers/edituser?id="+userModel.getId();
+			List<String> countryList = new ArrayList<String>();
+			String[] locales = Locale.getISOCountries();
+			for (String countryCode : locales) {
+				Locale obj = new Locale("", countryCode);
+				countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+			}
+			Collections.sort(countryList);
+			
+			model.addAttribute("countryList", countryList);
+			//return "redirect:/admin/manageusers/edituser?id="+userModel.getId();
+			return "admin-edituser-formular"; 
 		}
 		
 		userService.update(userModel);
