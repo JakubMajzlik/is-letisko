@@ -5,8 +5,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.NumberFormat;
-
 import airportis.app.validator.FieldMatch;
 
 @FieldMatch.List({@FieldMatch(first="password1", second="password2", message="The password fields must match")})
@@ -37,11 +35,11 @@ public class UserRegisterModel {
 	
 	@NotNull(message="This field is required")
 	@Digits(fraction=0, integer = 5,
-			message="This field must contains only digits")
+			message="This field has to contain only digits")
 	private String houseNumber;
 	
 	@Digits(fraction=0, integer = 5,
-			message="This field must contains only digits")
+			message="This field has to contain only digits")
 	@NotNull(message="This field is required")
 	private String zip;
 	
@@ -52,7 +50,7 @@ public class UserRegisterModel {
 	private String identificationNumber;
 	
 	@Digits(fraction=0, integer = 20,
-			message="This field must contains only digits")
+			message="This field has to contain only digits")
 	@NotNull(message="This field is required")
 	private String phoneNumber;
 	

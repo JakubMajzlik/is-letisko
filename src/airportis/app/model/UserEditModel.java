@@ -28,12 +28,12 @@ public class UserEditModel {
 	
 	@NotNull(message="This field is required")
 	@Digits(fraction=0, integer = 5,
-		message="This field must contains only digits")
+		message="This field has to contain only digits")
 	private String houseNumber;
 	
 	@NotNull(message="This field is required")
 	@Digits(fraction=0, integer = 5,
-		message="This field must contains only digits")
+		message="This field has to contain only digits")
 	private String zip;
 	
 	@NotNull(message="This field is required")
@@ -44,7 +44,7 @@ public class UserEditModel {
 	
 	@NotNull(message="This field is required")
 	@Digits(fraction=0, integer = 20,
-		message="This field must contains only digits")
+		message="This field has to contain only digits")
 	private String phoneNumber;
 	
 	
