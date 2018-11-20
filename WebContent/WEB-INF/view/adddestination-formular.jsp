@@ -23,11 +23,24 @@
 		method="POST" modelAttribute="destinationModel">
 		
 	<form:hidden path="id"/>
-	Country:<form:select path="country">
-			<form:options items="${countryList}"/>
-			</form:select><br>
-	City:<form:input path="city"/><form:errors path="city"/><br>
-	Distance:<form:input path="distance"/>km &nbsp;<form:errors path="distance"/><br>
+	<table>
+	<tr>
+		<td>Country:</td>
+		<td>
+			<form:select path="country">
+				<form:options items="${countryList}"/>
+				</form:select>
+		</td>
+	</tr>
+	<tr>
+		<td>City:</td>
+		<td><form:input path="city"/><form:errors path="city"/></td>
+	</tr>
+	<tr>
+		<td>Distance:</td>
+		<td><form:input path="distance"/>km &nbsp;<form:errors path="distance"/></td>
+	</tr>
+	</table>
 	<button type="submit"> Save </button>
 	</form:form>
 </jsp:body>

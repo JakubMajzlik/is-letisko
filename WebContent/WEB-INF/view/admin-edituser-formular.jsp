@@ -18,27 +18,54 @@
 	<form:hidden path="password2"/>
 	<form:hidden path="id"/>
 	<form:hidden path="email"/>
-	
-	First name:<form:input path="firstName"/>
-	<form:errors path="firstName"/><br/>
-	Last name:<form:input path="lastName"/>
-	<form:errors path="lastName"/><br/>
-	Street:<form:input path="street"/>
-	<form:errors path="street"/><br/>
-	House number:<form:input path="houseNumber"/>
-	<form:errors path="houseNumber"/><br/>
-	ZIP:<form:input path="zip"/>
-	<form:errors path="zip"/><br/>
-	City:<form:input path="city"/>
-	<form:errors path="city"/><br/>
-	Country:<form:select path="country">
+	<table>
+	<tr>
+		<td>First name:</td>
+		<td><form:input path="firstName"/>
+			<form:errors path="firstName"/></td>
+	</tr>
+	<tr>
+		<td>Last name:</td>
+		<td><form:input path="lastName"/>
+			<form:errors path="lastName"/></td>
+	</tr>
+	<tr>
+		<td>Street:</td>
+		<td><form:input path="street"/>
+			<form:errors path="street"/></td>
+	</tr>
+	<tr>
+		<td>House number:</td>
+		<td><form:input path="houseNumber"/>
+			<form:errors path="houseNumber"/></td>
+	</tr>
+	<tr>
+		<td>ZIP:</td>
+		<td><form:input path="zip"/>
+			<form:errors path="zip"/></td>
+	</tr>
+	<tr>
+		<td>City:</td>
+		<td><form:input path="city"/>
+			<form:errors path="city"/></td>
+	</tr>
+	<tr>
+		<td>Country:</td>
+		<td><form:select path="country">
 			<form:options items="${countryList}"/>
-			</form:select><br/>
-	Identification number:<form:input path="identificationNumber"/>
-	<form:errors path="identificationNumber"/><br/>
-	Phone number:<form:input path="phoneNumber"/>
-	<form:errors path="phoneNumber"/><br/>
-	
+			</form:select></td>
+	</tr>
+	<tr>
+		<td>Identification number:</td>
+		<td><form:input path="identificationNumber"/>
+			<form:errors path="identificationNumber"/></td>
+	</tr>
+	<tr>
+		<td>Phone number:</td>
+		<td><form:input path="phoneNumber"/>
+			<form:errors path="phoneNumber"/></td>
+	</tr>
+	</table>
 	<button type="submit">Save</button>
 </form:form>
 </jsp:body>
