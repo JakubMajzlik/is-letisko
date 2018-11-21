@@ -5,9 +5,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
-<link rel="icon" 
-      type="image/png" 
-      href='<c:url value="/resources/img/favicon.png"/>'>
+<link rel="icon" type="image/png" href='<c:url value="/resources/img/favicon.png"/>'>
 </head>
   <body>
     <div class="container fill">
@@ -23,6 +21,7 @@
 				
 			</div>
 			<div class="col">
+				<!-- Pravy stlpec -->
 				<security:authorize access="!isAuthenticated()">
 					<form action="${pageContext.request.contextPath}/user/login/process" method="POST">
 						Email:<br/>
@@ -39,25 +38,33 @@
 					</form>
 					<a href="${pageContext.request.contextPath}/user/register">Don't have an account? Register for free</a>
 				</security:authorize>
-				<security:authorize access="hasRole('EMPLOYEE')">
-					<a href="${pageContext.request.contextPath }/employee/addflight" >Add Flight</a> <br/>
-					<a href="${pageContext.request.contextPath }/employee/updateflight" >Update Flight</a> <br/>
-					<br/>
-				</security:authorize>
-				
-				<security:authorize access="hasRole('ADMIN')">
-					<a href="${pageContext.request.contextPath}/admin/manageusers">Manage users</a> <br/>
-					<a href="${pageContext.request.contextPath}/admin/addplane">Add plane</a> <br/>
-					<a href="${pageContext.request.contextPath}/admin/updateplane">Show planes</a> <br/>
-					<a href="${pageContext.request.contextPath}/admin/adddestination">Add destination</a><br/>
-					<br/>
-				</security:authorize>
-				
 				<security:authorize access="isAuthenticated()">
-					<br/>
-					<form:form method="POST" action="${pageContext.request.contextPath }/logout">
-						<input type="submit" value="Logout"/>
-					</form:form>
+					<security:authentication var="user" property="principal"/>
+					You are logged with email <b>${user.username}</b>
+					<hr/>
+					<a href="${pageContext.request.contextPath}/user/editprofile">Edit profile</a> <br/>
+					<a href="${pageContext.request.contextPath }/user/showhistory">Order history</a>  <br/>
+					<hr/>
+					<security:authorize access="hasRole('EMPLOYEE')">
+						<a href="${pageContext.request.contextPath }/employee/addflight" >Add Flight</a> <br/>
+						<a href="${pageContext.request.contextPath }/employee/updateflight" >Update Flight</a> <br/>
+						<br/>
+					</security:authorize>
+					
+					<security:authorize access="hasRole('ADMIN')">
+						<a href="${pageContext.request.contextPath}/admin/manageusers">Manage users</a> <br/>
+						<a href="${pageContext.request.contextPath}/admin/addplane">Add plane</a> <br/>
+						<a href="${pageContext.request.contextPath}/admin/updateplane">Show planes</a> <br/>
+						<a href="${pageContext.request.contextPath}/admin/adddestination">Add destination</a><br/>
+						<br/>
+					</security:authorize>
+					
+					<security:authorize access="isAuthenticated()">
+						<br/>
+						<form:form method="POST" action="${pageContext.request.contextPath }/logout">
+							<input type="submit" value="Logout"/>
+						</form:form>
+					</security:authorize>
 				</security:authorize>
 			</div>
 		</div>

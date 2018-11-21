@@ -14,13 +14,19 @@
 	<h1>Login</h1>
 	<br/>
 	<c:if test="${param.successfullyRegistred == true }">
-		<h3>Registration was successful, now you can login</h3>
+		<div class="alert alert-success d-inline-flex p-2">
+			Registration was successful, now you can login
+		</div>
 	</c:if>
 	<c:if test="${param.logout != null }" >
-		<h3>You have been logged out </h3>
+	<div class="alert alert-success d-inline-flex p-2">
+    	 You have been successfully logged out.
+ 	</div>
 	</c:if>
 	<c:if test="${param.error != null}">
-		<b class="text-danger">Invalid email or password</b><br>
+		<div class="alert alert-danger d-inline-flex p-2">
+		Invalid email or password
+		</div>
 	</c:if><br/>
 	<form action="${pageContext.request.contextPath}/user/login/process" method="POST">
 		<table>
