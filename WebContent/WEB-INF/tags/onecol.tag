@@ -6,26 +6,27 @@
 <html>
 <head>
 <link rel="icon" type="image/png" href='<c:url value="/resources/img/favicon.png"/>'>
+
 </head>
-  <body>
+  <body style="padding:0;margin:0;" >
   
-    <div class="container fill">
-   		<div class="row bg-info mb-5 ">
+    <div  class="container fill " style="min-height:85vh;">
+   		<div class="row bg-info ">
 			<div class="col">
 				<t:nav/>
 			</div>
     	</div>
-		<div class="row">
+		<div class="row h-100">
 			<div class="col-10">
-				<div id="body" class="col-9">
+				<div id="body" class="col-9 pb-5">
 			
 				<jsp:doBody/>
-				
 				</div>
 			</div>			
 		</div>
+		
 	</div>
-	<div class="page-footer fixed-bottom bg-info row" >
+	<div class="page-footer bg-info row" >
 	<div class="col-5">
 	<a class="weatherwidget-io" href="https://forecast7.com/en/49d0719d71/jamnik/" data-label_1="CURRENT WEATHER" data-label_2="IN JAMNÍK" data-days="3" data-theme="original" data-basecolor="rgba(255, 255, 255, 0)" >JAMNÍK WEATHER</a>
 <script>

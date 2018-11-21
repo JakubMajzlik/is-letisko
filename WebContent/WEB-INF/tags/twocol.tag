@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href='<c:url value="/resources/img/favicon.png"/>'>
 </head>
   <body>
-    <div class="container fill">
+    <div class="container fill pb-5" style="min-height:85vh;">
     	<div class="row bg-info mb-5">
 			<div class="col">
 				<t:nav/>
@@ -68,14 +68,15 @@
 				</security:authorize>
 			</div>
 		</div>
+		<br/><br/><br/><br/>
 	</div>
-	<div class="page-footer fixed-bottom bg-info row" >
-	<div class="col-5">
-	<a class="weatherwidget-io" href="https://forecast7.com/en/49d0719d71/jamnik/" data-label_1="CURRENT WEATHER" data-label_2="IN JAMNÍK" data-days="3" data-theme="original" data-basecolor="rgba(255, 255, 255, 0)" >JAMNÍK WEATHER</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
-	</div>
+	<div class="page-footer bg-info row" >
+		<div class="col-5">
+		<a class="weatherwidget-io" href="https://forecast7.com/en/49d0719d71/jamnik/" data-label_1="CURRENT WEATHER" data-label_2="IN JAMNÍK" data-days="3" data-theme="original" data-basecolor="rgba(255, 255, 255, 0)" >JAMNÍK WEATHER</a>
+		<script>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+		</script>
+		</div>
 	    <div class="footer-copyright text-white text-center py-4 col">
 	    	
 	    	© 2018 Copyright Jamnik Airport

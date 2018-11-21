@@ -88,6 +88,7 @@
 	<button type="submit">Register</button>
 </form:form>
 <a href="${pageContext.request.contextPath}/user/login">Already have an account? Log in</a>
+
 </jsp:body>
 </t:onecol>
 </body>

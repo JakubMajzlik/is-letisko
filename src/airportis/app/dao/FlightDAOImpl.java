@@ -44,14 +44,8 @@ public class FlightDAOImpl implements FlightDAO {
 		Session session= sessionFactory.getCurrentSession();
 		List<Flight> list= new ArrayList<>();
 		Query<Flight> flight= session.createQuery("from Flight", Flight.class);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
 		for (Flight f : flight.getResultList()) {
-			
-			LocalDate date= LocalDate.now();
-			LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
-			if(takeoffDate.compareTo(date)==0) {
-				list.add(f);
-			}
+			list.add(f);
 		}
 		return list;
 	}
