@@ -69,8 +69,15 @@
 			</div>
 		</div>
 	</div>
-	<div class="page-footer fixed-bottom bg-info" >
-	    <div class="footer-copyright text-white text-center py-4">
+	<div class="page-footer fixed-bottom bg-info row" >
+	<div class="col-5">
+	<a class="weatherwidget-io" href="https://forecast7.com/en/49d0719d71/jamnik/" data-label_1="CURRENT WEATHER" data-label_2="IN JAMNÍK" data-days="3" data-theme="original" data-basecolor="rgba(255, 255, 255, 0)" >JAMNÍK WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+	</div>
+	    <div class="footer-copyright text-white text-center py-4 col">
+	    	
 	    	© 2018 Copyright Jamnik Airport
 	    </div>
 	</div>

@@ -22,6 +22,14 @@
 				<td>+421 000 000 000</td>
 			</tr>
 		</table>
+		<br><br>
+		<div class="mapouter">
+			<div class="gmap_canvas">
+				<iframe width="600" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=49.096689%2C%2019.733178&t=k&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+			</div>
+		</div>
+	
+		
 	</jsp:body>
 </t:twocol>
 	
