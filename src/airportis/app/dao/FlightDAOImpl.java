@@ -3,6 +3,7 @@ package airportis.app.dao;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -43,8 +44,14 @@ public class FlightDAOImpl implements FlightDAO {
 		Session session= sessionFactory.getCurrentSession();
 		List<Flight> list= new ArrayList<>();
 		Query<Flight> flight= session.createQuery("from Flight", Flight.class);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
 		for (Flight f : flight.getResultList()) {
-			list.add(f);
+			
+			LocalDate date= LocalDate.now();
+			LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
+			if(takeoffDate.compareTo(date)==0) {
+				list.add(f);
+			}
 		}
 		return list;
 	}
@@ -62,15 +69,20 @@ public class FlightDAOImpl implements FlightDAO {
 			for (Flight f : flight.getResultList()) {
 				LocalDate date= LocalDate.parse(stringDate, formatter1);
 				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
-				if(takeoffDate.compareTo(date)>=0) {
+				if(takeoffDate.compareTo(date)==0) {
 					list.add(f);
 				}
 			}
 		}else if(stringDate ==""){
 			Query<Flight> flight= session.createQuery("from Flight where destination= :destination", Flight.class);
 			flight.setParameter("destination",destination);
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
 			for (Flight f : flight.getResultList()) {
-				list.add(f);
+				LocalDate date= LocalDate.now();
+				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
+				if(takeoffDate.compareTo(date)==0) {
+					list.add(f);
+				}
 			}
 		}else {
 			Query<Flight> flight= session.createQuery("from Flight where destination= :destination", Flight.class);
@@ -80,7 +92,7 @@ public class FlightDAOImpl implements FlightDAO {
 			for (Flight f : flight.getResultList()) {
 				LocalDate date= LocalDate.parse(stringDate, formatter1);
 				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
-				if(takeoffDate.compareTo(date)>=0) {
+				if(takeoffDate.compareTo(date)==0) {
 					list.add(f);
 				}
 			}

@@ -35,7 +35,10 @@
 			Date:
 		<form:input path="takeoffDate" id="datepicker" width="312" />
     	<script>
-        	$('#datepicker').datepicker({format:'dd/mm/yyyy'});
+    	var date = new Date();
+    	date.setDate(date.getDate()-1);
+        	$('#datepicker').datepicker({format:'dd/mm/yyyy', minDate:date,
+        		value:(date.getDate()+1) + '/' + (date.getMonth()+1) + '/' + date.getFullYear()});
     	</script>
 	    
 	    Destination: <br> 
@@ -46,8 +49,8 @@
 	    <br>
 		<button type="submit"> Find flights </button>
 	</form:form>
-
-	<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+	<c:if test="${!flights.isEmpty()}">
+		<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
 				<thead class="thead-inverse|thead-default">
 						<tr>
 							<th>Takeoff date</th>
@@ -57,22 +60,27 @@
 						</tr>
 				</thead>
 				<tbody>
-	<c:forEach items="${flights}" var="item">
-			<tr>
-				<td> <b>${item.getTakeoffDate()}</b></td>
-				<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
-				<td><b>${destinationService.getDestinationDistance(item.getDestination())}km</b></td>
-				<td><b><fmt:formatNumber
-		  			value="${destinationService.getDestinationDistance(item.getDestination())/650}"
-		  			maxFractionDigits="0"/>hod
-		  			<fmt:formatNumber
-		  			value="${destinationService.getDestinationDistance(item.getDestination())%650/650*60}"
-		  			maxFractionDigits="0"/>min</b></td>
-				<td><a href="${pageContext.request.contextPath}/flight/findflight?id=${item.getId()}">Order flight ticket</a></td>
-			</tr>  	
-	</c:forEach>
-	</tbody>
-	</table>
+		<c:forEach items="${flights}" var="item">
+				<tr>
+					<td> <b>${item.getTakeoffDate()}</b></td>
+					<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
+					<td><b>${destinationService.getDestinationDistance(item.getDestination())}km</b></td>
+					<td><b><fmt:formatNumber
+			  			value="${destinationService.getDestinationDistance(item.getDestination())/650}"
+			  			maxFractionDigits="0"/>hod
+			  			<fmt:formatNumber
+			  			value="${destinationService.getDestinationDistance(item.getDestination())%650/650*60}"
+			  			maxFractionDigits="0"/>min</b></td>
+					<td><a href="${pageContext.request.contextPath}/flight/findflight?id=${item.getId()}">Order flight ticket</a></td>
+				</tr>  	
+		</c:forEach>
+		</tbody>
+		</table>
+	</c:if>
+	<c:if test="${flights.isEmpty()}">
+	<br>
+		<b>No flights found for this date</b><br>
+	</c:if>
 </jsp:body>
 </t:twocol>
 </body>
