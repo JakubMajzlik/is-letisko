@@ -60,5 +60,10 @@
 			</div>
 		</div>
 	</div>
+	<div class="page-footer fixed-bottom bg-info" >
+	    <div class="footer-copyright text-white text-center py-4">
+	    	© 2018 Copyright Jamnik Airport
+	    </div>
+	</div>
   </body>
 </html>
