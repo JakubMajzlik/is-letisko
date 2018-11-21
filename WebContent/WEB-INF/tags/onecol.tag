@@ -5,7 +5,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
-
+<link rel="icon" type="image/png" href='<c:url value="/resources/img/favicon.png"/>'>
 </head>
   <body>
   
