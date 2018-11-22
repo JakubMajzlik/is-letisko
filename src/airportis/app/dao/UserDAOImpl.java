@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import airportis.app.entity.PassengerDetail;
 import airportis.app.entity.User;
 
 @Repository
@@ -55,5 +56,33 @@ public class UserDAOImpl implements UserDAO {
 	public User findUserById(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(User.class, id);
+	}
+
+	@Override
+	public String getUserName(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<PassengerDetail> theQuery = session.createQuery("from PassengerDetail where email=:email", PassengerDetail.class);
+		theQuery.setParameter("email", email);
+		PassengerDetail user;
+		try {
+			user = theQuery.getSingleResult();
+		} catch (Exception e) {
+			user = null;
+		}
+		return user.getFirstName();
+	}
+
+	@Override
+	public String getUserSurname(String email) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<PassengerDetail> theQuery = session.createQuery("from PassengerDetail where email=:email", PassengerDetail.class);
+		theQuery.setParameter("email", email);
+		PassengerDetail user;
+		try {
+			user = theQuery.getSingleResult();
+		} catch (Exception e) {
+			user = null;
+		}
+		return user.getLastName();
 	}
 }

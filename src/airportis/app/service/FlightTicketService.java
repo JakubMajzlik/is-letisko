@@ -13,4 +13,5 @@ public interface FlightTicketService {
 	int getFirstTickets(int id);
 	List<FlightTicket> getAllFlightTickets(String identificationNumber);
 	FlightTicket getFlightTicket(int id);
+	void generatePDF(FlightTicket flightTicket);
 }

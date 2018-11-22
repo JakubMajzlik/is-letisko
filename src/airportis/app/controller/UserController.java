@@ -1,5 +1,13 @@
 package airportis.app.controller;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -12,15 +20,22 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +45,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import airportis.app.entity.Flight;
+import com.itextpdf.text.pdf.codec.Base64.InputStream;
+
 import airportis.app.entity.FlightTicket;
 import airportis.app.entity.User;
 import airportis.app.model.NewPasswordModel;
@@ -202,6 +218,28 @@ public class UserController {
 		}
 		model.addAttribute("stornoMap", stornoMap);
 		return "history";
+	}
+	
+	@RequestMapping("/history/showticket")
+	public void showTicket(HttpServletResponse response) {
+		ClassLoader classLoader= getClass().getClassLoader();
+		File file = new File(classLoader.getResource("../").getPath() + "tickets/flightTicket22.pdf");
+		String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+		response.setContentType(mimeType);
+		response.setHeader("Content-Disposition", String.format("inline;filename=\""+file.getName()+"\""));
+		response.setContentLength((int)file.length());
+		try {
+			BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+			try {
+				FileCopyUtils.copy(inputStream, response.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@RequestMapping("/history/storno")
