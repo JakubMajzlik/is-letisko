@@ -1,5 +1,7 @@
 package airportis.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +45,18 @@ public class FlightTicketServiceImpl implements FlightTicketService{
 	@Transactional
 	public int getFirstTickets(int id) {
 		return flightTicketDAO.getFirstTickets(id);
+	}
+
+	@Override
+	@Transactional
+	public List<FlightTicket> getAllFlightTickets(String identificationNumber) {
+		return flightTicketDAO.getAllTickets(identificationNumber);
+	}
+
+	@Override
+	@Transactional
+	public FlightTicket getFlightTicket(int id) {
+		return flightTicketDAO.getFlightTicket(id);
 	}
 
 }

@@ -1,9 +1,16 @@
 package airportis.app.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -21,11 +28,17 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import airportis.app.entity.Flight;
+import airportis.app.entity.FlightTicket;
 import airportis.app.entity.User;
 import airportis.app.model.NewPasswordModel;
 import airportis.app.model.UserEditModel;
 import airportis.app.model.UserRegisterModel;
+import airportis.app.service.DestinationService;
+import airportis.app.service.FlightService;
+import airportis.app.service.FlightTicketService;
 import airportis.app.service.UserService;
 
 @Controller
@@ -34,6 +47,15 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	FlightService flightService;
+	
+	@Autowired
+	DestinationService destinationService;
+	
+	@Autowired
+	FlightTicketService flightTicketService;
 	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
@@ -154,5 +176,41 @@ public class UserController {
 		userService.update(userModel);
 		model.addAttribute("passwordChanged", true);
 		return "redirect:/user/editprofile";
+	}
+	
+	@RequestMapping("/showhistory")
+	public String showHistory(Model model) {
+		String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+		String idNumber= userService.findUserByEmail(userEmail).getDetails().getIdentificationNumber();
+		List<FlightTicket> flightTickets= flightTicketService.getAllFlightTickets(idNumber);
+		model.addAttribute("flightTickets", flightTickets);
+		model.addAttribute("flightService", flightService);
+		model.addAttribute("destinationService", destinationService);
+		Map<Integer, Boolean> stornoMap= new HashMap<Integer, Boolean>();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = new Date();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
+		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate localDate= LocalDate.parse(dateFormat.format(date), formatter1);
+		for (FlightTicket flightTicket : flightTickets) {
+			LocalDate takeoffDate= LocalDate.parse(flightService.getFlight(flightTicket.getFlight()).getTakeoffDate(), formatter);
+			if(localDate.compareTo(takeoffDate)<0) {
+				stornoMap.put(flightTicket.getId(), true);
+			}else {
+				stornoMap.put(flightTicket.getId(), false);
+			}
+		}
+		model.addAttribute("stornoMap", stornoMap);
+		return "history";
+	}
+	
+	@RequestMapping("/history/storno")
+	public String stornoTicket(@RequestParam(value="id", required=false)Integer id) {
+		if(id==null) {
+			return "history";
+		}
+		FlightTicket flightTicket= flightTicketService.getFlightTicket(id);
+		flightTicketService.remove(flightTicket);
+		return "redirect:/user/showhistory";
 	}
 }

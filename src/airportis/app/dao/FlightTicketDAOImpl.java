@@ -1,5 +1,7 @@
 package airportis.app.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -58,6 +60,14 @@ import airportis.app.entity.FlightTicket;
 		Query<FlightTicket> flightTicket= session.createQuery("from FlightTicket where seatClass = 'First' and flight= :id", FlightTicket.class);
 		flightTicket.setParameter("id", id);
 		return flightTicket.getResultList().size();
+	}
+
+	@Override
+	public List<FlightTicket> getAllTickets(String identificationNumber) {
+		Session session= sessionFactory.getCurrentSession();
+		Query<FlightTicket> flightTicket= session.createQuery("from FlightTicket where userIdentificationNumber = :userIdentificationNumber", FlightTicket.class);
+		flightTicket.setParameter("userIdentificationNumber", identificationNumber);
+		return flightTicket.getResultList();
 	}
 
 }

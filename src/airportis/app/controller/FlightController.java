@@ -45,7 +45,6 @@ public class FlightController {
 		if(id == null) {
 			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date date = new Date();
-			System.out.println("MODEL DATE: "+filterModel.getTakeoffDate());
 			if(filterModel.getTakeoffDate()==null && filterModel.getDestination()==0) {	
 				model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),0));
 			}else {
