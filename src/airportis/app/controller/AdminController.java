@@ -41,6 +41,17 @@ public class AdminController {
 
 	@Autowired 
 	DestinationService destinationService;
+	
+	List<String> getCountryList() {
+		List<String> countryList = new ArrayList<String>();
+		String[] locales = Locale.getISOCountries();
+		for (String countryCode : locales) {
+			Locale obj = new Locale("", countryCode);
+			countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
+		}
+		Collections.sort(countryList);
+		return countryList;
+	}
 
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -71,15 +82,7 @@ public class AdminController {
 			return "redirect:/admin/manageusers";
 		}
 		
-		List<String> countryList = new ArrayList<String>();
-		String[] locales = Locale.getISOCountries();
-		for (String countryCode : locales) {
-			Locale obj = new Locale("", countryCode);
-			countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
-		}
-		Collections.sort(countryList);
-		
-		model.addAttribute("countryList", countryList);
+		model.addAttribute("countryList", getCountryList());
 		model.addAttribute("userModel", userModel);
 		
 		return "admin-edituser-formular";
@@ -91,16 +94,7 @@ public class AdminController {
 			BindingResult result,
 			Model model) {
 		if(result.hasErrors()) {
-			List<String> countryList = new ArrayList<String>();
-			String[] locales = Locale.getISOCountries();
-			for (String countryCode : locales) {
-				Locale obj = new Locale("", countryCode);
-				countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
-			}
-			Collections.sort(countryList);
-			
-			model.addAttribute("countryList", countryList);
-			//return "redirect:/admin/manageusers/edituser?id="+userModel.getId();
+			model.addAttribute("countryList", getCountryList());
 			return "admin-edituser-formular"; 
 		}
 		
@@ -178,17 +172,10 @@ public class AdminController {
 	
 	@GetMapping("/adddestination")
 	public String showAddDestination(Model model) {
-		List<String> countryList = new ArrayList<String>();
-		String[] locales = Locale.getISOCountries();
-		for (String countryCode : locales) {
-			Locale obj = new Locale("", countryCode);
-			countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
-		}
-		Collections.sort(countryList);
 		DestinationModel destinationModel= new DestinationModel();
 		model.addAttribute("destinationModel", destinationModel);
 		model.addAttribute("destinationService", destinationService);
-		model.addAttribute("countryList", countryList);
+		model.addAttribute("countryList", getCountryList());
 		return "adddestination-formular";
 	}
 	
@@ -196,14 +183,7 @@ public class AdminController {
 	public String processAddDestination(@Valid @ModelAttribute("destinationModel") DestinationModel destinationModel, 
 			BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			List<String> countryList = new ArrayList<String>();
-			String[] locales = Locale.getISOCountries();
-			for (String countryCode : locales) {
-				Locale obj = new Locale("", countryCode);
-				countryList.add(obj.getDisplayCountry(Locale.ENGLISH));
-			}
-			Collections.sort(countryList);
-			model.addAttribute("countryList", countryList);
+			model.addAttribute("countryList", getCountryList());
 			return "adddestination-formular";
 		}else {
 			destinationService.save(destinationModel);

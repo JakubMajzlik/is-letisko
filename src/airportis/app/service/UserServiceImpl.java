@@ -127,6 +127,8 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	public void update(UserEditModel userEditModel) {
 		User user = userDAO.findUserByEmail(userEditModel.getEmail());
+		user.setPassword(userEditModel.getPassword1());
+		
 		PassengerDetail details = user.getDetails();
 				
 		details.setIdentificationNumber(userEditModel.getIdentificationNumber());
