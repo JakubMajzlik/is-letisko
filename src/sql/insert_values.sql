@@ -70,4 +70,4 @@ insert into flights(takeoff_date, destination, gate, plane, price) values('18/01
 insert into flights(takeoff_date, destination, gate, plane, price) values('25/01/2019 07:25', 3, 2, 'CONC19981130', 432.90);
 
 -- FLIGHT TICKETS
-insert into flight_tickets(boarding_time, flight, class, user_identification_number) values('15:00', 3, 'Economic', '8912121229');
+insert into flight_tickets(flight, class, user_identification_number) values(3, 'Economic', '8912121229');

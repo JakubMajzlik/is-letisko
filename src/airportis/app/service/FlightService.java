@@ -9,7 +9,8 @@ public interface FlightService {
 
 	void save(FlightModel flightModel);
 	void remove(int id);
-	FlightModel getFlight(int id);
+	Flight getFlight(int id);
+	FlightModel getFlightModel(int id);
 	List<Flight> getAllFlights();
 	List<Flight> getAllFlights(String date, int destination);
 }

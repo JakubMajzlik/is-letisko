@@ -54,7 +54,7 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	@Transactional
-	public FlightModel getFlight(int id) {
+	public FlightModel getFlightModel(int id) {
 
 		Flight flight= flightDAO.getFlight(id);
 		if(flight == null) {
@@ -81,6 +81,12 @@ public class FlightServiceImpl implements FlightService {
 	@Transactional
 	public List<Flight> getAllFlights(String date, int destination) {
 		return flightDAO.getAllFlights(date, destination);
+	}
+
+	@Override
+	@Transactional
+	public Flight getFlight(int id) {
+		return flightDAO.getFlight(id);
 	}
 
 }

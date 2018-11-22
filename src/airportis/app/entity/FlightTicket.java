@@ -1,7 +1,5 @@
 package airportis.app.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,9 +16,6 @@ public class FlightTicket {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="boarding_time")
-	private String boardingTime;
-	
 	@Column(name="flight")
 	private int flight;
 	
@@ -33,8 +28,7 @@ public class FlightTicket {
 
 	public FlightTicket() {}
 
-	public FlightTicket(String boarding_time, int flight, String seatClass, String user_identification_number) {
-		this.boardingTime = boarding_time;
+	public FlightTicket(int flight, String seatClass, String user_identification_number) {
 		this.flight = flight;
 		this.seatClass = seatClass;
 		this.userIdentificationNumber = user_identification_number;
@@ -46,14 +40,6 @@ public class FlightTicket {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getBoardingTime() {
-		return boardingTime;
-	}
-
-	public void setBoardingTime(String boarding_time) {
-		this.boardingTime = boarding_time;
 	}
 
 	public int getFlight() {
@@ -82,7 +68,7 @@ public class FlightTicket {
 
 	@Override
 	public String toString() {
-		return "FlightTicket [id=" + id + ", boarding_time=" + boardingTime + ", flight=" + flight + ", seatClass=" + seatClass
+		return "FlightTicket [id=" + id + ", flight=" + flight + ", seatClass=" + seatClass
 				+ ", user_identification_number=" + userIdentificationNumber + "]";
 	}
 	

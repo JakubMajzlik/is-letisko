@@ -1,6 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
@@ -11,34 +12,36 @@
 <body class="fill">
 <t:twocol>
 	<jsp:body>
-	<table border=1>
-	<tr>
-		<td>Economic: &nbsp;&nbsp;&nbsp;</td>
-		<td>Business: &nbsp;&nbsp;&nbsp;</td>
-		<td>First: &nbsp;&nbsp;&nbsp;</td>
-	</tr>
-	<tr>
-		<td>${economic} </td>
-		<td>${business} </td>
-		<td> ${first}</td>
-	</tr>
-	<tr>
-		<td><fmt:formatNumber
-	  		value="${flightModel.price}"
-	  		maxFractionDigits="2" /></td>
-		<td><fmt:formatNumber
-	  		value="${flightModel.price*2}"
-	  		maxFractionDigits="2" /></td>
-		<td><fmt:formatNumber
-	  		value="${flightModel.price*3}"
-	  		maxFractionDigits="2" /></td>
-  	</tr>
-  	<tr>
-  		<td><a href="${pageContext.request.contextPath}/flight">Buy</a></td>
-  		<td><a href="${pageContext.request.contextPath}/flight">Buy</a></td>
-  		<td><a href="${pageContext.request.contextPath}/flight">Buy</a></td>
-  	</tr>
-	</table>
+	<h2>Summary</h2>
+	Flight ID: ${id} <br> 
+	Date: ${flightModel.getTakeoffDate()} <br>
+	From: Jamnik, Slovakia <br>
+	To: ${destinationService.getDestinationName(flightModel.getDestination())} <br>
+	Flight length: <fmt:formatNumber
+			  			value="${hours}"
+			  			maxFractionDigits="0"/>hod
+			  			<fmt:formatNumber
+			  			value="${minutes}"
+			  			maxFractionDigits="0"/>min <br>
+	<h4><fmt:formatNumber
+  		value="${flightModel.getPrice()*ticket_class}"
+  		maxFractionDigits="2" 
+  		minFractionDigits="2"/>€</h4>
+  		
+  	<br><br>
+  	
+  	<form:form action="${pageContext.request.contextPath}/flight/orderflight/process?class=${ticket_class}"
+			method="POST" modelAttribute="flightModel">
+		<form:hidden path="takeoffDate"/>
+		<form:hidden path="destination"/>
+		<form:hidden path="gate"/>
+		<form:hidden path="plane"/>
+		<form:hidden path="id"/>
+		<form:hidden path="price"/>
+		<button type=submit>Order</button>
+	</form:form>
+  	
+	
 </jsp:body>
 </t:twocol>
 </body>

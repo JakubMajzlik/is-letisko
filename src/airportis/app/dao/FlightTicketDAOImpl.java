@@ -39,6 +39,7 @@ import airportis.app.entity.FlightTicket;
 	public int getEconomicTickets(int id) {
 		Session session= sessionFactory.getCurrentSession();
 		Query<FlightTicket> flightTicket= session.createQuery("from FlightTicket where seatClass = 'Economic' and flight= :id", FlightTicket.class);
+		System.out.println("ID "+ id);
 		flightTicket.setParameter("id", id);
 		return flightTicket.getResultList().size();
 	}

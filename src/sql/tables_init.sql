@@ -105,7 +105,6 @@ create table if not exists `flights` (
 
 create table if not exists `flight_tickets` (
 	`id` int(11) auto_increment,
-    `boarding_time` varchar(5) not null,
     `flight` int(11) not null,
     `class` varchar(16) not null,
     `user_identification_number` varchar(10) not null,

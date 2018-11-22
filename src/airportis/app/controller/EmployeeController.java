@@ -78,7 +78,7 @@ public class EmployeeController {
 			model.addAttribute("flights", flightService.getAllFlights());
 			return "updateflight";
 		}
-		FlightModel flightModel= flightService.getFlight(id.intValue());
+		FlightModel flightModel= flightService.getFlightModel(id.intValue());
 		model.addAttribute("planeService", planseService);
 		model.addAttribute("gateService", gateService);
 		if(flightModel== null) {

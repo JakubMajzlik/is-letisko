@@ -56,7 +56,6 @@
 							<th>Takeoff date</th>
 							<th>Destination</th>
 							<th>Distance</th>
-							<th>Flight length</th>
 						</tr>
 				</thead>
 				<tbody>
@@ -65,12 +64,6 @@
 					<td> <b>${item.getTakeoffDate()}</b></td>
 					<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
 					<td><b>${destinationService.getDestinationDistance(item.getDestination())}km</b></td>
-					<td><b><fmt:formatNumber
-			  			value="${destinationService.getDestinationDistance(item.getDestination())/650}"
-			  			maxFractionDigits="0"/>hod
-			  			<fmt:formatNumber
-			  			value="${destinationService.getDestinationDistance(item.getDestination())%650/650*60}"
-			  			maxFractionDigits="0"/>min</b></td>
 					<td><a href="${pageContext.request.contextPath}/flight/findflight?id=${item.getId()}">Order flight ticket</a></td>
 				</tr>  	
 		</c:forEach>
