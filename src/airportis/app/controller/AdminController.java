@@ -118,6 +118,36 @@ public class AdminController {
 		return "redirect:/admin/manageusers";
 	}
 	
+	@GetMapping("/manageusers/enableuser")
+	public String enableUsert(@RequestParam("id")Integer id, Model model) {
+		if(id == null) {
+			return "redirect:/admin/manageusers";
+		}
+		
+		User user = userService.findUserById(id.intValue()); 
+		if(user != null) {
+			user.setEnabled(true);
+			userService.save(user);
+		}
+		
+		return "redirect:/admin/manageusers";
+	}
+	
+	@GetMapping("/manageusers/disableuser")
+	public String disableUsert(@RequestParam("id")Integer id, Model model) {
+		if(id == null) {
+			return "redirect:/admin/manageusers";
+		}
+		
+		User user = userService.findUserById(id.intValue()); 
+		if(user != null) {
+			user.setEnabled(false);
+			userService.save(user);
+		}
+		
+		return "redirect:/admin/manageusers";
+	}
+	
 	@GetMapping("/addplane")
 	public String showPlaneForm(Model model) {
 		model.addAttribute("planeModel", new PlaneModel());

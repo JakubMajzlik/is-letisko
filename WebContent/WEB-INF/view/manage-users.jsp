@@ -20,6 +20,12 @@
 			<td><button onclick="window.location.href = '${pageContext.request.contextPath}/admin/manageusers/edituser?id=${user.id}';">Edit</button></td>
 			<td><button onclick="if (confirm('Are you sure you want to delete this thing into the database?')) {
 						window.location.href = '${pageContext.request.contextPath}/admin/manageusers/deleteuser?id=${user.id}';}" >Delete</button></td>
+			<c:if test="${user.isEnabled() == true}">
+				<td><button onclick="window.location.href = '${pageContext.request.contextPath}/admin/manageusers/disableuser?id=${user.id}';">Disable</button></td>
+			</c:if>
+			<c:if test="${user.isEnabled() == false}">
+				<td><button onclick="window.location.href = '${pageContext.request.contextPath}/admin/manageusers/enableuser?id=${user.id}';">Enable</button></td>
+			</c:if>
 		</tr>
 
 	</c:forEach>

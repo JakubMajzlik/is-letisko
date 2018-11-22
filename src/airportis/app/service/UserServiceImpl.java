@@ -40,11 +40,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		if(destinationService== null) System.out.println("destSer je NULA");
 		User user = userDAO.findUserByEmail(username);
-		System.out.println(user);
 		if(user == null) {
 			throw new UsernameNotFoundException("Invalid username or password");
+		}
+		if(!user.isEnabled()) {
+			throw new UsernameNotFoundException("Account is locked");
 		}
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 				mapRolesToAuthorities(user.getRoles()));
@@ -104,7 +105,6 @@ public class UserServiceImpl implements UserService{
 			return null;
 		}
 		PassengerDetail details = user.getDetails();
-		System.out.println(details);
 		UserEditModel userModel = new UserEditModel(
 				user.getId(),
 				details.getFirstName(),
@@ -151,6 +151,12 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	public void remove(User user) {
 		userDAO.remove(user);	
+	}
+
+	@Override
+	@Transactional
+	public void save(User user) {
+		userDAO.save(user);
 	}
 
 }
