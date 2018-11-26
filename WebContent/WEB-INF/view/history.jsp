@@ -19,6 +19,7 @@
 					<td><b>${item.getId()}</b></td>
 					<td> ${flightService.getFlight(item.getFlight()).getTakeoffDate()}</td>
 					<td> ${destinationService.getDestinationName(flightService.getFlight(item.getFlight()).getDestination())}</td>
+					<td> <a href="${pageContext.request.contextPath}/user/history/downloadticket?id=${item.getId()}">Download ticket</a></td>
 					<c:if test="${stornoMap.get(item.getId())}">
 						<td><button onclick="if (confirm('Are you sure you want to storno this ticket?')) {
 						window.location.href = '${pageContext.request.contextPath}/user/history/storno?id=${item.getId()}';}" >Storno</button></td>

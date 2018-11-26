@@ -109,11 +109,14 @@ public class FlightTicketServiceImpl implements FlightTicketService{
 		over.setTextMatrix(175,240);
 		over.showText(Integer.toString(flightTicket.getFlight()));
 		
+		over.setTextMatrix(390,240);
+		over.showText(flightTicket.getSeatClass());
+		
 		over.setTextMatrix(175,208);
 		over.showText("Jamník, Slovakia");
 		
 		over.setTextMatrix(175,176);
-		over.showText(destinationDAO.getDestination(flightTicket.getFlight()).getCity()+", "+destinationDAO.getDestination(flightTicket.getFlight()).getCountry());
+		over.showText(destinationDAO.getDestination(flightDAO.getFlight(flightTicket.getFlight()).getDestination()).getCity()+", "+destinationDAO.getDestination(flightDAO.getFlight(flightTicket.getFlight()).getDestination()).getCountry());
 		
 		String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
 		

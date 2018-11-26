@@ -220,25 +220,27 @@ public class UserController {
 		return "history";
 	}
 	
-	@RequestMapping("/history/showticket")
-	public void showTicket(HttpServletResponse response) {
-		ClassLoader classLoader= getClass().getClassLoader();
-		File file = new File(classLoader.getResource("../").getPath() + "tickets/flightTicket22.pdf");
-		String mimeType = URLConnection.guessContentTypeFromName(file.getName());
-		response.setContentType(mimeType);
-		response.setHeader("Content-Disposition", String.format("inline;filename=\""+file.getName()+"\""));
-		response.setContentLength((int)file.length());
-		try {
-			BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+	@RequestMapping("/history/downloadticket")
+	public void downloadTicket(HttpServletResponse response, @RequestParam(value="id", required=false)Integer id) {
+		if(id!=null) {
+			ClassLoader classLoader= getClass().getClassLoader();
+			File file = new File(classLoader.getResource("../").getPath() + "tickets/flightTicket"+id+".pdf");
+			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+			response.setContentType(mimeType);
+			response.setHeader("Content-Disposition", String.format("attachment;filename=\""+file.getName()+"\""));
+			response.setContentLength((int)file.length());
 			try {
-				FileCopyUtils.copy(inputStream, response.getOutputStream());
-			} catch (IOException e) {
+				BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+				try {
+					FileCopyUtils.copy(inputStream, response.getOutputStream());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	

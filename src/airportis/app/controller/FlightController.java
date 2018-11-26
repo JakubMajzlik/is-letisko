@@ -111,7 +111,6 @@ public class FlightController {
 		String email= SecurityContextHolder.getContext().getAuthentication().getName();
 		String idNumber= userService.findUserByEmail(email).getDetails().getIdentificationNumber();
 		FlightTicket flightTicket;
-		System.out.println(flightModel);
 		if(ticket_class==1) {
 			flightTicket= new FlightTicket(
 					flightModel.getId(),
@@ -132,7 +131,13 @@ public class FlightController {
 		flightTicketService.save(flightTicket);
 		flightTicketService.generatePDF(flightTicket);
 
-		return "redirect:/";
+		return "redirect:/flight/orderconfirmation?id="+flightTicket.getId();
 	}
 	
+	@RequestMapping("/orderconfirmation")
+	public String showOrderConfirmation(@RequestParam(value="id", required=false)Integer id, Model model) {
+		System.out.println("TEST");
+		model.addAttribute("id", id);
+		return "orderconfirmation";
+	}
 }
