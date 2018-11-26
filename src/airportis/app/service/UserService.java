@@ -18,4 +18,5 @@ public interface UserService extends UserDetailsService {
 	void save(UserRegisterModel user);
 	void remove(User user);
 	void save(User user);
+	void createEmployee(UserRegisterModel userRegisterModel);
 }

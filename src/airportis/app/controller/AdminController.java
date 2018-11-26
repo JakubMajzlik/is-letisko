@@ -24,6 +24,7 @@ import airportis.app.entity.User;
 import airportis.app.model.DestinationModel;
 import airportis.app.model.PlaneModel;
 import airportis.app.model.UserEditModel;
+import airportis.app.model.UserRegisterModel;
 import airportis.app.service.DestinationService;
 import airportis.app.service.PlaneService;
 import airportis.app.service.UserService;
@@ -221,6 +222,33 @@ public class AdminController {
 			return "redirect:/";
 		}
 		
+	}
+	
+	@GetMapping("/registeremployee")
+	public String showEmployeeForm(Model model) {
+		model.addAttribute("countryList", getCountryList());
+		model.addAttribute("userRegisterModel", new UserRegisterModel());
+		return "employee-register";
+	}
+	
+	@PostMapping("/registeremployee/process")
+	public String createEmployee(@Valid @ModelAttribute("userRegisterModel") UserRegisterModel userModel,
+			BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			model.addAttribute("countryList", getCountryList());
+		return "employee-register";
+		}
+		
+		User user = userService.findUserByEmail(userModel.getEmail());
+		
+		if(user != null) {
+			model.addAttribute("errorUserAlreadyExists", "User with given email already exists");
+		return "employee-register";
+		}
+		
+		userService.createEmployee(userModel);
+		model.addAttribute("successfullyRegistred", true);
+		return "redirect:/";
 	}
 	
 }
