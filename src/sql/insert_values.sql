@@ -23,11 +23,11 @@ insert into role(name) values ('ROLE_ADMIN');
 -- USERS DETAILS
 insert into user_details(email, phone_number, first_name, last_name, identification_number, 
 			city, street, house_number, zip, country)
-values ('jozef.mrkva@gmail.com', '0922333444', 'Jozef', 'Mrkva', '9412241234', 'Liptovska Kokava',
+values ('admin@jamnikairport.sk', '0922333444', 'Jozef', 'Mrkva', '9412241234', 'Liptovska Kokava',
 		'Kostolna', '666', '03244', 'Slovakia');
 insert into user_details(email, phone_number, first_name, last_name, identification_number, 
 	city, street, house_number, zip, country)
-values ('k.troska@googlemail.com', '0944555333', 'Katarina', 'Troskova', '8754265432', 'Bratislava', 
+values ('k.troska@jamnikairport.sk', '0944555333', 'Katarina', 'Troskova', '8754265432', 'Bratislava', 
 		'Radvanska', '1', '81101', 'Slovakia');
 insert into user_details(email, phone_number, first_name, last_name, identification_number, 
 			city, street, house_number, zip, country)
@@ -36,9 +36,9 @@ values ('tomas@jedno.org', '0977888999', 'Tomas', 'Jedno', '8912121229', 'Filako
 
 -- USERS
 insert into user(username, password, user_details_id)
-values ( 'jozef.mrkva@gmail.com', '$2a$10$raAQ73.7fRB2MqfsUsgzZO4LBCeP6YKYzeN69/E90otsuwUZLCml.', '9412241234');
+values ( 'admin@jamnikairport.sk', '$2a$10$raAQ73.7fRB2MqfsUsgzZO4LBCeP6YKYzeN69/E90otsuwUZLCml.', '9412241234');
 insert into user(username, password, user_details_id)
-values ('k.troska@googlemail.com', '$2a$10$2/5lyPozw9Red.3C4kapDOdvdc1.tK7uVLpUOeJby71cc91xz2p7S','8754265432');
+values ('k.troska@jamnikairport.sk', '$2a$10$2/5lyPozw9Red.3C4kapDOdvdc1.tK7uVLpUOeJby71cc91xz2p7S','8754265432');
 insert into user(username, password, user_details_id)
 values ('tomas@jedno.org', '$2a$10$vxSBJMfRYDdx5qLlMyK7Y.Gdphjm8DDLjB45gHWjK.73LL48M7GIS', '8912121229');
 

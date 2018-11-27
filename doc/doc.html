@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Projekt IIS</title>
+    <style type="text/css">
+    	table { border-collapse: collapse; }
+    	td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+    	dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+
+
+<h1>Informačný systém letiska</h1> 
+
+<dl>
+	<dt>Autori</dt>
+	<dd>Jakub Majzlík 
+	    <a href="mailto:xmajzl02@stud.fit.vutbr.cz">xmajzl02@stud.fit.vutbr.cz</a> - 
+	</dd>
+	<dd>Richard Schleger
+	    <a href="mailto:xschle03@stud.fit.vutbr.cz">xschle03@stud.fit.vutbr.cz</a> - 
+	</dd>
+	<dt>URL aplikace</dt>
+	<dd>Aplikacia bola osobne prezentovana, nieje dostupna</a></dd>
+</dl>
+
+<h2>Uživatelia systému pro testovanie</h2>
+
+<table>
+<tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+<tr><td>admin@jamnikairport.sk</td><td>admin</td><td>Administrátor</td></tr>
+<tr><td>k.troska@jamnikairport.sk</td><td>employee</td><td>Zamestnanec</td></tr>
+<tr><td>tomas@jedno.org</td><td>user</td><td>Zákazník</td></tr>
+</table>
+
+<h2>Implementácia</h2>
+<p>Informačný systém sme implementovali v jazyku Java, konkrétne vo verzií 1.8, s využitím <a href="">Spring Frameworku</a> a <a href="">Hibernate</a>. Aplikácia beží na aplikačnom
+serveri Tomcat, konkrétna na verzii 9. </p>
+<p>Aplikácia bola naprogramovaná podľa vzoru Model View Controller a implementuje následovný use-case diagram: </p>
+<center><img src="MPU.png"></center>
+<p>Databáza je vytvorená na základe nasledujúceho diagramu</p>
+<center><img src="ERD.png"></center>
+<p>Entita, ktorá reprezentuje všetkých účastníkov systému je rozdelená do dvoch častí, User a UserDetails. Tieto časti sú v databáze uložené do dvoch samostatných tabuliek, user a user_details.</p>
+<h3>Zákazník</h3>
+<p>Operácie, ktoré môže zákazník vykonávať zabezpečuje UserController, prípadne Flight Controller</p>
+<p>Oproti pôvodnému návrhu z predmetu IDS, sme rozšírili funkcie zákazníka o Úpravu profilu, Zobrazenie histórie objednávok a Stiahnutie letenky vo formáte PDF.</p>
+
+<h3>Zamestnanec</h3>
+<p>Operácie, ktoré môže zamestnanec vykonávať zabezpečuje EmployeeController.</p>
+<p>Oproti pôvodnému návrhu z predmetu IDS, sme rozšírili funkcie zamestnanca o Zobrazenie letu, Odstránenie letu a odobrali sme mu funkciu Vydať letenku, z dôvodu toho, že v online informačnom systéme nemá reálne využitie. </p>
+
+<h3>Administrátor</h3>
+<p>Operácie, ktoré môže Administrátor vykonávať zabezpečuje AdminController.</p>
+<p>Oproti pôvodnému návrhu z predmetu IDS, sme rozšírili funkcie administrátora o možnosť spravovania lietadiel, destinácii, zobraziŤ si všetkých použivateľov systému a možnosť zablokovať konkrétneho použivateľa.</p>
+
+<h2>Požiadavky</h2>
+<ul>
+    <li>Java 1.8</li>
+    <li>Tomcat 9</li>
+    <li>Eclipse EE</li>
+    <li>MySQL</li>
+</ul>
+<h2>Instalace</h2>
+<ul>
+<li>Rozbalte archýv so súbormi projektu(napr. do D:/Projekt)</li>
+<li>Vytvborte a nainicializujte databázu s pomocou sql scriptov(src/sql)</li>
+<li>Otvorte si EclipseEE a nastavte si workspace(napr. na D:/Projekt)</li>
+<li>Vytvorte si nový Dynamic Web Project(File->New->Dynamic Web Project)</li>
+<li>Nainportuje si súbory z rozbaleného archívu do vytvoreného projektu(File->Import->General->File System)</li>
+<li>Konvertujte projekt na Maven projekt(Pravým na projekt->Configure->Convert to Maven Project)</li>
+<li>Skontrolujte, či projekt používa Javu 8(Pravým na projekt->Properties->Java Build Path->Libraries a Pravým na projekt->Properties->Project Facets->Java)</li>
+<li>Prodajte aplikačný server do workspacu(do Quick Access(pravý horný roh) napíšte "New Server"->Apache->Tomcat v9.0 Server)</li>
+<li>Spustite aplikáciu(Pravým na projekt->Run As->Run on Server)</li>
+</ul>
+
+<h2>Známe problémy</h2>
+<p>Nieje naimplementovaná validácia rodných čísel aa telefónnych čísel, z dôvodu, že každá krajina má ich v inom tvare.</p>
+
+</body>
+</html>
