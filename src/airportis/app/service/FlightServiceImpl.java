@@ -36,6 +36,7 @@ public class FlightServiceImpl implements FlightService {
 				gateDAO.getGate(flightModel.getGate()).getGateNumber(),
 				flightModel.getPlane(),
 				flightModel.getPrice());
+		flight.setId(flightModel.getId());
 		
 		flightDAO.save(flight);
 		

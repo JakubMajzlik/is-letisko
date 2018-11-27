@@ -47,7 +47,7 @@
 					<hr/>
 					<security:authorize access="hasRole('EMPLOYEE')">
 						<a href="${pageContext.request.contextPath }/employee/addflight" >Add Flight</a> <br/>
-						<a href="${pageContext.request.contextPath }/employee/updateflight" >Update Flight</a> <br/>
+						<a href="${pageContext.request.contextPath }/employee/showflights" >Show Flights</a> <br/>
 						<br/>
 					</security:authorize>
 					

@@ -69,14 +69,14 @@ public class EmployeeController {
 		}
 	}
 	
-	@GetMapping("/updateflight")
+	@GetMapping("/showflights")
 	public String showUpdateFlightForm(
 			@RequestParam(value="id", required=false) Integer id,
 			Model model) {
 		model.addAttribute("destinationService", destinationService);
 		if(id == null) {
 			model.addAttribute("flights", flightService.getAllFlights());
-			return "updateflight";
+			return "showflight";
 		}
 		FlightModel flightModel= flightService.getFlightModel(id.intValue());
 		model.addAttribute("planeService", planseService);
@@ -100,7 +100,7 @@ public class EmployeeController {
 			System.out.println(flightModel.getId());
 			flightService.save(flightModel);
 			model.addAttribute("addSuccess", true);
-			return "redirect:/employee/updateflight";		
+			return "redirect:/employee/showflights";		
 		}
 	}
 }
