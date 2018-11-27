@@ -31,7 +31,8 @@
 					<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
 					<td><b>${item.getPlane()}</b></td>
 					<td><a href="${pageContext.request.contextPath}/employee/showflights?id=${item.getId()}">Update</a></td>
-					<td><a href="${pageContext.request.contextPath}/employee/removeflight?id=${item.getId()}">Remove</a></td>
+					<td><button onclick="if (confirm('Are you sure you want to delete this user from the database?')) {
+						window.location.href = '${pageContext.request.contextPath}/employee/removeflight?id=${item.getId()}';}" >Delete</button></td>
 				</tr>  	
 		</c:forEach>
 		</tbody>

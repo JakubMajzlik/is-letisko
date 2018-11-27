@@ -101,4 +101,13 @@ public class EmployeeController {
 			return "redirect:/employee/showflights";		
 		}
 	}
+	
+	@RequestMapping("/removeflight")
+	public String removeFlight(@RequestParam(value="id", required=false) Integer id) {
+		if(id==null) {
+			return "showflight";
+		}
+		flightService.remove(id);
+		return "redirect:/employee/showflights";
+	}
 }

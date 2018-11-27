@@ -22,7 +22,6 @@ public class FlightTicket {
 	@Column(name="class")
 	private String seatClass;
 
-	
 	@Column(name="user_identification_number")
 	private String userIdentificationNumber;
 

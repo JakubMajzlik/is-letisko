@@ -112,9 +112,9 @@ create table if not exists `flight_tickets` (
     primary key(`id`),
     
     key `fk_flight`(`flight`), 
-    constraint `fk_flight` foreign key(`flight`) references `flights`(`id`),
+    constraint `fk_flight` foreign key(`flight`) references `flights`(`id`) on delete cascade,
     key `fk_id_ticket`(`user_identification_number`), 
-    constraint `fk_id_ticket` foreign key(`user_identification_number`) references `passenger_details`(`identification_number`)
+    constraint `fk_id_ticket` foreign key(`user_identification_number`) references `passenger_details`(`identification_number`) on delete cascade
 );
 
 SET FOREIGN_KEY_CHECKS = 1;
