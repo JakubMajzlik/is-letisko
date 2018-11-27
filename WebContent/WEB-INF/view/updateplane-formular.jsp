@@ -9,10 +9,8 @@
 	<script type="text/javascript"
 	     src='<c:url value="/resources/js/jquery.js"/>'>
 	</script> 
-	<link href='<c:url value="/resources/css/gijgo.css"/>' rel="stylesheet" />
-    <script type="text/javascript"
-	     src='<c:url value="/resources/js/gijgo.js"/>'>
-	</script> 
+	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<title>Jamnik Airport - Update plane</title>
 </head>
 <body class="fill">
