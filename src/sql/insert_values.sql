@@ -68,6 +68,3 @@ insert into flights(takeoff_date, destination, gate, plane, price) values('04/01
 insert into flights(takeoff_date, destination, gate, plane, price) values('11/01/2019 07:25', 3, 2, 'CONC19981130', 399.90);
 insert into flights(takeoff_date, destination, gate, plane, price) values('18/01/2019 07:25', 3, 2, 'CONC19981130', 405.10);
 insert into flights(takeoff_date, destination, gate, plane, price) values('25/01/2019 07:25', 3, 2, 'CONC19981130', 432.90);
-
--- FLIGHT TICKETS
-insert into flight_tickets(flight, class, user_identification_number) values(3, 'Economic', '8912121229');
