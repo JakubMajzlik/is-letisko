@@ -184,8 +184,7 @@ public class AdminController {
 		PlaneModel planeModel= planeService.getPlane(serialNumber);
 		model.addAttribute("planeService", planeService);
 		if(planeModel== null) {
-			model.addAttribute("planeModel", new PlaneModel());
-			model.addAttribute("errorPlaneNotFound", true);
+			return "redirect:/admin/updateplane";
 		}else {
 			System.out.println(planeModel);
 			model.addAttribute("planeModel", planeModel);
@@ -268,9 +267,10 @@ public class AdminController {
 		if(id==null) {
 			return "redirect:/";
 		}
-		DestinationModel destinationModel= destinationService.getDestinationModel(id);
+		DestinationModel destinationModel= destinationService.getDestinationModel(id.intValue());
+		System.out.println(destinationModel);
 		if(destinationModel==null) {
-			model.addAttribute("destinationModel", new DestinationModel());
+			return "redirect:/admin/destinations";
 		}else {
 			model.addAttribute("destinationModel", destinationModel);
 		}

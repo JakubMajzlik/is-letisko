@@ -59,11 +59,17 @@ public class DestinationServiceImpl implements DestinationService{
 	@Transactional
 	public DestinationModel getDestinationModel(int id) {
 		Destination destination= destinationDAO.getDestination(id);
-		DestinationModel destinationModel= new DestinationModel(destination.getId(),
-																destination.getCity(),
-																destination.getCountry(),
-																Integer.toString(destination.getDistance()));
-		return destinationModel;
+		if(destination!=null) {
+			DestinationModel destinationModel= new DestinationModel(destination.getId(),
+					destination.getCity(),
+					destination.getCountry(),
+					Integer.toString(destination.getDistance()));
+			return destinationModel;
+		}else {
+			return null;
+		}
+		
+		
 	}
 
 

@@ -42,16 +42,21 @@ public class PlaneServiceImpl implements PlaneService {
 	@Transactional
 	public PlaneModel getPlane(String serialNumber) {
 		Plane plane = planeDAO.getPlane(serialNumber);
-		PlaneModel planeModel= new PlaneModel();
-		planeModel.setSerialNumber(plane.getSerialNumber());
-		planeModel.setType(plane.getType());
-		planeModel.setManufacturer(plane.getManufacturer());
-		planeModel.setDateOfMade(plane.getDateOfMade());
-		planeModel.setLastRevisionDate(plane.getLastRevisionDate());
-		planeModel.setNumberOfSeatsEconomic(plane.getNumberOfSeatsEconomic());
-		planeModel.setNumberOfSeatsBusiness(plane.getNumberOfSeatsBusiness());
-		planeModel.setNumberOfSeatsFirst(plane.getNumberOfSeatsFirst());
-		return planeModel;
+		if(plane!=null) {
+			PlaneModel planeModel= new PlaneModel();
+			planeModel.setSerialNumber(plane.getSerialNumber());
+			planeModel.setType(plane.getType());
+			planeModel.setManufacturer(plane.getManufacturer());
+			planeModel.setDateOfMade(plane.getDateOfMade());
+			planeModel.setLastRevisionDate(plane.getLastRevisionDate());
+			planeModel.setNumberOfSeatsEconomic(plane.getNumberOfSeatsEconomic());
+			planeModel.setNumberOfSeatsBusiness(plane.getNumberOfSeatsBusiness());
+			planeModel.setNumberOfSeatsFirst(plane.getNumberOfSeatsFirst());
+			return planeModel;
+		}else {
+			return null;
+		}
+		
 	}
 
 	@Override

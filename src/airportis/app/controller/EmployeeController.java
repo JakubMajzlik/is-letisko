@@ -78,8 +78,7 @@ public class EmployeeController {
 		model.addAttribute("planeService", planseService);
 		model.addAttribute("gateService", gateService);
 		if(flightModel== null) {
-			model.addAttribute("flightModel", new FlightModel());
-			model.addAttribute("errorFlightNotFound", true);
+			return "redirect:/employee/showflights";
 		}else {
 			System.out.println(flightModel);
 			model.addAttribute("flightModel", flightModel);
