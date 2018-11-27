@@ -43,7 +43,7 @@
 					You are logged with email <b>${user.username}</b>
 					<hr/>
 					<a href="${pageContext.request.contextPath}/user/editprofile">Edit profile</a> <br/>
-					<a href="${pageContext.request.contextPath }/user/showhistory">Order history</a>  <br/>
+					<a href="${pageContext.request.contextPath }/user/history">Order history</a>  <br/>
 					<hr/>
 					<security:authorize access="hasRole('EMPLOYEE')">
 						<a href="${pageContext.request.contextPath }/employee/addflight" >Add Flight</a> <br/>

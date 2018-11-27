@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -194,7 +195,7 @@ public class UserController {
 		return "redirect:/user/editprofile";
 	}
 	
-	@RequestMapping("/showhistory")
+	@RequestMapping("/history")
 	public String showHistory(Model model) {
 		String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
 		String idNumber= userService.findUserByEmail(userEmail).getDetails().getIdentificationNumber();
@@ -221,23 +222,54 @@ public class UserController {
 	}
 	
 	@RequestMapping("/history/downloadticket")
-	public void downloadTicket(HttpServletResponse response, @RequestParam(value="id", required=false)Integer id) {
+	public void downloadTicket(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="id", required=false)Integer id) {
 		if(id!=null) {
-			ClassLoader classLoader= getClass().getClassLoader();
-			File file = new File(classLoader.getResource("../").getPath() + "tickets/flightTicket"+id+".pdf");
-			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
-			response.setContentType(mimeType);
-			response.setHeader("Content-Disposition", String.format("attachment;filename=\""+file.getName()+"\""));
-			response.setContentLength((int)file.length());
-			try {
-				BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+			FlightTicket flightTicket= flightTicketService.getFlightTicket(id);
+			if(flightTicket!=null) {
+				String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+				String idNumber= userService.findUserByEmail(userEmail).getDetails().getIdentificationNumber();
+				if(flightTicket.getUserIdentificationNumber().equals(idNumber)) {
+					ClassLoader classLoader= getClass().getClassLoader();
+					File file = new File(classLoader.getResource("../").getPath() + "tickets/flightTicket"+id+".pdf");
+					String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+					response.setContentType(mimeType);
+					response.setHeader("Content-Disposition", String.format("attachment;filename=\""+file.getName()+"\""));
+					response.setContentLength((int)file.length());
+					try {
+						BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+						try {
+							FileCopyUtils.copy(inputStream, response.getOutputStream());
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}else {
+					try {
+						response.sendRedirect(request.getContextPath());
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}else {
 				try {
-					FileCopyUtils.copy(inputStream, response.getOutputStream());
+					response.sendRedirect(request.getContextPath());
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} catch (FileNotFoundException e) {
+			}	
+		}else {
+			try {
+				response.sendRedirect(request.getContextPath());
+				
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
