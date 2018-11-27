@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService{
 		
 		User user = new User(userRegisterModel.getEmail(),
 							passwordEncoder.encode(userRegisterModel.getPassword1()));
-		
+		user.setEnabled(true);
 		user.setDetails(details);
 		user.setRoles(Arrays.asList(roleDAO.getRoleByName("ROLE_USER")));
 		
