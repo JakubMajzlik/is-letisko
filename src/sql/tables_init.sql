@@ -1,3 +1,4 @@
+create user if not exists `iis_project`@`localhost` identified by "iis_project";
 create database if not exists `iis_project`;
 use `iis_project`;
 
