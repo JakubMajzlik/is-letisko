@@ -231,11 +231,9 @@ public class UserController {
 						try {
 							FileCopyUtils.copy(inputStream, response.getOutputStream());
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}else {
@@ -243,7 +241,6 @@ public class UserController {
 						response.sendRedirect(request.getContextPath());
 						
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -252,7 +249,6 @@ public class UserController {
 					response.sendRedirect(request.getContextPath());
 					
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}	
@@ -261,7 +257,6 @@ public class UserController {
 				response.sendRedirect(request.getContextPath());
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

@@ -5,7 +5,6 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,7 +40,7 @@ public class User {
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_details_id")
-	private PassengerDetail details;
+	private UserDetail details;
 	
 	public User() {	}
 
@@ -50,11 +49,11 @@ public class User {
 		this.password = password;
 	}
 
-	public PassengerDetail getDetails() {
+	public UserDetail getDetails() {
 		return details;
 	}
 
-	public void setDetails(PassengerDetail details) {
+	public void setDetails(UserDetail details) {
         this.details = details;
 	}
 

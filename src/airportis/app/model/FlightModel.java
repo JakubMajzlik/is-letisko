@@ -1,6 +1,5 @@
 package airportis.app.model;
 
-//TODO VALIDACIE
 public class FlightModel {
 	private String takeoffDate;
 	private Integer destination = 0;

@@ -2,7 +2,7 @@ create database if not exists `iis_project`;
 use `iis_project`;
 
 
-create table if not exists `passenger_details` (
+create table if not exists `user_details` (
 	`email` varchar(254) default null,
     `phone_number` varchar(20) default null,
     `first_name` varchar(45) not null,
@@ -28,7 +28,7 @@ create table if not exists `user` (
     
 	primary key(`id`),
     
-    constraint `fk_user_details` foreign key(`user_details_id`) references `passenger_details`(`identification_number`)
+    constraint `fk_user_details` foreign key(`user_details_id`) references `user_details`(`identification_number`)
 );
 
 create table if not exists `role` (
@@ -114,7 +114,7 @@ create table if not exists `flight_tickets` (
     key `fk_flight`(`flight`), 
     constraint `fk_flight` foreign key(`flight`) references `flights`(`id`) on delete cascade,
     key `fk_id_ticket`(`user_identification_number`), 
-    constraint `fk_id_ticket` foreign key(`user_identification_number`) references `passenger_details`(`identification_number`) on delete cascade
+    constraint `fk_id_ticket` foreign key(`user_identification_number`) references `user_details`(`identification_number`) on delete cascade
 );
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import airportis.app.dao.RoleDAO;
 import airportis.app.dao.UserDAO;
-import airportis.app.entity.PassengerDetail;
+import airportis.app.entity.UserDetail;
 import airportis.app.entity.Role;
 import airportis.app.entity.User;
 import airportis.app.model.UserEditModel;
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional
 	public void save(UserRegisterModel userRegisterModel) {
-		PassengerDetail details = new PassengerDetail(
+		UserDetail details = new UserDetail(
 				userRegisterModel.getIdentificationNumber(),
 				userRegisterModel.getEmail(),
 				userRegisterModel.getPhoneNumber(),
@@ -104,7 +104,7 @@ public class UserServiceImpl implements UserService{
 		if(user == null) {
 			return null;
 		}
-		PassengerDetail details = user.getDetails();
+		UserDetail details = user.getDetails();
 		UserEditModel userModel = new UserEditModel(
 				user.getId(),
 				details.getFirstName(),
@@ -129,7 +129,7 @@ public class UserServiceImpl implements UserService{
 		User user = userDAO.findUserByEmail(userEditModel.getEmail());
 		user.setPassword(userEditModel.getPassword1());
 		
-		PassengerDetail details = user.getDetails();
+		UserDetail details = user.getDetails();
 				
 		details.setIdentificationNumber(userEditModel.getIdentificationNumber());
 		details.setEmail(userEditModel.getEmail());
@@ -162,7 +162,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional
 	public void createEmployee(UserRegisterModel userRegisterModel) {
-		PassengerDetail details = new PassengerDetail(
+		UserDetail details = new UserDetail(
 				userRegisterModel.getIdentificationNumber(),
 				userRegisterModel.getEmail(),
 				userRegisterModel.getPhoneNumber(),

@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import airportis.app.entity.User;
 import airportis.app.model.DestinationModel;
-import airportis.app.model.FlightModel;
 import airportis.app.model.PlaneModel;
 import airportis.app.model.UserEditModel;
 import airportis.app.model.UserRegisterModel;

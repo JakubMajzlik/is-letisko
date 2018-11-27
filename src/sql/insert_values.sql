@@ -21,15 +21,15 @@ insert into role(name) values ('ROLE_EMPLOYEE');
 insert into role(name) values ('ROLE_ADMIN');
 
 -- USERS DETAILS
-insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
+insert into user_details(email, phone_number, first_name, last_name, identification_number, 
 			city, street, house_number, zip, country)
 values ('jozef.mrkva@gmail.com', '0922333444', 'Jozef', 'Mrkva', '9412241234', 'Liptovska Kokava',
 		'Kostolna', '666', '03244', 'Slovakia');
-insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
+insert into user_details(email, phone_number, first_name, last_name, identification_number, 
 	city, street, house_number, zip, country)
 values ('k.troska@googlemail.com', '0944555333', 'Katarina', 'Troskova', '8754265432', 'Bratislava', 
 		'Radvanska', '1', '81101', 'Slovakia');
-insert into passenger_details(email, phone_number, first_name, last_name, identification_number, 
+insert into user_details(email, phone_number, first_name, last_name, identification_number, 
 			city, street, house_number, zip, country)
 values ('tomas@jedno.org', '0977888999', 'Tomas', 'Jedno', '8912121229', 'Filakovo', 'Ongroundbengerova',
 		'53', '98601', 'Slovakia');

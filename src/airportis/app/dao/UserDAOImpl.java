@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import airportis.app.entity.PassengerDetail;
+import airportis.app.entity.UserDetail;
 import airportis.app.entity.User;
 
 @Repository
@@ -61,9 +61,9 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public String getUserName(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<PassengerDetail> theQuery = session.createQuery("from PassengerDetail where email=:email", PassengerDetail.class);
+		Query<UserDetail> theQuery = session.createQuery("from PassengerDetail where email=:email", UserDetail.class);
 		theQuery.setParameter("email", email);
-		PassengerDetail user;
+		UserDetail user;
 		try {
 			user = theQuery.getSingleResult();
 		} catch (Exception e) {
@@ -75,9 +75,9 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public String getUserSurname(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<PassengerDetail> theQuery = session.createQuery("from PassengerDetail where email=:email", PassengerDetail.class);
+		Query<UserDetail> theQuery = session.createQuery("from PassengerDetail where email=:email", UserDetail.class);
 		theQuery.setParameter("email", email);
-		PassengerDetail user;
+		UserDetail user;
 		try {
 			user = theQuery.getSingleResult();
 		} catch (Exception e) {
