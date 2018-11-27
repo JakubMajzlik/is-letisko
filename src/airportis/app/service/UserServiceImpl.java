@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService{
 		
 		User user = new User(userRegisterModel.getEmail(),
 							passwordEncoder.encode(userRegisterModel.getPassword1()));
-		
+		user.setEnabled(true);
 		user.setDetails(details);
 		user.setRoles(Arrays.asList(roleDAO.getRoleByName("ROLE_USER")));
 		
@@ -157,6 +157,32 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	public void save(User user) {
 		userDAO.save(user);
+	}
+
+	@Override
+	@Transactional
+	public void createEmployee(UserRegisterModel userRegisterModel) {
+		PassengerDetail details = new PassengerDetail(
+				userRegisterModel.getIdentificationNumber(),
+				userRegisterModel.getEmail(),
+				userRegisterModel.getPhoneNumber(),
+				userRegisterModel.getFirstName(),
+				userRegisterModel.getLastName(),
+				userRegisterModel.getCity(),
+				userRegisterModel.getStreet(),
+				userRegisterModel.getHouseNumber(),
+				userRegisterModel.getZip(),
+				userRegisterModel.getCountry());
+		
+		User user = new User(userRegisterModel.getEmail(),
+							passwordEncoder.encode(userRegisterModel.getPassword1()));
+		
+		user.setDetails(details);
+		user.setRoles(Arrays.asList(roleDAO.getRoleByName("ROLE_USER"), 
+								roleDAO.getRoleByName("ROLE_EMPLOYEE")));
+		
+		userDAO.save(user);
+		
 	}
 
 }
