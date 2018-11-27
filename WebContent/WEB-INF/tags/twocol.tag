@@ -47,7 +47,7 @@
 					<hr/>
 					<security:authorize access="hasRole('EMPLOYEE')">
 						<a href="${pageContext.request.contextPath }/employee/addflight" >Add Flight</a> <br/>
-						<a href="${pageContext.request.contextPath }/employee/updateflight" >Update Flight</a> <br/>
+						<a href="${pageContext.request.contextPath }/employee/showflights" >Show Flights</a> <br/>
 						<br/>
 					</security:authorize>
 					
@@ -55,7 +55,7 @@
 						<a href="${pageContext.request.contextPath}/admin/manageusers">Manage users</a> <br/>
 						<a href="${pageContext.request.contextPath}/admin/registeremployee">Register employee</a> <br/>
 						<a href="${pageContext.request.contextPath}/admin/addplane">Add plane</a> <br/>
-						<a href="${pageContext.request.contextPath}/admin/updateplane">Show planes</a> <br/>
+						<a href="${pageContext.request.contextPath}/admin/showplanes">Show planes</a> <br/>
 						<a href="${pageContext.request.contextPath}/admin/adddestination">Add destination</a><br/>
 						<a href="${pageContext.request.contextPath}/admin/destinations">Show destinations</a><br/>
 						<br/>

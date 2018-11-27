@@ -30,7 +30,7 @@
 					<td> <b>${item.getTakeoffDate()}</b></td>
 					<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
 					<td><b>${item.getPlane()}</b></td>
-					<td><a href="${pageContext.request.contextPath}/employee/updateflight?id=${item.getId()}">Update</a></td>
+					<td><a href="${pageContext.request.contextPath}/employee/showflights?id=${item.getId()}">Update</a></td>
 					<td><a href="${pageContext.request.contextPath}/employee/removeflight?id=${item.getId()}">Remove</a></td>
 				</tr>  	
 		</c:forEach>

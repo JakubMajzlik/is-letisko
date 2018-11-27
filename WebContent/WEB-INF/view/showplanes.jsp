@@ -33,7 +33,6 @@
 				<td>${item.getDateOfMade()}</td>
 				<td>${item.getLastRevisionDate()}</td>
 				<td><a href="${pageContext.request.contextPath}/admin/updateplane?serialNumber=${item.getSerialNumber()}">Update</a></td>
-				<td><a href="${pageContext.request.contextPath}/admin/removeplane?serialNumber=${item.getSerialNumber()}">Remove</a></td>
 			</tr>
 			<tr>
 				<td colspan="1"> Economic class:

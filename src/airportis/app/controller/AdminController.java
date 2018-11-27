@@ -63,7 +63,7 @@ public class AdminController {
 	
 	@GetMapping
 	public String showAdminPanel() {	
-		return "admin-panel";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/manageusers")
@@ -169,13 +169,18 @@ public class AdminController {
 		}
 	}
 	
+	@GetMapping("/showplanes")
+	public String showUpdatePlaneForm(Model model) {
+		model.addAttribute("planes", planeService.getPlanesList());
+		return "showplanes";
+	}
+	
 	@GetMapping("/updateplane")
 	public String showUpdatePlaneForm(
 			@RequestParam(value="serialNumber", required=false) String serialNumber,
 			Model model) {
 		if(serialNumber == null) {
-			model.addAttribute("planes", planeService.getPlanesList());
-			return "updateplane";
+			return "redirect:/admin/showplanes";
 		}
 		PlaneModel planeModel= planeService.getPlane(serialNumber);
 		model.addAttribute("planeService", planeService);
@@ -197,8 +202,8 @@ public class AdminController {
 		}else {
 			System.out.println(planeModel.getSerialNumber());
 			planeService.save(planeModel);
-			model.addAttribute("addSuccess", true);
-			return "redirect:/admin/updateplane";		
+			model.addAttribute("updateSuccess", true);
+			return "redirect:/admin/showplanes";		
 		}
 	}
 	
