@@ -1,6 +1,8 @@
 package airportis.app.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Session;
@@ -56,6 +58,15 @@ public class DestinationDAOImpl implements DestinationDAO{
 			map.put(d.getId(), d.getCity()+", "+ d.getCountry());
 		}
 		return map;
+	}
+
+	@Override
+	public List<Destination> getListOfDestinations() {
+		Session session= sessionFactory.getCurrentSession();
+		List<Destination> listOfDestinations= new ArrayList<Destination>();
+		Query<Destination> destination= session.createQuery("from Destination", Destination.class);
+		listOfDestinations= destination.getResultList();
+		return listOfDestinations;
 	}
 
 }

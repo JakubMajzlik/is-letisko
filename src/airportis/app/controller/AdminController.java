@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import airportis.app.entity.User;
 import airportis.app.model.DestinationModel;
+import airportis.app.model.FlightModel;
 import airportis.app.model.PlaneModel;
 import airportis.app.model.UserEditModel;
 import airportis.app.model.UserRegisterModel;
@@ -249,6 +250,40 @@ public class AdminController {
 		userService.createEmployee(userModel);
 		model.addAttribute("successfullyRegistred", true);
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/destinations")
+	public String showDestinations(Model model) {
+		model.addAttribute("destinationService", destinationService);
+		model.addAttribute("destinations", destinationService.getListOfDestinations());
+		return "showdestinations";
+	}
+	
+	@RequestMapping("/updatedestination")
+	public String showUpdateDestination(@RequestParam(value="id", required=false) Integer id, Model model) {
+		if(id==null) {
+			return "redirect:/";
+		}
+		DestinationModel destinationModel= destinationService.getDestinationModel(id);
+		if(destinationModel==null) {
+			model.addAttribute("destinationModel", new DestinationModel());
+		}else {
+			model.addAttribute("destinationModel", destinationModel);
+		}
+		model.addAttribute("countryList", getCountryList());
+		return "updatedestination-formular";
+	}
+	
+	@RequestMapping("/updatedestination/process")
+	public String processUpdateDestination(@Valid @ModelAttribute("destinationModel") DestinationModel destinationModel, 
+			BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return "updateflight-formular";
+		}else {
+			destinationService.save(destinationModel);
+			model.addAttribute("addSuccess", true);
+			return "redirect:/admin/destinations";		
+		}
 	}
 	
 }

@@ -18,6 +18,13 @@ public class DestinationModel {
 	
 	public DestinationModel() {}
 
+	public DestinationModel(int id, String city, String country, String distance) {
+		this.id=id;
+		this.city= city;
+		this.country= country;
+		this.distance= distance;
+	}
+	
 	public String getCountry() {
 		return country;
 	}

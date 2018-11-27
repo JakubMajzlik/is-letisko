@@ -1,7 +1,9 @@
 package airportis.app.service;
 
+import java.util.List;
 import java.util.Map;
 
+import airportis.app.entity.Destination;
 import airportis.app.model.DestinationModel;
 
 public interface DestinationService {
@@ -10,4 +12,6 @@ public interface DestinationService {
 		String getDestinationName(int id);
 		int getDestinationDistance(int id);
 		void save(DestinationModel destinationModel);
+		DestinationModel getDestinationModel(int id);
+		List<Destination> getListOfDestinations();
 }

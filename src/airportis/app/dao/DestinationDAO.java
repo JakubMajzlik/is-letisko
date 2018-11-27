@@ -1,5 +1,6 @@
 package airportis.app.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import airportis.app.entity.Destination;
@@ -11,6 +12,7 @@ public interface DestinationDAO {
 	Destination getDestination(int id);
 	Destination getDestination(String country, String city);
 	Map<Integer,String> getAllDestinations();
+	List<Destination> getListOfDestinations();
 
 	
 }

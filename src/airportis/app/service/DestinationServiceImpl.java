@@ -1,5 +1,6 @@
 package airportis.app.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,25 @@ public class DestinationServiceImpl implements DestinationService{
 					destinationModel.getCountry(),
 					destinationModel.getCity(),
 					Integer.parseInt(destinationModel.getDistance()));
+			destination.setId(destinationModel.getId());
 			destinationDAO.save(destination);
+	}
+
+	@Override
+	@Transactional
+	public List<Destination> getListOfDestinations() {
+		return destinationDAO.getListOfDestinations();
+	}
+
+	@Override
+	@Transactional
+	public DestinationModel getDestinationModel(int id) {
+		Destination destination= destinationDAO.getDestination(id);
+		DestinationModel destinationModel= new DestinationModel(destination.getId(),
+																destination.getCity(),
+																destination.getCountry(),
+																Integer.toString(destination.getDistance()));
+		return destinationModel;
 	}
 
 
