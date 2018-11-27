@@ -10,7 +10,17 @@
 <body class="fill">
 <t:twocol>
 	<jsp:body>
-<table>
+	<h1>Manage users</h1>
+	<br/>
+<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+	<thead class="thead-inverse|thead-default">
+			<tr>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Email</th>
+			</tr>
+	</thead>
+	<tbody>
 	<c:forEach items="${usersList}" var="user" >
 	
 		<tr>
@@ -29,6 +39,7 @@
 		</tr>
 
 	</c:forEach>
+	</tbody>
 </table>
 </jsp:body>
 </t:twocol>

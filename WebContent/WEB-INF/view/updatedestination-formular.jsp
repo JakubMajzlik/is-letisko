@@ -9,32 +9,33 @@
 <script type="text/javascript"
      src='<c:url value="/resources/js/jquery.js"/>'>
 </script> 
-<script type="text/javascript"
-     src='<c:url value="/resources/js/bootstrap2.js"/>'>
-</script>
 <title>Jamnik Airport - Update destination</title>
 </head>
 <body class="fill">
 <t:twocol>
 	<jsp:body>
+	<h1>Update destination</h1>
+	<br/>
 	<form:form action="${pageContext.request.contextPath}/admin/updatedestination/process"
 			method="POST" modelAttribute="destinationModel">
 			
 		<form:hidden path="id"/>
-		
-		City:
-		<form:input path="City"/>
-		<br>
-		
-		Country:
-		<form:select path="country">
+		<table>
+		<tr>
+			<td>City:</td>
+			<td><form:input path="City"/></td>
+		</tr>
+		<tr>
+			<td>Country:</td>
+			<td><form:select path="country">
 				<form:options items="${countryList}"/>
-				</form:select>
-		<br>
-		
-		Distance:
-		<form:input path="Distance"/>
-		<br>
+				</form:select></td>
+		</tr>
+		<tr>
+			<td>Distance:</td>
+			<td><form:input path="Distance"/> km</td>
+		</tr>
+		</table>
 		<button type="submit"> Save </button>
 	</form:form>
 </jsp:body>	

@@ -11,7 +11,8 @@
 <body class="fill">
 <t:twocol>
 	<jsp:body>
-
+<h1>Profile</h1>
+<br/>
 <c:if test="${param.profileChanged == true}">
 	<div class="alert alert-success d-inline-flex p-2">
 		Profile was seccessfully changed

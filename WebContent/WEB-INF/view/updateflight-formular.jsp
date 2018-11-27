@@ -6,20 +6,9 @@
 <html>
 <head>
 <link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" /> 
-<link href='<c:url value="/resources/css/bootstrap-combined.css"/>' rel="stylesheet" />
-<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
 <script type="text/javascript"
      src='<c:url value="/resources/js/jquery.js"/>'>
 </script> 
-<script type="text/javascript"
-     src='<c:url value="/resources/js/bootstrap2.js"/>'>
-</script>
-<script type="text/javascript"
-     src='<c:url value="/resources/js/bootstrap-datetimepicker.js"/>'>
-</script>
-<script type="text/javascript"
-     src='<c:url value="/resources/locales/bootstrap-datetimepicker.sk.js"/>'>
-</script>
 <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
 <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 <title>Jamnik Airport - Update flight</title>
@@ -27,6 +16,8 @@
 <body class="fill">
 <t:twocol>
 	<jsp:body>
+	<h1>Update flight</h1>
+	<br/>
 	<form:form action="${pageContext.request.contextPath}/employee/updateflight/process"
 			method="POST" modelAttribute="flightModel">
 			
