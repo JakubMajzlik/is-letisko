@@ -62,7 +62,7 @@ public class AdminController {
 	
 	@GetMapping
 	public String showAdminPanel() {	
-		return "admin-panel";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/manageusers")

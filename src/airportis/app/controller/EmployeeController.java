@@ -42,9 +42,7 @@ public class EmployeeController {
 	
 	@GetMapping
 	public String showPanel(Model model) {
-		User user = userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
-		model.addAttribute("user", user);
-		return "employee-panel";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/addflight")
