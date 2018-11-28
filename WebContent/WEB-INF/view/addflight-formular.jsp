@@ -43,6 +43,8 @@
 		<form:option label="--Select Plane--" value="0"/>
 		<form:options items="${planeService.getPlanesMap()}"/>
 	</form:select> <br/>
+	Price:
+	<form:input path="price"/><br>
 
 	<button type="submit"> Save </button>
 	</form:form>

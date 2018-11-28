@@ -19,7 +19,7 @@
 <body class="fill">
 <t:twocol>
 	<jsp:body>
-		<h1>Jamnik Airport</h1><br>
+		<h1>Welcome on Jamnik Airport website</h1><br><br><br>
 		<h3>Today's flights:</h3>
 		<c:if test="${!flights.isEmpty()}">
 		<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">

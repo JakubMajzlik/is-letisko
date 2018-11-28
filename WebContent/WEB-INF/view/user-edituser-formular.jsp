@@ -79,7 +79,7 @@
 
 <c:if test="${param.passwordChanged == true}">
 	<div class="alert alert-success d-inline-flex p-2">
-		Password was seccessfully changed
+		Password was successfully changed
 	</div>
 </c:if>
 

@@ -15,7 +15,7 @@
 		<table>
 			<tr>
 				<td>Email:</td>
-				<td>info@jamnik-airport.sk</td>
+				<td>info@jamnikairport.sk</td>
 			</tr>
 			<tr>
 				<td>Phone number:</td>
