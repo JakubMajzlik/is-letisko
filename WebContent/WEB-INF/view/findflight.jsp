@@ -33,7 +33,7 @@
 			method="POST" modelAttribute="filterModel">
 			
 			Date:
-		<form:input path="takeoffDate" id="datepicker" width="312" />
+		<form:input path="takeoffDate" id="datepicker" width="312" readonly="true" />
     	<script>
     	var date = new Date();
     	date.setDate(date.getDate()-1);

@@ -24,7 +24,7 @@
 		<form:hidden path="id"/>
 		
 		Date:
-		<form:input path="takeoffDate" id="input" width="312" />
+		<form:input path="takeoffDate" id="input" width="312" readonly="true" />
     	<script>
         	$('#input').datetimepicker({ footer: true, modal: true, format: 'dd/mm/yyyy HH:MM'});
     	</script>

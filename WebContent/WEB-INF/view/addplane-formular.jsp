@@ -25,14 +25,22 @@
 		Type: <br><form:input path="type"/><br>
 		Manufacturer: <br><form:input path="manufacturer"/><br>
 		Date of made:
-		<form:input path="dateOfMade" id="datepicker1" width="276" />
+		<form:input path="dateOfMade" id="datepicker1" width="276" readonly="true" />
     	<script>
-        	$('#datepicker1').datepicker({format:'dd/mm/yyyy'});
+    	var date = new Date();
+        	$('#datepicker1').datepicker({
+        		format:'dd/mm/yyyy',
+        		maxDate:date,
+        		});
     	</script>
 	    Last revision date:
-		<form:input path="lastRevisionDate" id="datepicker2" width="276" />
+		<form:input path="lastRevisionDate" id="datepicker2" width="276" readonly="true" />
     	<script>
-        	$('#datepicker2').datepicker({format:'dd/mm/yyyy'});
+    	var date = new Date();
+        	$('#datepicker2').datepicker({
+        		format:'dd/mm/yyyy',
+        		maxDate:date,
+        		});
     	</script>
 		Number of seats in economic class: <br><form:input path="numberOfSeatsEconomic"/><br>
 		Number of seats in business class: <br><form:input path="numberOfSeatsBusiness"/><br>
