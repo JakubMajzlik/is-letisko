@@ -12,6 +12,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<title>Jamnik Airport - Add Destination</title>
+	<style>
+		span[id*="errors"]{color:Red;}
+	
+	</style>
 </head>
 <body class="fill">
 

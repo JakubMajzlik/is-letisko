@@ -12,6 +12,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<title>Jamnik Airport - Add plane</title>
+	<style>
+		span[id*="errors"]{color:Red;}
+	</style>
 </head>
 <body class="fill">
 	
@@ -21,10 +24,13 @@
 	<br/>
 	<form:form action="${pageContext.request.contextPath}/admin/addplane/process"
 			method="POST" modelAttribute="planeModel">
-		Serial number: <br><form:input path="serialNumber"/><br>
-		Type: <br><form:input path="type"/><br>
-		Manufacturer: <br><form:input path="manufacturer"/><br>
-		Date of made:
+		Serial number: <br><form:input path="serialNumber"/>
+		<form:errors path="serialNumber" /><br>
+		Type: <br><form:input path="type"/>
+		<form:errors path="type" /><br>
+		Manufacturer: <br><form:input path="manufacturer"/>
+		<form:errors path="manufacturer" /><br>
+		Date of made:<form:errors path="dateOfMade" />
 		<form:input path="dateOfMade" id="datepicker1" width="276" readonly="true" />
     	<script>
     	var date = new Date();
@@ -33,7 +39,7 @@
         		maxDate:date,
         		});
     	</script>
-	    Last revision date:
+	    Last revision date:<form:errors path="lastRevisionDate" />
 		<form:input path="lastRevisionDate" id="datepicker2" width="276" readonly="true" />
     	<script>
     	var date = new Date();
@@ -42,9 +48,12 @@
         		maxDate:date,
         		});
     	</script>
-		Number of seats in economic class: <br><form:input path="numberOfSeatsEconomic"/><br>
-		Number of seats in business class: <br><form:input path="numberOfSeatsBusiness"/><br>
-		Number of seats in first class: <br><form:input path="numberOfSeatsFirst"/><br>
+		Number of seats in economic class: <br><form:input path="numberOfSeatsEconomic"/>
+		<form:errors path="numberOfSeatsEconomic" /><br>
+		Number of seats in business class: <br><form:input path="numberOfSeatsBusiness"/>
+		<form:errors path="numberOfSeatsBusiness" /><br>
+		Number of seats in first class: <br><form:input path="numberOfSeatsFirst"/>
+		<form:errors path="numberOfSeatsFirst" /><br>
 		<button type="submit"> Save </button>
 	</form:form>
 </jsp:body>

@@ -159,8 +159,7 @@ public class AdminController {
 	public String processAddPlane(@Valid @ModelAttribute("planeModel") PlaneModel planeModel, 
 			BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			System.out.println(result.getAllErrors());
-			return "addflight-formular";
+			return "addplane-formular";
 		}else {
 			planeService.save(planeModel);
 			model.addAttribute("addSuccess", true);
@@ -282,7 +281,8 @@ public class AdminController {
 	public String processUpdateDestination(@Valid @ModelAttribute("destinationModel") DestinationModel destinationModel, 
 			BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			return "updateflight-formular";
+			model.addAttribute("countryList", getCountryList());
+			return "updatedestination-formular";
 		}else {
 			destinationService.save(destinationModel);
 			model.addAttribute("addSuccess", true);

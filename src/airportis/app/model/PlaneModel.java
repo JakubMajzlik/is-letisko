@@ -1,12 +1,23 @@
 package airportis.app.model;
 
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 public class PlaneModel {
+	
+	@NotNull(message="This field is required")
 	private String serialNumber;
+	
+	@NotNull(message="This field is required")
 	private String type;
+	
+	@NotNull(message="This field is required")
 	private String manufacturer;
+	
+	@NotNull(message="This field is required")
 	private String dateOfMade;
+	
+	@NotNull(message="This field is required")
 	private String lastRevisionDate;
 	
 	@Digits(fraction=0, integer = 10,

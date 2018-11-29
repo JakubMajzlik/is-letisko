@@ -7,6 +7,10 @@
 <head>
 <link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
 <title>Jamnik Airport - Edit user</title>
+<style>
+		span[id*="errors"]{color:Red;}
+	
+	</style>
 </head>
 <body class="fill">
 <t:twocol>
