@@ -61,7 +61,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public String getUserName(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<UserDetail> theQuery = session.createQuery("from PassengerDetail where email=:email", UserDetail.class);
+		Query<UserDetail> theQuery = session.createQuery("from UserDetail where email=:email", UserDetail.class);
 		theQuery.setParameter("email", email);
 		UserDetail user;
 		try {
@@ -75,7 +75,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public String getUserSurname(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<UserDetail> theQuery = session.createQuery("from PassengerDetail where email=:email", UserDetail.class);
+		Query<UserDetail> theQuery = session.createQuery("from UserDetail where email=:email", UserDetail.class);
 		theQuery.setParameter("email", email);
 		UserDetail user;
 		try {
