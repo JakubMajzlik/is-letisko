@@ -14,6 +14,16 @@
 	<jsp:body>
 		<h1> All flights</h1>
 		<br/>
+		<c:if test="${param.addSuccess == true }" >
+		<div class="alert alert-success d-inline-flex p-2">
+	    	 Flight was added successfully 
+	    </div>
+		</c:if>
+		<c:if test="${param.updateSuccess == true }" >
+		<div class="alert alert-success d-inline-flex p-2">
+	    	 Flight was updated successfully 
+	    </div>
+		</c:if>
 		<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
 				<thead class="thead-inverse|thead-default">
 						<tr>

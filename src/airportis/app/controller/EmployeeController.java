@@ -56,12 +56,14 @@ public class EmployeeController {
 	public String processAddFlight(@Valid @ModelAttribute("flightModel") FlightModel flightModel, 
 			BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			System.out.println(result.getAllErrors());
+			model.addAttribute("destinationService", destinationService);
+			model.addAttribute("planeService", planseService);
+			model.addAttribute("gateService", gateService);
 			return "addflight-formular";
 		}else {
 			flightService.save(flightModel);
 			model.addAttribute("addSuccess", true);
-			return "redirect:/employee/addflight";
+			return "redirect:/employee/showflights";
 		}
 	}
 	
@@ -90,11 +92,14 @@ public class EmployeeController {
 	public String processUpdateFlight(@Valid @ModelAttribute("flightModel") FlightModel flightModel, 
 			BindingResult result, Model model) {
 		if(result.hasErrors()) {
+			model.addAttribute("destinationService", destinationService);
+			model.addAttribute("planeService", planseService);
+			model.addAttribute("gateService", gateService);
 			return "updateflight-formular";
 		}else {
 			System.out.println(flightModel.getId());
 			flightService.save(flightModel);
-			model.addAttribute("addSuccess", true);
+			model.addAttribute("updateSuccess", true);
 			return "redirect:/employee/showflights";		
 		}
 	}

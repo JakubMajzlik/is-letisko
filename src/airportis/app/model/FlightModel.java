@@ -1,15 +1,25 @@
 package airportis.app.model;
 
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 public class FlightModel {
+	@Size(min=2,message="This field is required")
 	private String takeoffDate;
+	
+	@Min(value=1, message="This field is required")
 	private Integer destination = 0;
+	
+	@Min(value=1, message="This field is required")
 	private int gate;
+	
+	@Size(min=2,message="This field is required")
 	private String plane;
+	
 	private int id;
 	
-	@Digits(fraction=5, integer = 10,
+	@Digits(fraction=2, integer = 10,
 			message="This field has to contain only digits")
 	private double price;
 	

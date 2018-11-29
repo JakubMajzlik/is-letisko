@@ -198,7 +198,7 @@ public class AdminController {
 		if(result.hasErrors()) {
 			return "updateplane-formular";
 		}else {
-			System.out.println(planeModel.getSerialNumber());
+			System.out.println(planeModel);
 			planeService.save(planeModel);
 			model.addAttribute("updateSuccess", true);
 			return "redirect:/admin/showplanes";		
