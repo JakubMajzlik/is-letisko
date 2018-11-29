@@ -15,7 +15,7 @@
 <br/>
 <c:if test="${param.profileChanged == true}">
 	<div class="alert alert-success d-inline-flex p-2">
-		Profile was seccessfully changed
+		Profile was successfully changed
 	</div>
 </c:if>
 	

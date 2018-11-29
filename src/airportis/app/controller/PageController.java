@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import airportis.app.service.DestinationService;
 import airportis.app.service.FlightService;
 
 @Controller
@@ -18,10 +19,14 @@ public class PageController {
 	@Autowired
 	FlightService flightService;
 	
+	@Autowired
+	DestinationService destinationService;
+	
 	@RequestMapping("/")
 	public String showIndexPage(Model model) {
 		Date date = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		model.addAttribute("destinationService", destinationService);
 		model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),0));
 		return "index";
 	}
