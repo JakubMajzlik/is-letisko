@@ -29,7 +29,7 @@
 	Date:<form:errors path="takeoffDate" />
 	<form:input path="takeoffDate" id="input" width="312" readonly="true" />
    	<script>
-       	$('#input').datetimepicker({ footer: true, modal: true, format: 'dd/mm/yyyy HH:MM'});
+       	$('#input').datetimepicker({ footer: true, modal: true, format: 'yyyy/mm/dd HH:MM'});
    	</script>
    	
    	Gate:

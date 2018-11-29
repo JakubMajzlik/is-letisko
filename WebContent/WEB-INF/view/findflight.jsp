@@ -8,6 +8,7 @@
 <head>
 	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" media="screen" href='<c:url value="/resources/css/bootstrap-datetimepicker.css"/>'/>
+	<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/dataTables.css"/>'>
 	<script type="text/javascript"
 	     src='<c:url value="/resources/js/jquery.js"/>'>
 	</script> 
@@ -22,6 +23,15 @@
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTables.js"/>'></script>
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTablesBootstrap.js"/>'></script>
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function() {
+			$('#flightTable').DataTable();
+		} );
+	</script>
+    
 	<title>Jamnik Airport - Find flights</title>
 </head>
 <body class="fill">
@@ -29,6 +39,7 @@
 	<jsp:body>
 	<h1>Find flights</h1>
 	<br/>
+
 	<form:form action="${pageContext.request.contextPath}/flight/findflight"
 			method="POST" modelAttribute="filterModel">
 			
@@ -37,8 +48,8 @@
     	<script>
     	var date = new Date();
     	date.setDate(date.getDate()-1);
-        	$('#datepicker').datepicker({format:'dd/mm/yyyy', minDate:date,
-        		value:(date.getDate()+1) + '/' + (date.getMonth()+1) + '/' + date.getFullYear()});
+        	$('#datepicker').datepicker({format:'yyyy/mm/dd', minDate:date,
+        		value:date.getFullYear() + '/' + (date.getMonth()+1) + '/' + (date.getDate()+1)});
     	</script>
 	    
 	    Destination: <br> 
@@ -50,12 +61,13 @@
 		<button type="submit"> Find flights </button>
 	</form:form>
 	<c:if test="${!flights.isEmpty()}">
-		<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+		<table id="flightTable" class="table table-striped table-bordered">
 				<thead class="thead-inverse|thead-default">
 						<tr>
 							<th>Takeoff date</th>
 							<th>Destination</th>
 							<th>Distance</th>
+							<th>Order</th>
 						</tr>
 				</thead>
 				<tbody>

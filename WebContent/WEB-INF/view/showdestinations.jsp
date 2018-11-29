@@ -6,6 +6,18 @@
 <html>
 <head>
 <link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/dataTables.css"/>'>
+
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/jquery3.js"/>'></script>
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTables.js"/>'></script>
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTablesBootstrap.js"/>'></script>
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function() {
+			$('#destinationTable').DataTable();
+		} );
+	</script>
+	
 	<title>Jamnik Airport - All destinations</title>
 </head>
 <body class="fill">
@@ -14,13 +26,14 @@
 	<jsp:body>
 		<h1> All destinations</h1>
 		<br/>
-		<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
-				<thead class="thead-inverse|thead-default">
+		<table id="destinationTable" class="table table-striped table-bordered">
+				<thead >
 						<tr>
 							<th>Destination ID</th>
 							<th>City</th>
 							<th>Country</th>
 							<th>Distance</th>
+							<th>Update</th>
 						</tr>
 				</thead>
 				<tbody>

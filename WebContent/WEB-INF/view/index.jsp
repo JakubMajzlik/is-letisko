@@ -5,16 +5,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-      /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
-    </style>
-
 <title>Jamnik Airport</title>
 <link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/dataTables.css"/>'>
+
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/jquery3.js"/>'></script>
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTables.js"/>'></script>
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTablesBootstrap.js"/>'></script>
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function() {
+			$('#flightTable').DataTable();
+		} );
+	</script>
+	
 </head>
 <body class="fill">
 <t:twocol>
@@ -22,13 +26,14 @@
 		<h1>Welcome on Jamnik Airport website</h1><br><br><br>
 		<h3>Today's flights:</h3>
 		<c:if test="${!flights.isEmpty()}">
-		<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
-				<thead class="thead-inverse|thead-default">
+		<table id="flightTable" class="table table-striped table-bordered">
+				<thead>
 						<tr>
 							<th>Takeoff date</th>
 							<th>Destination</th>
 							<th>Distance</th>
 							<th>Flight length</th>
+							<th>Order</th>
 						</tr>
 				</thead>
 				<tbody>

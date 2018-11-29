@@ -6,6 +6,18 @@
 <html>
 <head>
 	<link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/dataTables.css"/>'>
+
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/jquery3.js"/>'></script>
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTables.js"/>'></script>
+	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTablesBootstrap.js"/>'></script>
+
+	<script type="text/javascript" class="init">
+		$(document).ready(function() {
+			$('#planeTable').DataTable();
+		} );
+	</script>
+	
 	<title>Jamnik Airport - All planes</title>
 </head>
 <body class="fill">
@@ -14,7 +26,7 @@
 	<jsp:body>
 	<h1>All planes</h1>
 	<br/>
-	<table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+	<table id="planeTable" class="table table-striped table-bordered">
 				<thead class="thead-inverse|thead-default">
 						<tr>
 							<th>Serial number</th>
@@ -22,6 +34,7 @@
 							<th>Manufacturer</th>
 							<th>Date of made</th>
 							<th>Last revision</th>
+							<th>Update</th>
 						</tr>
 				</thead>
 				<tbody>
@@ -33,20 +46,7 @@
 				<td>${item.getDateOfMade()}</td>
 				<td>${item.getLastRevisionDate()}</td>
 				<td><a href="${pageContext.request.contextPath}/admin/updateplane?serialNumber=${item.getSerialNumber()}">Update</a></td>
-			</tr>
-			<tr>
-				<td colspan="1"> Economic class:
-				<i>${item.getNumberOfSeatsEconomic()}</i></td>
-				<td></td>
-				<td colspan="1"> Business class:
-				<i>${item.getNumberOfSeatsBusiness()}</i></td>
-				<td></td>
-				<td colspan="1"> First class:
-				<i>${item.getNumberOfSeatsFirst()}</i></td>
-				<td></td>
-				
 			</tr>	
-			<tr><td>&nbsp;</td></tr>
 	</c:forEach>
 	</table>
 </jsp:body>

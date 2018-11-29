@@ -195,10 +195,10 @@ public class UserController {
 		model.addAttribute("flightService", flightService);
 		model.addAttribute("destinationService", destinationService);
 		Map<Integer, Boolean> stornoMap= new HashMap<Integer, Boolean>();
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
-		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd kk:mm");
+		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDate localDate= LocalDate.parse(dateFormat.format(date), formatter1);
 		for (FlightTicket flightTicket : flightTickets) {
 			LocalDate takeoffDate= LocalDate.parse(flightService.getFlight(flightTicket.getFlight()).getTakeoffDate(), formatter);

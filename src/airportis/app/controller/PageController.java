@@ -25,7 +25,7 @@ public class PageController {
 	@RequestMapping("/")
 	public String showIndexPage(Model model) {
 		Date date = new Date();
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		model.addAttribute("destinationService", destinationService);
 		model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),0));
 		return "index";

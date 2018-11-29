@@ -28,7 +28,7 @@
     	<script>
     	var date = new Date();
         	$('#datepicker1').datepicker({
-        		format:'dd/mm/yyyy',
+        		format:'yyyy/mm/dd',
         		maxDate:date,
         		});
     	</script>
@@ -37,7 +37,7 @@
     	<script>
     	var date = new Date();
         	$('#datepicker2').datepicker({
-        		format:'dd/mm/yyyy',
+        		format:'yyyy/mm/dd',
         		maxDate:date,
         		});
     	</script>

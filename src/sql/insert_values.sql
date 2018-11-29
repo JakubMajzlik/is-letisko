@@ -1,9 +1,9 @@
 use `iis_project`;
 
 -- PLANES
-insert into planes(serial_number, type, manufacturer, date_of_made, last_revision_date, number_of_seats_economic, number_of_seats_business, number_of_seats_first) values('B73720150322', '737', 'Boeing', '22/03/2015', '16/03/2018', 118, 15, 0);
-insert into planes(serial_number, type, manufacturer, date_of_made, last_revision_date, number_of_seats_economic, number_of_seats_business, number_of_seats_first) values('A38020170813', 'A380', 'Airbus', '13/08/2017', '09/08/2018', 461, 48, 8);
-insert into planes(serial_number, type, manufacturer, date_of_made, last_revision_date, number_of_seats_economic, number_of_seats_business, number_of_seats_first) values('CONC19981130', 'Concorde', 'Aerospatiale', '30/11/1998', '21/11/2018', 140, 12, 0);
+insert into planes(serial_number, type, manufacturer, date_of_made, last_revision_date, number_of_seats_economic, number_of_seats_business, number_of_seats_first) values('B73720150322', '737', 'Boeing', '2015/03/22', '2018/03/16', 118, 15, 0);
+insert into planes(serial_number, type, manufacturer, date_of_made, last_revision_date, number_of_seats_economic, number_of_seats_business, number_of_seats_first) values('A38020170813', 'A380', 'Airbus', '2017/08/13', '2018/08/09', 461, 48, 8);
+insert into planes(serial_number, type, manufacturer, date_of_made, last_revision_date, number_of_seats_economic, number_of_seats_business, number_of_seats_first) values('CONC19981130', 'Concorde', 'Aerospatiale', '1998/11/30', '2018/11/21', 140, 12, 0);
 
 -- GATES
 insert into gates(gate_number, terminal) values(1, 'A');
@@ -52,19 +52,19 @@ insert into users_roles(role_id, user_id) values (1,3);
 
 
 -- FLIGHTS
-insert into flights(takeoff_date, destination, gate, plane, price) values('05/12/2018 16:00', 1, 3, 'A38020170813', 65.00);
-insert into flights(takeoff_date, destination, gate, plane, price) values('12/12/2018 16:00', 1, 3, 'A38020170813', 70.50);
-insert into flights(takeoff_date, destination, gate, plane, price) values('19/12/2018 16:00', 1, 3, 'A38020170813', 68.70);
-insert into flights(takeoff_date, destination, gate, plane, price) values('02/01/2019 16:00', 1, 3, 'A38020170813', 76.30);
-insert into flights(takeoff_date, destination, gate, plane, price) values('09/01/2019 16:00', 1, 3, 'A38020170813', 72.00);
-insert into flights(takeoff_date, destination, gate, plane, price) values('16/01/2019 16:00', 1, 3, 'A38020170813', 63.50);
-insert into flights(takeoff_date, destination, gate, plane, price) values('23/01/2019 16:00', 1, 3, 'A38020170813', 69.90);
-insert into flights(takeoff_date, destination, gate, plane, price) values('30/01/2019 16:00', 1, 3, 'A38020170813', 78.40);
-insert into flights(takeoff_date, destination, gate, plane, price) values('07/12/2018 07:25', 3, 2, 'CONC19981130', 395.30);
-insert into flights(takeoff_date, destination, gate, plane, price) values('14/12/2018 07:25', 3, 2, 'CONC19981130', 425.00);
-insert into flights(takeoff_date, destination, gate, plane, price) values('21/12/2018 07:25', 3, 2, 'CONC19981130', 470.50);
-insert into flights(takeoff_date, destination, gate, plane, price) values('28/12/2018 07:25', 3, 2, 'CONC19981130', 476.30);
-insert into flights(takeoff_date, destination, gate, plane, price) values('04/01/2019 07:25', 3, 2, 'CONC19981130', 463.80);
-insert into flights(takeoff_date, destination, gate, plane, price) values('11/01/2019 07:25', 3, 2, 'CONC19981130', 399.90);
-insert into flights(takeoff_date, destination, gate, plane, price) values('18/01/2019 07:25', 3, 2, 'CONC19981130', 405.10);
-insert into flights(takeoff_date, destination, gate, plane, price) values('25/01/2019 07:25', 3, 2, 'CONC19981130', 432.90);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/05 16:00', 1, 3, 'A38020170813', 65.00);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/12 16:00', 1, 3, 'A38020170813', 70.50);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/19 16:00', 1, 3, 'A38020170813', 68.70);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/02 16:00', 1, 3, 'A38020170813', 76.30);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/09 16:00', 1, 3, 'A38020170813', 72.00);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/16 16:00', 1, 3, 'A38020170813', 63.50);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/23 16:00', 1, 3, 'A38020170813', 69.90);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/30 16:00', 1, 3, 'A38020170813', 78.40);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/07 07:25', 3, 2, 'CONC19981130', 395.30);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/14 07:25', 3, 2, 'CONC19981130', 425.00);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/21 07:25', 3, 2, 'CONC19981130', 470.50);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/28 07:25', 3, 2, 'CONC19981130', 476.30);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/04 07:25', 3, 2, 'CONC19981130', 463.80);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/11 07:25', 3, 2, 'CONC19981130', 399.90);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/18 07:25', 3, 2, 'CONC19981130', 405.10);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/25 07:25', 3, 2, 'CONC19981130', 432.90);

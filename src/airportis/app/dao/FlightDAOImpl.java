@@ -57,8 +57,8 @@ public class FlightDAOImpl implements FlightDAO {
 		System.out.println("DATE: "+stringDate);
 		if(destination==0) {
 			Query<Flight> flight= session.createQuery("from Flight", Flight.class);
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
-			DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd kk:mm");
+			DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			for (Flight f : flight.getResultList()) {
 				LocalDate date= LocalDate.parse(stringDate, formatter1);
 				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
@@ -69,7 +69,7 @@ public class FlightDAOImpl implements FlightDAO {
 		}else if(stringDate ==""){
 			Query<Flight> flight= session.createQuery("from Flight where destination= :destination", Flight.class);
 			flight.setParameter("destination",destination);
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/ddy kk:mm");
 			for (Flight f : flight.getResultList()) {
 				LocalDate date= LocalDate.now();
 				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
@@ -80,8 +80,8 @@ public class FlightDAOImpl implements FlightDAO {
 		}else {
 			Query<Flight> flight= session.createQuery("from Flight where destination= :destination", Flight.class);
 			flight.setParameter("destination",destination);
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy kk:mm");
-			DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd kk:mm");
+			DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			for (Flight f : flight.getResultList()) {
 				LocalDate date= LocalDate.parse(stringDate, formatter1);
 				LocalDate takeoffDate= LocalDate.parse(f.getTakeoffDate(), formatter);
