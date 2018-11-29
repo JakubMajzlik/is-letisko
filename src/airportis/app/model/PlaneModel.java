@@ -1,13 +1,24 @@
 package airportis.app.model;
 
+import javax.validation.constraints.Digits;
+
 public class PlaneModel {
 	private String serialNumber;
 	private String type;
 	private String manufacturer;
 	private String dateOfMade;
 	private String lastRevisionDate;
+	
+	@Digits(fraction=0, integer = 10,
+			message="This field has to contain only digits")
 	private int numberOfSeatsEconomic;
+	
+	@Digits(fraction=0, integer = 10,
+			message="This field has to contain only digits")
 	private int numberOfSeatsBusiness;
+	
+	@Digits(fraction=0, integer = 10,
+			message="This field has to contain only digits")
 	private int numberOfSeatsFirst;
 	
 	public PlaneModel() {}

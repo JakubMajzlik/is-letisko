@@ -1,11 +1,16 @@
 package airportis.app.model;
 
+import javax.validation.constraints.Digits;
+
 public class FlightModel {
 	private String takeoffDate;
 	private Integer destination = 0;
 	private int gate;
 	private String plane;
 	private int id;
+	
+	@Digits(fraction=5, integer = 10,
+			message="This field has to contain only digits")
 	private double price;
 	
 	public FlightModel() {}
