@@ -34,7 +34,7 @@ public class UserRegisterModel {
 	private String street;
 	
 	@NotNull(message="This field is required")
-	@Digits(fraction=0, integer = 5,
+	@Digits(fraction=0, integer = 10,
 			message="This field has to contain only digits")
 	private String houseNumber;
 	
