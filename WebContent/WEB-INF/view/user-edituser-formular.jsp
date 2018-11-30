@@ -30,6 +30,7 @@
 	<form:hidden path="password2"/>
 	<form:hidden path="id"/>
 	<form:hidden path="email"/>
+	<form:hidden path="identificationNumber"/>
 	<table>
 	<tr>
 		<td>First name:</td>
@@ -68,11 +69,6 @@
 			</form:select></td>
 	</tr>
 	<tr>
-		<td>Identification number:</td>
-		<td><form:input path="identificationNumber"/>
-			<form:errors path="identificationNumber"/></td>
-	</tr>
-	<tr>
 		<td>Phone number:</td>
 		<td><form:input path="phoneNumber"/>
 			<form:errors path="phoneNumber"/></td>
@@ -94,7 +90,7 @@
 	<form:hidden path="id"/>
 	<form:errors path="newPassword"/>
 	<c:if test="${passwordError == true}" >
-		You entered wrong password <br/>
+		<span id="errors">You entered wrong password</span><br/>
 	</c:if>
 	
 	<table>

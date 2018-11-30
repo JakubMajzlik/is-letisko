@@ -8,7 +8,7 @@ create table if not exists `user_details` (
     `phone_number` varchar(20) default null,
     `first_name` varchar(45) not null,
     `last_name` varchar(45) not null,
-    `identification_number` varchar(10) not null,
+    `identification_number` varchar(32) not null,
     `city` varchar(45) not null,
     `street` varchar(45) not null,
     `house_number` varchar(5) not null,

@@ -23,8 +23,8 @@
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTables.js"/>'></script>
-	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTablesBootstrap.js"/>'></script>
+    <script type="text/javascript" src='<c:url value="/resources/js/dataTables.js"/>'></script>
+	<script type="text/javascript" src='<c:url value="/resources/js/dataTablesBootstrap.js"/>'></script>
 
 	<script type="text/javascript" class="init">
 		$(document).ready(function() {
@@ -47,9 +47,9 @@
 		<form:input path="takeoffDate" id="datepicker" width="312" readonly="true" />
     	<script>
     	var date = new Date();
+    	var max = new Date(${maxYear}, ${maxMonth-1}, ${maxDay}, 0, 0, 0, 0)
     	date.setDate(date.getDate()-1);
-        	$('#datepicker').datepicker({format:'yyyy/mm/dd', minDate:date,
-        		value:date.getFullYear() + '/' + (date.getMonth()+1) + '/' + (date.getDate()+1)});
+        	$('#datepicker').datepicker({format:'yyyy/mm/dd', minDate:date, maxDate:max, disableDates:${datesToDisable}});
     	</script>
 	    
 	    Destination: <br> 

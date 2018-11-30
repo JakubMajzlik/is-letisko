@@ -2,6 +2,7 @@ package airportis.app.service;
 
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,6 +88,18 @@ public class FlightServiceImpl implements FlightService {
 	@Transactional
 	public Flight getFlight(int id) {
 		return flightDAO.getFlight(id);
+	}
+
+	@Override
+	@Transactional
+	public LocalDate getMaxDate(String date, int destination) {
+		return flightDAO.getMaxDate(date, destination);
+	}
+
+	@Override
+	@Transactional
+	public String getDisableDates(String date, int destination, LocalDate maxDate) {
+		return flightDAO.getDisableDates(date, destination, maxDate);
 	}
 
 }

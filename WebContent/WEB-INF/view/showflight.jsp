@@ -10,9 +10,9 @@
 	<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/bootstrap.css"/>'>
 	<link rel="stylesheet" type="text/css" href='<c:url value="/resources/css/dataTables.css"/>'>
 
-	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/jquery3.js"/>'></script>
-	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTables.js"/>'></script>
-	<script type="text/javascript" language="javascript" src='<c:url value="/resources/js/dataTablesBootstrap.js"/>'></script>
+	<script type="text/javascript" src='<c:url value="/resources/js/jquery3.js"/>'></script>
+	<script type="text/javascript" src='<c:url value="/resources/js/dataTables.js"/>'></script>
+	<script type="text/javascript" src='<c:url value="/resources/js/dataTablesBootstrap.js"/>'></script>
 
 	<script type="text/javascript" class="init">
 		$(document).ready(function() {

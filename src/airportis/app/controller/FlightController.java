@@ -1,8 +1,6 @@
 package airportis.app.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -43,20 +41,15 @@ public class FlightController {
 	@RequestMapping("/findflight")
 	public String showFindFlightForm(@RequestParam(value="id", required=false)Integer id, @ModelAttribute("filterModel")FilterModel filterModel, Model model) {
 		if(id == null) {
-			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-			Date date = new Date();
-			if(filterModel.getTakeoffDate()==null && filterModel.getDestination()==0) {	
-				model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),0));
-			}else {
-				if(filterModel.getTakeoffDate()==null || filterModel.getTakeoffDate()=="") {
-					model.addAttribute("flights", flightService.getAllFlights(dateFormat.format(date),filterModel.getDestination()));
-				}else {
-					model.addAttribute("flights", flightService.getAllFlights(filterModel.getTakeoffDate(),filterModel.getDestination()));
-				}
-				
-			}
+			LocalDate maxDate= flightService.getMaxDate(filterModel.getTakeoffDate(),filterModel.getDestination());
+			model.addAttribute("flights", flightService.getAllFlights(filterModel.getTakeoffDate(),filterModel.getDestination()));
 			model.addAttribute("destinationService", destinationService);
 			model.addAttribute("flightTicketService", flightTicketService);
+			model.addAttribute("maxDay", maxDate.getDayOfMonth());
+			model.addAttribute("maxMonth", maxDate.getMonthValue());
+			model.addAttribute("maxYear", maxDate.getYear());
+			model.addAttribute("datesToDisable", flightService.getDisableDates(filterModel.getTakeoffDate(), filterModel.getDestination(), maxDate));
+			System.out.println(flightService.getDisableDates(filterModel.getTakeoffDate(), filterModel.getDestination(), maxDate));
 			
 			return "findflight";
 		}

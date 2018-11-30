@@ -29,8 +29,11 @@
 	Date:<form:errors path="takeoffDate" />
 	<form:input path="takeoffDate" id="input" width="312" readonly="true" />
    	<script>
-       	$('#input').datetimepicker({ footer: true, modal: true, format: 'yyyy/mm/dd HH:MM'});
-   	</script>
+    	var date = new Date();
+    	date.setDate(date.getDate()-1);
+        	$('#input').datetimepicker({format:'yyyy/mm/dd HH:MM', 
+        	datepicker:{minDate:date}});
+    </script>
    	
    	Gate:
    	<form:select path="gate">
