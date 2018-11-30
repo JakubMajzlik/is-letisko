@@ -54,17 +54,8 @@ public class FlightController {
 			return "findflight";
 		}
 		FlightModel flightModel= flightService.getFlightModel(id);
-		double minutes, hours;
-		hours= destinationService.getDestinationDistance(flightModel.getDestination())/650.0;
-		minutes= (destinationService.getDestinationDistance(flightModel.getDestination())%650.0/650.0*60)+20;
-		if(minutes>=60) {
-			hours++;
-			minutes-=60;
-		}
 		model.addAttribute("flightModel", flightModel);
 		model.addAttribute("destinationService", destinationService);
-		model.addAttribute("minutes", minutes);
-		model.addAttribute("hours", hours);
 		model.addAttribute("id", id);
 		model.addAttribute("economic", planeService.getPlane(flightModel.getPlane()).getNumberOfSeatsEconomic() - flightTicketService.getEconomicTickets(id));
 		model.addAttribute("business", planeService.getPlane(flightModel.getPlane()).getNumberOfSeatsBusiness() - flightTicketService.getBusinessTickets(id));
@@ -79,17 +70,9 @@ public class FlightController {
 		if(ticket_class == null) {
 			return "findflight";
 		}
-		double minutes, hours;
-		hours= destinationService.getDestinationDistance(flightModel.getDestination())/650.0;
-		minutes= (destinationService.getDestinationDistance(flightModel.getDestination())%650.0/650.0*60)+20;
-		if(minutes>=60) {
-			hours++;
-			minutes-=60;
-		}
+
 		model.addAttribute("flightModel", flightModel);
 		model.addAttribute("destinationService", destinationService);
-		model.addAttribute("minutes", minutes);
-		model.addAttribute("hours", hours);
 		model.addAttribute("id", flightModel.getId());
 		model.addAttribute("ticket_class", ticket_class);
 		return "orderflight";

@@ -11,6 +11,7 @@
 	</script> 
 	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    
 	<title>Jamnik Airport - Add flight</title>
 	<style>
 		span[id*="errors"]{color:Red;}
@@ -37,8 +38,7 @@
    	<script>
     	var date = new Date();
     	date.setDate(date.getDate()-1);
-        	$('#input').datetimepicker({format:'yyyy/mm/dd HH:MM', datepicker:{minDate:date},
-        		value:date.getFullYear() + '/' + (date.getMonth()+1) + '/' + (date.getDate()+1) +' ' + date.getHours() + ':' + date.getMinutes()});
+        	$('#input').datetimepicker({format:'yyyy/mm/dd HH:MM', footer:true, datepicker:{minDate:date}});
     </script>
    	Gate:
    	<form:select path="gate">

@@ -16,13 +16,6 @@
 	Date: ${flightModel.getTakeoffDate()} <br>
 	From: Jamnik, Slovakia <br>
 	To: ${destinationService.getDestinationName(flightModel.getDestination())} <br>
-	Flight length: <fmt:formatNumber
-			  			value="${hours}"
-			  			maxFractionDigits="0"/>hod
-			  			<fmt:formatNumber
-			  			value="${minutes}"
-			  			maxFractionDigits="0"/>min <br>
-	
 	<table border=1>
 	<tr>
 		<td>Economic: &nbsp;&nbsp;&nbsp;</td>

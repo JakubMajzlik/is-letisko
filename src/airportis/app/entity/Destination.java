@@ -16,22 +16,33 @@ public class Destination {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="country")
-	private String country;
+	@Column(name="airport")
+	private String airport;
 	
 	@Column(name="city")
 	private String city;
 	
-	@Column(name="distance")
-	private int distance;
+	@Column(name="country")
+	private String country;
+	
+	
+	@Column(name="latitude")
+	private double latitude;
+	
+	@Column(name="longitude")
+	private double longitude;
 	
 	public Destination() {}
-	
-	public Destination(String country, String city, int distance) {
-		this.country = country;
+
+	public Destination(String airport, String city, String country, double latitude, double longitude) {
+		super();
+		this.airport = airport;
 		this.city = city;
-		this.distance= distance;
+		this.country = country;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
+
 
 	public int getId() {
 		return id;
@@ -57,17 +68,34 @@ public class Destination {
 		this.city = city;
 	}
 
-	public int getDistance() {
-		return distance;
+	public String getAirport() {
+		return airport;
 	}
 
-	public void setDistance(int distance) {
-		this.distance = distance;
+	public void setAirport(String airport) {
+		this.airport = airport;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
 	@Override
 	public String toString() {
-		return "Destination [id=" + id + ", country=" + country + ", city=" + city + ", distance=" + distance + "]";
+		return "Destination [id=" + id + ", airport=" + airport + ", city=" + city + ", country=" + country
+				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 
 }

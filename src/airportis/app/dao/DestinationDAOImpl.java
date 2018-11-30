@@ -2,8 +2,11 @@ package airportis.app.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -55,9 +58,10 @@ public class DestinationDAOImpl implements DestinationDAO{
 		Map<Integer, String> map= new HashMap<>();
 		Query<Destination> destination= session.createQuery("from Destination", Destination.class);
 		for (Destination d : destination.getResultList()) {
-			map.put(d.getId(), d.getCity()+", "+ d.getCountry());
+			map.put(d.getId(), d.getCity()+", "+ d.getCountry() +", "+ d.getAirport());
 		}
-		return map;
+		Map<Integer, String>sortedMap = new TreeMap<>(map);
+		return map.entrySet().stream().sorted(Map.Entry.comparingByValue()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
 	}
 
 	@Override

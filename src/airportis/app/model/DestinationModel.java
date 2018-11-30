@@ -13,18 +13,35 @@ public class DestinationModel {
 	private String city;
 	
 	@NotNull(message="This field is required")
+	private String airport;
+	
+	@NotNull(message="This field is required")
 	@Digits(fraction=0, integer=5, message="This field has to contain only digits")
-	private String distance;
+	private double latitude;
+	
+	@NotNull(message="This field is required")
+	@Digits(fraction=0, integer=5, message="This field has to contain only digits")
+	private double longitude;
 	
 	public DestinationModel() {}
 
-	public DestinationModel(int id, String city, String country, String distance) {
-		this.id=id;
-		this.city= city;
-		this.country= country;
-		this.distance= distance;
-	}
 	
+	
+	public DestinationModel(int id, @NotNull(message = "This field is required") String country,
+			@NotNull(message = "This field is required") String city,
+			@NotNull(message = "This field is required") String airport,
+			@NotNull(message = "This field is required") @Digits(fraction = 0, integer = 5, message = "This field has to contain only digits") double latitude,
+			@NotNull(message = "This field is required") @Digits(fraction = 0, integer = 5, message = "This field has to contain only digits") double longitude) {
+		this.id = id;
+		this.country = country;
+		this.city = city;
+		this.airport = airport;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+
+
+
 	public String getCountry() {
 		return country;
 	}
@@ -41,13 +58,43 @@ public class DestinationModel {
 		this.city = city;
 	}
 
-	public String getDistance() {
-		return distance;
+	
+	
+	public String getAirport() {
+		return airport;
 	}
 
-	public void setDistance(String distance) {
-		this.distance = distance;
+
+
+	public void setAirport(String airport) {
+		this.airport = airport;
 	}
+
+
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -57,11 +104,12 @@ public class DestinationModel {
 		this.id = id;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "DestinationModel [id=" + id + ", country=" + country + ", city=" + city + ", distance=" + distance
-				+ "]";
+		return "DestinationModel [id=" + id + ", country=" + country + ", city=" + city + ", airport=" + airport
+				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
-	
 	
 }

@@ -34,17 +34,13 @@ public class DestinationServiceImpl implements DestinationService{
 
 	@Override
 	@Transactional
-	public int getDestinationDistance(int id) {
-		return destinationDAO.getDestination(id).getDistance();
-	}
-
-	@Override
-	@Transactional
 	public void save(DestinationModel destinationModel) {
 			Destination destination= new Destination(
-					destinationModel.getCountry(),
+					destinationModel.getAirport(),
 					destinationModel.getCity(),
-					Integer.parseInt(destinationModel.getDistance()));
+					destinationModel.getCountry(),
+					destinationModel.getLatitude(),
+					destinationModel.getLongitude());
 			destination.setId(destinationModel.getId());
 			destinationDAO.save(destination);
 	}
@@ -63,7 +59,9 @@ public class DestinationServiceImpl implements DestinationService{
 			DestinationModel destinationModel= new DestinationModel(destination.getId(),
 					destination.getCity(),
 					destination.getCountry(),
-					Integer.toString(destination.getDistance()));
+					destination.getAirport(),
+					destination.getLatitude(),
+					destination.getLongitude());
 			return destinationModel;
 		}else {
 			return null;

@@ -30,9 +30,9 @@
 				<thead >
 						<tr>
 							<th>Destination ID</th>
+							<th>Airport</th>
 							<th>City</th>
 							<th>Country</th>
-							<th>Distance</th>
 							<th>Update</th>
 						</tr>
 				</thead>
@@ -40,9 +40,9 @@
 		<c:forEach items="${destinations}" var="item">
 				<tr>
 					<td><b>${item.getId()}</b></td>
+					<td><b>${item.getAirport()}</b></td>
 					<td> <b>${item.getCity()}</b></td>
 					<td><b>${item.getCountry()}</b></td>
-					<td><b>${item.getDistance()}</b></td>
 					<td><a href="${pageContext.request.contextPath}/admin/updatedestination?id=${item.getId()}">Update</a></td>
 				</tr>  	
 		</c:forEach>

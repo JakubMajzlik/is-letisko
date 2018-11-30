@@ -58,9 +58,11 @@ create table if not exists `users_roles` (
 
 create table if not exists `destinations` (
 	`id` int(11) auto_increment,
+    `airport` varchar(128) not null,
+    `city` varchar(64),
     `country` varchar(64) not null,
-    `city` varchar(64) not null,
-    `distance` int(5) not null,
+    `latitude` double(23,20) not null,
+    `longitude` double(23,20) not null,
     
     primary key(`id`)
 );

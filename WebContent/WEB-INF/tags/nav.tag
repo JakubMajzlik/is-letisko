@@ -8,7 +8,7 @@
 		<a class="nav-link text-white" href="${pageContext.request.contextPath}/">Home</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link text-white" href="${pageContext.request.contextPath}/flight/findflight">Flights</a>
+		<a class="nav-link text-white" href="${pageContext.request.contextPath}/flight/findflight">Find flights</a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link text-white" href="${pageContext.request.contextPath}/contact">Contact</a>
