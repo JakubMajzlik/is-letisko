@@ -61,7 +61,8 @@ public class DestinationServiceImpl implements DestinationService{
 					destination.getCountry(),
 					destination.getAirport(),
 					destination.getLatitude(),
-					destination.getLongitude());
+					destination.getLongitude(),
+					destination.getDistance());
 			return destinationModel;
 		}else {
 			return null;

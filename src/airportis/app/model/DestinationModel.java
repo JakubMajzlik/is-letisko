@@ -16,12 +16,14 @@ public class DestinationModel {
 	private String airport;
 	
 	@NotNull(message="This field is required")
-	@Digits(fraction=0, integer=5, message="This field has to contain only digits")
+	@Digits(fraction=20, integer=3, message="This field has to contain only digits")
 	private double latitude;
 	
 	@NotNull(message="This field is required")
-	@Digits(fraction=0, integer=5, message="This field has to contain only digits")
+	@Digits(fraction=20, integer=3, message="This field has to contain only digits")
 	private double longitude;
+	
+	private int distance;
 	
 	public DestinationModel() {}
 
@@ -30,14 +32,16 @@ public class DestinationModel {
 	public DestinationModel(int id, @NotNull(message = "This field is required") String country,
 			@NotNull(message = "This field is required") String city,
 			@NotNull(message = "This field is required") String airport,
-			@NotNull(message = "This field is required") @Digits(fraction = 0, integer = 5, message = "This field has to contain only digits") double latitude,
-			@NotNull(message = "This field is required") @Digits(fraction = 0, integer = 5, message = "This field has to contain only digits") double longitude) {
+			@NotNull(message = "This field is required") @Digits(fraction = 20, integer = 3, message = "This field has to contain only digits") double latitude,
+			@NotNull(message = "This field is required") @Digits(fraction = 20, integer = 3, message = "This field has to contain only digits") double longitude,
+			int distance) {
 		this.id = id;
 		this.country = country;
 		this.city = city;
 		this.airport = airport;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.distance = distance;
 	}
 
 
@@ -105,11 +109,18 @@ public class DestinationModel {
 	}
 
 
+	public int getDistance() {
+		return distance;
+	}
+
+	public void setDistance(int distance) {
+		this.distance = distance;
+	}
 
 	@Override
 	public String toString() {
 		return "DestinationModel [id=" + id + ", country=" + country + ", city=" + city + ", airport=" + airport
-				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
+				+ ", latitude=" + latitude + ", longitude=" + longitude + ", distance=" + distance + "]";
 	}
 	
 }

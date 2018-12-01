@@ -27,7 +27,16 @@
 		method="POST" modelAttribute="destinationModel">
 		
 	<form:hidden path="id"/>
+	<form:hidden path="distance"/>
 	<table>
+	<tr>
+		<td>Airport name:</td>
+		<td><form:input path="airport"/><form:errors path="airport"/></td>
+	</tr>
+	<tr>
+		<td>City:</td>
+		<td><form:input path="city"/><form:errors path="city"/></td>
+	</tr>
 	<tr>
 		<td>Country:</td>
 		<td>
@@ -37,12 +46,12 @@
 		</td>
 	</tr>
 	<tr>
-		<td>City:</td>
-		<td><form:input path="city"/><form:errors path="city"/></td>
+		<td>Latitude:</td>
+		<td><form:input path="latitude"/><form:errors path="latitude"/></td>
 	</tr>
 	<tr>
-		<td>Distance:</td>
-		<td><form:input path="distance"/>km &nbsp;<form:errors path="distance"/></td>
+		<td>Longitude:</td>
+		<td><form:input path="longitude"/><form:errors path="longitude"/></td>
 	</tr>
 	</table>
 	<button type="submit"> Save </button>
