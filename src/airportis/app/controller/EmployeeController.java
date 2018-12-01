@@ -105,11 +105,13 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/removeflight")
-	public String removeFlight(@RequestParam(value="id", required=false) Integer id) {
+	public String removeFlight(@RequestParam(value="id", required=false) Integer id,
+								Model model) {
 		if(id==null) {
 			return "showflight";
 		}
 		flightService.remove(id);
+		model.addAttribute("deleteSuccess", true);
 		return "redirect:/employee/showflights";
 	}
 }

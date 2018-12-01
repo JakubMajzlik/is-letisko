@@ -26,9 +26,9 @@ public class DestinationServiceImpl implements DestinationService{
 	@Override
 	@Transactional
 	public String getDestinationName(int id) {
-		String name = destinationDAO.getDestination(id).getCity() 
-				+ ", "
-				+ destinationDAO.getDestination(id).getCountry();
+		String name = destinationDAO.getDestination(id).getAirport() + 
+				", " + destinationDAO.getDestination(id).getCity() +
+				", "+ destinationDAO.getDestination(id).getCountry();
 		return name;
 	}
 
@@ -57,8 +57,8 @@ public class DestinationServiceImpl implements DestinationService{
 		Destination destination= destinationDAO.getDestination(id);
 		if(destination!=null) {
 			DestinationModel destinationModel= new DestinationModel(destination.getId(),
-					destination.getCity(),
 					destination.getCountry(),
+					destination.getCity(),
 					destination.getAirport(),
 					destination.getLatitude(),
 					destination.getLongitude(),

@@ -100,7 +100,7 @@ public class AdminController {
 		}
 		
 		userService.update(userModel);
-		
+		model.addAttribute("updateSuccess", true);
 		return "redirect:/admin/manageusers";
 		
 	}
@@ -114,6 +114,7 @@ public class AdminController {
 		User user = userService.findUserById(id.intValue()); 
 		if(user != null) {
 			userService.remove(user);
+			model.addAttribute("deleteSuccess", true);
 		}
 		
 		return "redirect:/admin/manageusers";
@@ -129,6 +130,7 @@ public class AdminController {
 		if(user != null) {
 			user.setEnabled(true);
 			userService.save(user);
+			model.addAttribute("enableSuccess", true);
 		}
 		
 		return "redirect:/admin/manageusers";
@@ -144,6 +146,7 @@ public class AdminController {
 		if(user != null) {
 			user.setEnabled(false);
 			userService.save(user);
+			model.addAttribute("disableSuccess", true);
 		}
 		
 		return "redirect:/admin/manageusers";
@@ -163,7 +166,7 @@ public class AdminController {
 		}else {
 			planeService.save(planeModel);
 			model.addAttribute("addSuccess", true);
-			return "redirect:/admin/addplane";
+			return "redirect:/admin/showplanes";
 		}
 	}
 	
@@ -250,8 +253,8 @@ public class AdminController {
 		}
 		
 		userService.createEmployee(userModel);
-		model.addAttribute("successfullyRegistred", true);
-		return "redirect:/";
+		model.addAttribute("registeredSuccess", true);
+		return "redirect:/admin/manageusers";
 	}
 	
 	@RequestMapping("/destinations")

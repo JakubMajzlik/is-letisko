@@ -26,6 +26,16 @@
 	<jsp:body>
 	<h1>All planes</h1>
 	<br/>
+	<c:if test="${param.updateSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 Plane was updated successfully 
+    </div>
+	</c:if>
+	<c:if test="${param.addSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 Plane was added successfully 
+    </div>
+	</c:if>
 	<table id="planeTable" class="table table-striped table-bordered">
 				<thead class="thead-inverse|thead-default">
 						<tr>

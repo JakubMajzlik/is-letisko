@@ -16,6 +16,7 @@
 	Date: ${flightModel.getTakeoffDate()} <br>
 	From: Jamnik, Slovakia <br>
 	To: ${destinationService.getDestinationName(flightModel.getDestination())} <br>
+	Distance: ${destinationService.getDestinationModel(flightModel.getDestination()).getDistance()/1000} km<br/>
 	<table border=1>
 	<tr>
 		<td>Economic: &nbsp;&nbsp;&nbsp;</td>

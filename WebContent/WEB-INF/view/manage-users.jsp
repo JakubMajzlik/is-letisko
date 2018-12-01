@@ -24,6 +24,31 @@
 	<jsp:body>
 	<h1>Manage users</h1>
 	<br/>
+	<c:if test="${param.updateSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 User profile was updated successfully 
+    </div>
+	</c:if>
+	<c:if test="${param.deleteSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 User profile was deleted successfully 
+    </div>
+	</c:if>
+	<c:if test="${param.enableSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 User profile was enabled successfully 
+    </div>
+	</c:if>
+	<c:if test="${param.disableSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 User profile was disabled successfully 
+    </div>
+	</c:if>
+	<c:if test="${param.registeredSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 New employee was registered successfully 
+    </div>
+	</c:if>
 <table id="userTable" class="table table-striped table-bordered">
 	<thead >
 			<tr>

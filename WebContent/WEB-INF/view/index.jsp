@@ -23,7 +23,13 @@
 <body class="fill">
 <t:twocol>
 	<jsp:body>
-		<h1>Welcome on Jamnik Airport website</h1><br><br><br>
+		<h1>Welcome on Jamnik Airport website</h1><br><br>
+		<c:if test="${param.loginSuccess == true }" >
+		<div class="alert alert-success d-inline-flex p-2">
+	    	 You have been successfully logged in.
+	    </div>
+		</c:if>
+		<br>
 		<h3>Today's flights:</h3>
 		<c:if test="${!flights.isEmpty()}">
 		<table id="flightTable" class="table table-striped table-bordered">

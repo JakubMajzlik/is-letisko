@@ -38,6 +38,11 @@
 	    	 Flight was updated successfully 
 	    </div>
 		</c:if>
+		<c:if test="${param.deleteSuccess == true }" >
+		<div class="alert alert-success d-inline-flex p-2">
+	    	 Flight was deleted successfully 
+	    </div>
+		</c:if>
 		
 		<table id="flightTable" class="table table-striped table-bordered">
 				<thead>
@@ -56,9 +61,9 @@
 					<td> <b>${item.getTakeoffDate()}</b></td>
 					<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
 					<td><b>${item.getPlane()}</b></td>
-					<td><a href="${pageContext.request.contextPath}/employee/showflights?id=${item.getId()}">Update</a>
-					<button onclick="if (confirm('Are you sure you want to delete this user from the database?')) {
-						window.location.href = '${pageContext.request.contextPath}/employee/removeflight?id=${item.getId()}';}" >Delete</button></td>
+					<td><button onclick="if (confirm('Are you sure you want to delete this user from the database?')) {
+						window.location.href = '${pageContext.request.contextPath}/employee/removeflight?id=${item.getId()}';}" >Delete</button>
+					<button onclick="window.location.href = '${pageContext.request.contextPath}/employee/showflights?id=${item.getId()}';" >Update</button></td>
 					
 				</tr>  	
 		</c:forEach>

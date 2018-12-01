@@ -92,6 +92,10 @@ public class Destination {
 		this.longitude = longitude;
 	}
 	
+	/**
+	 * https://stackoverflow.com/questions/3694380/calculating-distance-between-two-points-using-latitude-longitude-what-am-i-doi
+	 * 
+	 */
 	public int getDistance() {
 		final int R = 6371; // Radius of the earth
 
