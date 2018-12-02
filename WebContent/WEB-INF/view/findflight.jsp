@@ -60,30 +60,24 @@
 	    <br>
 		<button type="submit"> Find flights </button>
 	</form:form>
-	<c:if test="${!flights.isEmpty()}">
-		<table id="flightTable" class="table table-striped table-bordered">
-				<thead class="thead-inverse|thead-default">
-						<tr>
-							<th>Takeoff date</th>
-							<th>Destination</th>
-							<th>Order</th>
-						</tr>
-				</thead>
-				<tbody>
-		<c:forEach items="${flights}" var="item">
-				<tr>
-					<td> <b>${item.getTakeoffDate()}</b></td>
-					<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
-					<td><a href="${pageContext.request.contextPath}/flight/findflight?id=${item.getId()}">Order flight ticket</a></td>
-				</tr>  	
-		</c:forEach>
-		</tbody>
-		</table>
-	</c:if>
-	<c:if test="${flights.isEmpty()}">
-	<br>
-		<b>No flights found for this date</b><br>
-	</c:if>
+	<table id="flightTable" class="table table-striped table-bordered">
+			<thead class="thead-inverse|thead-default">
+					<tr>
+						<th>Takeoff date</th>
+						<th>Destination</th>
+						<th>Order</th>
+					</tr>
+			</thead>
+			<tbody>
+	<c:forEach items="${flights}" var="item">
+			<tr>
+				<td> <b>${item.getTakeoffDate()}</b></td>
+				<td><b>${destinationService.getDestinationName(item.getDestination())}</b></td>
+				<td><a href="${pageContext.request.contextPath}/flight/findflight?id=${item.getId()}">Order flight ticket</a></td>
+			</tr>  	
+	</c:forEach>
+	</tbody>
+	</table>
 </jsp:body>
 </t:twocol>
 </body>

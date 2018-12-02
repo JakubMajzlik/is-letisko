@@ -100,7 +100,7 @@ public class FlightDAOImpl implements FlightDAO {
 				}
 			}
 		}
-		
+		System.out.println("Koniec");
 		return list;
 	}
 
@@ -161,6 +161,8 @@ public class FlightDAOImpl implements FlightDAO {
 	
 	@Override
 	public String getDisableDates(String stringDate, int destination, LocalDate maxDate) {
+		System.out.println("DATE: "+stringDate);
+		System.out.println("DESTINATION: "+destination);
 		Session session= sessionFactory.getCurrentSession();
 		List<LocalDate> list= new ArrayList<>();
 		String result=null;
@@ -177,7 +179,6 @@ public class FlightDAOImpl implements FlightDAO {
 			do {
 				boolean equal=false;
 				for(LocalDate l : list) {
-					System.out.println(date +" : "+l);
 					if(date.compareTo(l)==0) {
 						equal=true;
 						break;
@@ -191,7 +192,7 @@ public class FlightDAOImpl implements FlightDAO {
 					}
 				}
 				date = date.plusDays(1);
-			}while(date.compareTo(maxDate)!=0);
+			}while(date.compareTo(maxDate)<0);
 			result=result + "]";
 			return result;
 		}else{
@@ -208,7 +209,6 @@ public class FlightDAOImpl implements FlightDAO {
 			do {
 				boolean equal=false;
 				for(LocalDate l : list) {
-					System.out.println(date +" : "+l);
 					if(date.compareTo(l)==0) {
 						equal=true;
 						break;
@@ -222,7 +222,7 @@ public class FlightDAOImpl implements FlightDAO {
 					}
 				}
 				date = date.plusDays(1);
-			}while(date.compareTo(maxDate)!=0);
+			}while(date.compareTo(maxDate)<0);
 			result=result + "]";
 			return result;
 		}

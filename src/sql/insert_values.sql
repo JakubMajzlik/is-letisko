@@ -7240,19 +7240,19 @@ values("Goroka Airport","Goroka","Papua New Guinea",-6.081689834590001,145.39199
 
 
 -- FLIGHTS
-insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/05 16:00', 1, 3, 'A38020170813', 65.00);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/12 16:00', 1, 3, 'A38020170813', 70.50);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/19 16:00', 1, 3, 'A38020170813', 68.70);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/02 16:00', 1, 3, 'A38020170813', 76.30);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/09 16:00', 1, 3, 'A38020170813', 72.00);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/16 16:00', 1, 3, 'A38020170813', 63.50);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/23 16:00', 1, 3, 'A38020170813', 69.90);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/30 16:00', 1, 3, 'A38020170813', 78.40);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/07 07:25', 3, 2, 'CONC19981130', 395.30);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/14 07:25', 3, 2, 'CONC19981130', 425.00);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/21 07:25', 3, 2, 'CONC19981130', 470.50);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/28 07:25', 3, 2, 'CONC19981130', 476.30);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/04 07:25', 3, 2, 'CONC19981130', 463.80);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/11 07:25', 3, 2, 'CONC19981130', 399.90);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/18 07:25', 3, 2, 'CONC19981130', 405.10);
-insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/25 07:25', 3, 2, 'CONC19981130', 432.90);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/05 16:00', 1692, 3, 'A38020170813', 65.00);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/12 16:00', 1692, 3, 'A38020170813', 70.50);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/19 16:00', 1692, 3, 'A38020170813', 68.70);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/02 16:00', 1692, 3, 'A38020170813', 76.30);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/09 16:00', 1692, 3, 'A38020170813', 72.00);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/16 16:00', 1692, 3, 'A38020170813', 63.50);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/23 16:00', 1692, 3, 'A38020170813', 69.90);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/30 16:00', 1692, 3, 'A38020170813', 78.40);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/07 07:25', 1547, 2, 'CONC19981130', 395.30);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/14 07:25', 1547, 2, 'CONC19981130', 425.00);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/21 07:25', 1547, 2, 'CONC19981130', 470.50);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2018/12/28 07:25', 1547, 2, 'CONC19981130', 476.30);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/04 07:25', 1547, 2, 'CONC19981130', 463.80);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/11 07:25', 1547, 2, 'CONC19981130', 399.90);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/18 07:25', 1547, 2, 'CONC19981130', 405.10);
+insert into flights(takeoff_date, destination, gate, plane, price) values('2019/01/25 07:25', 1547, 2, 'CONC19981130', 432.90);

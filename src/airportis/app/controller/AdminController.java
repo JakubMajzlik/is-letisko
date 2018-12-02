@@ -288,7 +288,7 @@ public class AdminController {
 			return "updatedestination-formular";
 		}else {
 			destinationService.save(destinationModel);
-			model.addAttribute("addSuccess", true);
+			model.addAttribute("updateSuccess", true);
 			return "redirect:/admin/destinations";		
 		}
 	}

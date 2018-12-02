@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import org.hibernate.Session;
@@ -60,7 +59,6 @@ public class DestinationDAOImpl implements DestinationDAO{
 		for (Destination d : destination.getResultList()) {
 			map.put(d.getId(), d.getCity()+", "+ d.getCountry() +", "+ d.getAirport());
 		}
-		Map<Integer, String>sortedMap = new TreeMap<>(map);
 		return map.entrySet().stream().sorted(Map.Entry.comparingByValue()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
 	}
 

@@ -129,7 +129,7 @@ public class FlightTicketServiceImpl implements FlightTicketService{
 		over.setFontAndSize(font, 10);
 		over.setTextMatrix(325,8);
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd kk:mm");
 		Date date = new Date();
 		
 		over.showText(dateFormat.format(date));
