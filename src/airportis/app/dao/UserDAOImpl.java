@@ -117,7 +117,12 @@ public class UserDAOImpl implements UserDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Query<ActivationToken> tokens= session.createQuery("From ActivationToken where token= :token", ActivationToken.class);
 		tokens.setParameter("token", token);
-		User user= session.get(User.class, tokens.getSingleResult().getUserId());
-		return user;
+		
+		if(!tokens.getResultList().isEmpty()) {
+			User user= session.get(User.class, tokens.getSingleResult().getUserId());
+			return user;
+		}
+		
+		return null;
 	}
 }

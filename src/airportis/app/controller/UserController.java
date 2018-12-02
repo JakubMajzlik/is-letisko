@@ -99,7 +99,7 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/register")
+	@GetMapping(value="/register", produces = "text/plain;charset=UTF-16")
 	public String showRegisterForm(Model model) {
 		if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
 			model.addAttribute("userRegisterModel", new UserRegisterModel());
@@ -109,7 +109,7 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@PostMapping("/register/process")
+	@PostMapping(value="/register/process", produces = "text/plain;charset=UTF-16")
 	public String processRegistration(@Valid @ModelAttribute("userRegisterModel") UserRegisterModel userModel,
 										BindingResult result, Model model) {
 		if(result.hasErrors()) {
@@ -120,7 +120,8 @@ public class UserController {
 		User user = userService.findUserByEmail(userModel.getEmail());
 		
 		if(user != null) {
-			model.addAttribute("errorUserAlreadyExists", "User with given email already exists");
+			model.addAttribute("countryList", getCountryList());
+			model.addAttribute("errorUserAlreadyExists", true);
 			return "register";
 		}
 		

@@ -9,6 +9,7 @@
 	span[id*="errors"]{color:Red;}
 	
 </style>
+<meta charset="UTF-8">
 <link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet" /> 
 <title>Jamnik Airport - Register</title>
 </head>
@@ -35,7 +36,11 @@
 		<tr>
 		<td>Email:<b class="text-danger">*</b></td>
 		<td><form:input path="email"/>
-		<form:errors path="email"/></td>
+		<form:errors path="email"/>
+		<c:if test="${errorUserAlreadyExists == true }">
+			<span id="errors_accexists">Account with this email already exists</span>
+		</c:if>
+		</td>
 		</tr>
 		<tr>
 		<td>Password:<b class="text-danger">*</b></td>

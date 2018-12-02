@@ -50,8 +50,8 @@ public class MailServiceImpl implements MailService{
 			message.setSubject("Account confirmation");
 			userDAO.saveToken(userDAO.findUserByEmail(email));
 			String msg = "You have successfuly created account on Jamnik Airport Information System.<br>"+
-						 "To activate your account please follow the link below or copy it into your web browser.<br>"+
-						 "http://localhost:8080/Airportis/user/activate?token=" + userDAO.getToken(userDAO.findUserByEmail(email));
+						 "To activate your account please follow the link below.<br>"+
+						 "<a href=\"http://localhost:8080/Airportis/user/activate?token=" + userDAO.getToken(userDAO.findUserByEmail(email))+"\">Activate</a>";
 			 
 			MimeBodyPart mimeBodyPart = new MimeBodyPart();
 			mimeBodyPart.setContent(msg, "text/html");
