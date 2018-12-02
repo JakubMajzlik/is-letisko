@@ -39,6 +39,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import airportis.app.dao.UserDAO;
 import airportis.app.entity.FlightTicket;
 import airportis.app.entity.User;
 import airportis.app.model.NewPasswordModel;
@@ -47,6 +48,7 @@ import airportis.app.model.UserRegisterModel;
 import airportis.app.service.DestinationService;
 import airportis.app.service.FlightService;
 import airportis.app.service.FlightTicketService;
+import airportis.app.service.MailService;
 import airportis.app.service.UserService;
 
 @Controller
@@ -64,6 +66,9 @@ public class UserController {
 	
 	@Autowired
 	FlightTicketService flightTicketService;
+	
+	@Autowired
+	MailService mailService;
 	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
@@ -120,8 +125,9 @@ public class UserController {
 		}
 		
 		userService.save(userModel);
+		mailService.sendMail(userModel.getEmail());
 		model.addAttribute("successfullyRegistred", true);
-		return "redirect:/user/login";
+		return "registersuccess";
 	}
 	
 	@GetMapping("/editprofile")
@@ -270,5 +276,18 @@ public class UserController {
 		FlightTicket flightTicket= flightTicketService.getFlightTicket(id);
 		flightTicketService.remove(flightTicket);
 		return "redirect:/user/history";
+	}
+	
+	@RequestMapping("/activate")
+	public String activateAccount(@RequestParam(value="token", required=true)String token) {
+		User user = userService.getUserByToken(token);
+		if(user==null) {
+			return "redirect:/";
+		}else {
+			user.setEnabled(true);
+			userService.removeToken(user);
+			userService.save(user);
+			return "redirect:/user/login";
+		}
 	}
 }

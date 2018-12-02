@@ -6,10 +6,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
-import airportis.app.entity.UserDetail;
+import airportis.app.entity.ActivationToken;
 import airportis.app.entity.User;
+import airportis.app.entity.UserDetail;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -17,6 +19,9 @@ public class UserDAOImpl implements UserDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 
+	@Autowired
+	BCryptPasswordEncoder encoder;
+	
 	@Override
 	public User findUserByEmail(String email) {
 		System.out.println("Finding User " + email);
@@ -84,5 +89,35 @@ public class UserDAOImpl implements UserDAO {
 			user = null;
 		}
 		return user.getLastName();
+	}
+
+	@Override
+	public void saveToken(User user) {
+		Session session = sessionFactory.getCurrentSession();
+		ActivationToken token = new ActivationToken(user.getId(), encoder.encode(user.getUsername()+"btrsgdghcgho7460&^"));
+		session.saveOrUpdate(token);
+	}
+
+	@Override
+	public String getToken(User user) {
+		Session session = sessionFactory.getCurrentSession();
+		ActivationToken token= session.get(ActivationToken.class, user.getId());
+		return token.getToken();
+	}
+
+	@Override
+	public void removeToken(User user) {
+		Session session = sessionFactory.getCurrentSession();
+		ActivationToken token= session.get(ActivationToken.class, user.getId());
+		session.remove(token);
+	}
+
+	@Override
+	public User findUserByToken(String token) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<ActivationToken> tokens= session.createQuery("From ActivationToken where token= :token", ActivationToken.class);
+		tokens.setParameter("token", token);
+		User user= session.get(User.class, tokens.getSingleResult().getUserId());
+		return user;
 	}
 }

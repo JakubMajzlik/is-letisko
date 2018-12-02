@@ -30,12 +30,12 @@ values ('tomas@jedno.org', '0977888999', 'Tomas', 'Jedno', '8912121229', 'Filako
 		'53', '98601', 'Slovakia');
 
 -- USERS
-insert into user(username, password, user_details_id)
-values ( 'admin@jamnikairport.sk', '$2a$10$raAQ73.7fRB2MqfsUsgzZO4LBCeP6YKYzeN69/E90otsuwUZLCml.', '9412241234');
-insert into user(username, password, user_details_id)
-values ('k.troska@jamnikairport.sk', '$2a$10$2/5lyPozw9Red.3C4kapDOdvdc1.tK7uVLpUOeJby71cc91xz2p7S','8754265432');
-insert into user(username, password, user_details_id)
-values ('tomas@jedno.org', '$2a$10$vxSBJMfRYDdx5qLlMyK7Y.Gdphjm8DDLjB45gHWjK.73LL48M7GIS', '8912121229');
+insert into user(username, password, enabled, user_details_id)
+values ( 'admin@jamnikairport.sk', '$2a$10$raAQ73.7fRB2MqfsUsgzZO4LBCeP6YKYzeN69/E90otsuwUZLCml.', 1, '9412241234');
+insert into user(username, password, enabled, user_details_id)
+values ('k.troska@jamnikairport.sk', '$2a$10$2/5lyPozw9Red.3C4kapDOdvdc1.tK7uVLpUOeJby71cc91xz2p7S', 1,'8754265432');
+insert into user(username, password, enabled, user_details_id)
+values ('tomas@jedno.org', '$2a$10$vxSBJMfRYDdx5qLlMyK7Y.Gdphjm8DDLjB45gHWjK.73LL48M7GIS', 1,'8912121229');
 
 -- USERS ROLES
 insert into users_roles(role_id, user_id) values (1,1);

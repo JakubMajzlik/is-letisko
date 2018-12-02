@@ -19,4 +19,6 @@ public interface UserService extends UserDetailsService {
 	void remove(User user);
 	void save(User user);
 	void createEmployee(UserRegisterModel userRegisterModel);
+	User getUserByToken(String token);
+	void removeToken(User user);
 }

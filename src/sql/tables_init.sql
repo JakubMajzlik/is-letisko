@@ -24,7 +24,7 @@ create table if not exists `user` (
 	`id` int(11) auto_increment,
 	`username` varchar(254) not null,
 	`password` varchar(80) not null,
-	`enabled` tinyint default 1, 
+	`enabled` tinyint default 0, 
     `user_details_id` varchar(10) not null,
     
 	primary key(`id`),
@@ -54,6 +54,17 @@ create table if not exists `users_roles` (
 	CONSTRAINT `fk_role` FOREIGN KEY (`role_id`) 
 	REFERENCES `role` (`id`) 
 	ON DELETE CASCADE
+);
+
+create table if not exists `activation_tokens`(
+	`user_id` int(11) not null,
+    `token` varchar(80) not null,
+    
+    PRIMARY KEY (`user_id`),
+    
+    CONSTRAINT `fk_user_id3` FOREIGN KEY (`user_id`) 
+	REFERENCES `user` (`id`)
+    ON DELETE CASCADE
 );
 
 create table if not exists `destinations` (

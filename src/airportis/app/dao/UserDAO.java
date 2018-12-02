@@ -13,4 +13,8 @@ public interface UserDAO {
 	String getUserSurname(String email);
 	void save(User user);
 	void remove(User user);
+	void saveToken(User user);
+	String getToken(User user);
+	void removeToken(User user);
+	User findUserByToken(String token);
 }

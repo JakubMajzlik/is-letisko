@@ -185,4 +185,16 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	@Override
+	@Transactional
+	public User getUserByToken(String token) {
+		return userDAO.findUserByToken(token);
+	}
+
+	@Override
+	@Transactional
+	public void removeToken(User user) {
+		userDAO.removeToken(user);		
+	}
+
 }
