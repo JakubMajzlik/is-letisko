@@ -49,6 +49,16 @@
     	 New employee was registered successfully 
     </div>
 	</c:if>
+	<c:if test="${param.promoteSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 Employee was promoted successfully 
+    </div>
+	</c:if>
+	<c:if test="${param.demoteSuccess == true }" >
+	<div class="alert alert-success d-inline-flex p-2">
+    	 Admin was demoted successfully 
+    </div>
+	</c:if>
 <table id="userTable" class="table table-striped table-bordered">
 	<thead >
 			<tr>

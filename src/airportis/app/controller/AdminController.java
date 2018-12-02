@@ -1,10 +1,12 @@
 package airportis.app.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import javax.sound.midi.Soundbank;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import airportis.app.entity.Role;
 import airportis.app.entity.User;
 import airportis.app.model.DestinationModel;
 import airportis.app.model.PlaneModel;
@@ -27,6 +30,7 @@ import airportis.app.model.UserEditModel;
 import airportis.app.model.UserRegisterModel;
 import airportis.app.service.DestinationService;
 import airportis.app.service.PlaneService;
+import airportis.app.service.RoleService;
 import airportis.app.service.UserService;
 
 @Controller
@@ -39,6 +43,8 @@ public class AdminController {
 	@Autowired
 	PlaneService planeService;
 	
+	@Autowired
+	RoleService roleService;
 
 	@Autowired 
 	DestinationService destinationService;
@@ -78,6 +84,7 @@ public class AdminController {
 		}
 		
 		UserEditModel userModel = userService.getUserModel(id.intValue());
+		User user = userService.findUserById(id.intValue());
 		
 		if(userModel == null) {
 			return "redirect:/admin/manageusers";
@@ -85,6 +92,7 @@ public class AdminController {
 		
 		model.addAttribute("countryList", getCountryList());
 		model.addAttribute("userModel", userModel);
+		model.addAttribute("userRoles", user.getRoles());
 		
 		return "admin-edituser-formular";
 	}
@@ -94,8 +102,10 @@ public class AdminController {
 			@Valid @ModelAttribute("userModel")UserEditModel userModel, 
 			BindingResult result,
 			Model model) {
+		User user = userService.findUserById(userModel.getId());
 		if(result.hasErrors()) {
 			model.addAttribute("countryList", getCountryList());
+			model.addAttribute("userRoles", user.getRoles());
 			return "admin-edituser-formular"; 
 		}
 		
@@ -291,6 +301,62 @@ public class AdminController {
 			model.addAttribute("updateSuccess", true);
 			return "redirect:/admin/destinations";		
 		}
+	}
+	
+	@RequestMapping("/promote")
+	public String promoteEmployee(@RequestParam(value="id", required=true)Integer id,
+									Model model) {
+		if(id==null) {
+			return "redirect:/admin/manageusers";
+		}
+		
+		User user = userService.findUserById(id.intValue());
+		if(user == null) {
+			return "redirect:/admin/manageusers";
+		}
+		
+		if(user.getRoles().size() == 3) {
+			model.addAttribute("alreadyPromoted", true);
+			return "redirect:/admin/manageusers/edituser?id="+id.toString();
+		}
+		if(user.getRoles().size() == 1) {
+			model.addAttribute("cantPromote", true);
+			return "redirect:/admin/manageusers/edituser?id="+id.toString();
+		}
+		
+		Collection<Role> userRoles = user.getRoles();
+		userRoles.add(roleService.getRoleByName("ROLE_ADMIN"));
+		user.setRoles(userRoles);
+		userService.save(user);
+		model.addAttribute("promoteSuccess", true);
+		return "redirect:/admin/manageusers";
+	}
+	
+	@RequestMapping("/demote")
+	public String demoteEmployee(@RequestParam(value="id", required=true)Integer id,
+									Model model) {
+		if(id==null) {
+			return "redirect:/admin/manageusers";
+		}
+		
+		User user = userService.findUserById(id.intValue());
+		if(user == null) {
+			return "redirect:/admin/manageusers";
+		}
+
+		if(user.getRoles().size() < 3) {
+			model.addAttribute("cantDemote", true);
+			return "redirect:/admin/manageusers/edituser?id="+id.toString();
+		}
+
+		Collection<Role> userRoles = user.getRoles();
+		userRoles.clear();
+		userRoles.add(roleService.getRoleByName("ROLE_USER"));
+		userRoles.add(roleService.getRoleByName("ROLE_EMPLOYEE"));
+		user.setRoles(userRoles);
+		userService.save(user);
+		model.addAttribute("demoteSuccess", true);
+		return "redirect:/admin/manageusers";
 	}
 	
 }
