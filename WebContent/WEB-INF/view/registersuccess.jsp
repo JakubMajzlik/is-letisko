@@ -11,6 +11,8 @@
 <t:twocol>
 	<jsp:body>
 		<h1>Register Success</h1>
+		<h3>Activation link was sent to your email address</h3>
+		If you have any problem with activation, please contact us.
 	</jsp:body>
 </t:twocol>
 	
