@@ -9,7 +9,7 @@
   
   
   <properties>
-  	<spring-framework-version>5.0.8.RELEASE</spring-framework-version>
+  	<spring-framework-version>5.2.21.RELEASE</spring-framework-version>
   	<spring-security-version>5.3.0.RELEASE</spring-security-version>
   	<hibernate-validator-version>6.0.12.Final</hibernate-validator-version>
   	<hibernate-orm-version>5.3.5.Final</hibernate-orm-version>
